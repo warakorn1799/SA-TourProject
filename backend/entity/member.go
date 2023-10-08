@@ -11,6 +11,4 @@ type Member struct {
 	Email     string
 	Password  string
 	Phone     string
-
-	Bookings []Booking `gorm:"many2many:Booking_Member"`
 }

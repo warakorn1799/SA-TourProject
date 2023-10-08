@@ -17,9 +17,6 @@ type TourAttraction struct {
 	Fromdate  time.Time
 	Todate    time.Time
 	Price     int
-
-	AdminID *uint
-	Admin   Admin `gorm:"foreignKey:AdminID"`
-
-	Packages []Package `gorm:"many2many:Package_TourAttraction"`
+	AdminID   *uint
+	Admin     Admin `gorm:"foreignKey:AdminID"`
 }

@@ -10,7 +10,6 @@ import (
 // POST /Package
 func CreatePackage(c *gin.Context) {
 	var packages entity.Package
-	var member entity.Member
 	var promotion entity.Promotion
 
 	// bind เข้าตัวแปร package
@@ -18,13 +17,6 @@ func CreatePackage(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
-	// Search member with id
-	if tx := entity.DB().Where("id = ?", packages.MemberID).First(&member); tx.RowsAffected == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "member not found"})
-		return
-	}
-
 	// Search Promotion with id
 	if tx := entity.DB().Where("id = ?", packages.PromotionID).First(&promotion); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Promotion not found"})
@@ -45,7 +37,6 @@ func CreatePackage(c *gin.Context) {
 		Priceadult: packages.Priceadult,
 		Pricechil:  packages.Pricechil,
 		Promotion:  promotion,
-		Member:     member,
 	}
 
 	// Save
@@ -60,7 +51,7 @@ func CreatePackage(c *gin.Context) {
 func GetPackage(c *gin.Context) {
 	var packages entity.Package
 	id := c.Param("id")
-	if err := entity.DB().Preload("Member").Preload("Promotion").Raw("SELECT * FROM packages WHERE id = ?", id).Find(&packages).Error; err != nil {
+	if err := entity.DB().Preload("Promotion").Raw("SELECT * FROM packages WHERE id = ?", id).Find(&packages).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -70,7 +61,7 @@ func GetPackage(c *gin.Context) {
 // GET /packages
 func ListPackage(c *gin.Context) {
 	var packages []entity.Package
-	if err := entity.DB().Preload("Member").Preload("TourAttraction").Preload("Promotion").Raw("SELECT * FROM packages").Find(&packages).Error; err != nil {
+	if err := entity.DB().Preload("Promotion").Raw("SELECT * FROM packages").Find(&packages).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

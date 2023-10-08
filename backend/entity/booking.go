@@ -13,11 +13,9 @@ type Booking struct {
 	Adult    int
 	Chil     int
 
-	Members  []Member `gorm:"many2many:Booking_Member"`
-	
 	PackageID *uint
 	Package   Package `gorm:"foreignKey:PackageID"`
 
 	RoomTypeID *uint
-	RoomType RoomType `gorm:"foreignKey:RoomTypeID"`
+	RoomType   RoomType `gorm:"foreignKey:RoomTypeID"`
 }

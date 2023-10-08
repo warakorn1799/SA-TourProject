@@ -11,6 +11,7 @@ import (
 func CreatePayment(c *gin.Context) {
 	var payment entity.Payment
 	var member entity.Member
+	var booking entity.Booking
 
 	// bind เข้าตัวแปร payment
 	if err := c.ShouldBindJSON(&payment); err != nil {
@@ -23,12 +24,18 @@ func CreatePayment(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "member not found"})
 		return
 	}
+	// Search Booking with id
+	if tx := entity.DB().Where("id = ?", payment.BookingID).First(&booking); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Booking not found"})
+		return
+	}
 
 	// Create Payment
 	pay := entity.Payment{
 		Receipt: payment.Receipt,
 		Date:    payment.Date,
 		Member:  member,
+		Booking: booking,
 	}
 
 	// Save
@@ -43,7 +50,7 @@ func CreatePayment(c *gin.Context) {
 func GetPayment(c *gin.Context) {
 	var payment entity.Payment
 	id := c.Param("id")
-	if err := entity.DB().Preload("Member").Raw("SELECT * FROM payments WHERE id = ?", id).Find(&payment).Error; err != nil {
+	if err := entity.DB().Preload("Member").Preload("Booking").Raw("SELECT * FROM payments WHERE id = ?", id).Find(&payment).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -53,7 +60,7 @@ func GetPayment(c *gin.Context) {
 // GET /payments
 func ListPayments(c *gin.Context) {
 	var payments []entity.Payment
-	if err := entity.DB().Preload("Member").Raw("SELECT * FROM payments").Find(&payments).Error; err != nil {
+	if err := entity.DB().Preload("Member").Preload("Booking").Raw("SELECT * FROM payments").Find(&payments).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

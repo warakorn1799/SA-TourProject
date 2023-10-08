@@ -1,4 +1,3 @@
-import { MemberInterface } from "./IMember";
 import { PromotionInterface } from "./IPromotion";
 
 export interface PackageInterface {
@@ -15,5 +14,4 @@ export interface PackageInterface {
     Priceadult?: number;
     Pricechil?: number;
     PromotionID?: PromotionInterface;
-    MemberID?: MemberInterface;
 }

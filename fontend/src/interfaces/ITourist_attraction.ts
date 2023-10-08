@@ -1,6 +1,6 @@
 import { AdminInterface } from "./IAdmin";
 
-export interface ITourist_attraction {
+export interface Tourist_attractionInterface {
     ID?: number; 
     Name?: string;
     Location?: string;

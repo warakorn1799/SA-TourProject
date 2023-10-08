@@ -8,8 +8,6 @@ type Review struct {
 	Comment   string
 	Image     []byte
 
-	Packages []Package `gorm:"many2many:Package_Review"`
-
 	MemberID *uint
 	Member   Member `gorm:"foreignKey:MemberID"`
 

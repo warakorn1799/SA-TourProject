@@ -31,7 +31,7 @@ func CreateReview(c *gin.Context) {
 
 	// Create Review
 	rv := entity.Review{
-		Companion: review.Comment,
+		Companion: review.Companion,
 		Comment:   review.Comment,
 		Image:     review.Image,
 		Rate:      rate,

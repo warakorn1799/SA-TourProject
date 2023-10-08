@@ -1,8 +1,8 @@
 import { MemberInterface } from "./IMember";
-import {RateInterface} from "./IRate";
+import { RateInterface } from "./IRate";
 
 
-export interface RevireInterface {
+export interface ReviewInterface {
     ID?: number; 
     Companion?: string;
     Comment?: string;

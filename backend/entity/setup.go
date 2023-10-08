@@ -29,6 +29,9 @@ func SetupDatabase() {
 		&RoomType{},
 		&TourAttraction{},
 		&Rate{},
+		&TourAttractionPackage{},
+		&ReviewPackage{},
+		&BookingMember{},
 	)
 	db = database
 
