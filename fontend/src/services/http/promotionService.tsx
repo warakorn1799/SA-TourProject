@@ -1,9 +1,9 @@
-import { MemberInterface } from "../../interfaces/IMember";
+import { PromotionInterface } from "../../interfaces/IPromotion";
 
 
 const apiUrl = "http://localhost:8080";
 
-async function GetMember() {
+async function GetPromotion() {
   const requestOptions = {
     method: "GET",
     headers: {
@@ -11,7 +11,7 @@ async function GetMember() {
     },
   };
 
-  let res = await fetch(`${apiUrl}/members`, requestOptions)
+  let res = await fetch(`${apiUrl}/promotions`, requestOptions)
     .then((response) => response.json())
     .then((res) => {
       if (res.data) {
@@ -25,12 +25,12 @@ async function GetMember() {
 }
 
 
-async function DeleteMemberByID(id: Number | undefined) {
+async function DeletePromotionByID(id: Number | undefined) {
   const requestOptions = {
     method: "DELETE"
   };
 
-  let res = await fetch(`${apiUrl}/members/${id}`, requestOptions)
+  let res = await fetch(`${apiUrl}/promotions/${id}`, requestOptions)
     .then((response) => response.json())
     .then((res) => {
       if (res.data) {
@@ -43,12 +43,12 @@ async function DeleteMemberByID(id: Number | undefined) {
   return res;
 }
 
-async function GetMemberById(id: Number | undefined) {
+async function GetPromotionById(id: Number | undefined) {
     const requestOptions = {
       method: "GET"
     };
   
-    let res = await fetch(`${apiUrl}/member/${id}`, requestOptions)
+    let res = await fetch(`${apiUrl}/promotion/${id}`, requestOptions)
       .then((response) => response.json())
       .then((res) => {
         if (res.data) {
@@ -61,14 +61,14 @@ async function GetMemberById(id: Number | undefined) {
     return res;
   }
 
-  async function CreateMember(data: MemberInterface) {
+  async function CreatePromotion(data: PromotionInterface) {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
   
-    let res = await fetch(`${apiUrl}/members`, requestOptions)
+    let res = await fetch(`${apiUrl}/promotions`, requestOptions)
       .then((response) => response.json())
       .then((res) => {
         if (res.data) {
@@ -81,14 +81,14 @@ async function GetMemberById(id: Number | undefined) {
     return res;
   }
   
-  async function UpdateMember(data: MemberInterface) {
+  async function UpdatePromotion(data: PromotionInterface) {
     const requestOptions = {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
   
-    let res = await fetch(`${apiUrl}/members`, requestOptions)
+    let res = await fetch(`${apiUrl}/promotions`, requestOptions)
       .then((response) => response.json())
       .then((res) => {
         if (res.data) {
@@ -102,9 +102,9 @@ async function GetMemberById(id: Number | undefined) {
   }
 
 export{
-  GetMember,
-  GetMemberById,
-  DeleteMemberByID,
-  CreateMember,
-  UpdateMember
+  GetPromotion,
+  GetPromotionById,
+  DeletePromotionByID,
+  CreatePromotion,
+  UpdatePromotion
 };

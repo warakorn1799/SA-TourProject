@@ -6,7 +6,7 @@ import (
 	"github.com/warakorn1799/tour-project/entity"
 )
 
-const PORT = "80"
+const PORT = "8080"
 
 func main() {
 
@@ -90,6 +90,24 @@ func main() {
 	r.POST("/reviews", controller.CreateReview)
 	r.PATCH("/reviews", controller.UpdateReview)
 	r.DELETE("/reviews/:id", controller.DeleteReview)
+
+	//TourAttractionPackage Routes
+	r.GET("/tourpackages", controller.ListTourAttractionPackage)
+	r.GET("/tourpackage/:id", controller.GetTourAttractionPackage)
+	r.POST("/tourpackages", controller.CreateTourAttractionPackage)
+	r.DELETE("/tourpackages/:id", controller.DeleteTourAttractionPackage)
+
+	//ReviewPackage Routes
+	r.GET("/reviewpackages", controller.ListReviewPackage)
+	r.GET("/reviewpackage/:id", controller.GetReviewPackage)
+	r.POST("/reviewpackages", controller.CreateReviewPackage)
+	r.DELETE("/reviewpackages/:id", controller.DeleteReviewPackage)
+
+	//BookingMember Routes
+	r.GET("/bookingmembers", controller.ListBookingMember)
+	r.GET("/bookingmember/:id", controller.GetBookingMember)
+	r.POST("/bookingmembers", controller.CreateBookingMember)
+	r.DELETE("/bookingmembers/:id", controller.DeleteBookingMember)
 
 	//Run the Server
 	r.Run("localhost: " + PORT)
