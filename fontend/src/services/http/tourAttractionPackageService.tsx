@@ -1,4 +1,4 @@
-import { TourAttraction_packageInterface } from "../../interfaces/ITourAttraction_package";
+import { TourAttraction_packageInterface } from "../../interfaces/ITourattraction_package";
 
 
 const apiUrl = "http://localhost:8080";

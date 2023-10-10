@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import Home from './pages/Home/Home';
+import Home2 from './pages/Home2/Home'
+import Booking from './pages/booking/Booking';
+import Register from './pages/register/Register';
+import Detail1 from './pages/Detail/Detail1/Detail1';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter,RouterProvider,Route,Link } from "react-router-dom";
 import Paymentdetail from './pages/paymentDetail/index';
@@ -12,7 +16,7 @@ import Paymenthistory from './pages/paymentHistory/index';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <Home />
   },
   {
     path: "/detail",
@@ -21,6 +25,20 @@ const router = createBrowserRouter([
   {
     path: "/payment-history",
     element: <Paymenthistory />
+  },  {
+    path: "/Home",
+    element: <Home2 />
+  },
+  {
+    path: "/Booking",
+    element: <Booking />
+  },
+  {
+    path: "/Register",
+    element: <Register />
+  },  {
+    path: "/Detail_page1",
+    element: <Detail1 />
   }
 ])
 

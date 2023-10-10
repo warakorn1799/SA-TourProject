@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.logo {
+    position: relative;
+    width: 300px;
+    height: 70px;
+    margin-right: 30%;
+}
+
+.menu {
+    background-color: #F9D9D900;
+    position: absolute;
+    width: 700px;
+    right: 150px;
+    margin-top: 0.5%;
+    padding-bottom: 15px;
+    font-size: 16px;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 700;
+}
+
+.form {
+    position: relative;
+    left: 5%;
+    width: 90%;
+    padding-bottom: 80vh;
+    background-color: #fff;
+    border-radius: 30px;
+    border-top: 2%;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.contact_text {
+    position: relative;
+    font:'Roboto';
+    font-style: 'normal';
+    text-align: left;
+    margin: 20px 20px;
+}
+
+.button_gotopayment {
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+    font-size: 16px;
+    border-color: #fc6130;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
+}
+.note {
+    background-color: aqua;
+    width: 30%;
+    height: 10%;
+    padding: 30px;
+}
