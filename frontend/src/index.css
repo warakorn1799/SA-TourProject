@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400&display=swap');
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* index.css */
+
+/* ปรับขนาดของกรอบอัปโหลด */
+.custom-upload {
+  width: 200px; /* ปรับขนาดกว้างตามที่คุณต้องการ */
+  height: 200px; /* ปรับขนาดสูงตามที่คุณต้องการ */
+}
+
+/* ปรับสไตล์ของกรอบอัปโหลด */
+.custom-upload .ant-upload {
+  background-color: #e0e0e0; /* ปรับสีพื้นหลัง */
+  border: 2px dashed #888; /* ปรับสีเส้นขอบ */
+}
+
+/* ปรับสไตล์ข้อความในกรอบอัปโหลด */
+.custom-upload .ant-upload-text {
+  font-size: 16px; /* ปรับขนาดตัวอักษร */
+  color: #333; /* ปรับสีข้อความ */
+}

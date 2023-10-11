@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    margin-top: 70px;
+    position: relative;
+    margin-left: 10%;
+    max-width: 80%;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+}
+
+.package_item {
+    background-color: rgba(252, 97, 48, 0.24);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.341);
+    border-radius: 5%;
+}
+.package_item:hover {
+    border: 2px solid orange;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0);
+
+}
+
+.package_content {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+}
+
+.package_img {
+    box-shadow: 0px 4px 4px rgba(14, 14, 14, 0.25);
+    border-radius: 5%;
+    max-width: 100%;
+}
+
+.package_name {
+    position: relative;
+    padding: 0.5rem;
+    font-size: 20px;
+    font-family: 'Noto Sans Thai', sans-serif;
+}

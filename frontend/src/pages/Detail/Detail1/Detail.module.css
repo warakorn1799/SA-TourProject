@@ -1,0 +1,35 @@
+.body {
+    position: relative;
+    height: 900px;
+    background-color: rgb(255, 255, 255);
+}
+
+.name_package {
+    position: relative;
+    top: 2%;
+    left: 3%;
+    width: 97%;
+}
+.name {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.img_style {
+    position: relative;
+    left: 7%;
+    top: 5%;
+    border: 1px solid orange;
+    border-radius: 20px;
+    width: 40%;
+    height: 70%;
+}
+.img1 {
+    margin: 0;
+    height: 160px;
+    color: #fff;
+    line-height: 160px;
+    text-align: center;
+    background: #364d79;
+}
