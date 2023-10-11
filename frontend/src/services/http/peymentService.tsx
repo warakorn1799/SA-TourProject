@@ -1,7 +1,7 @@
 import { PaymentInterface } from "../../interfaces/IPayment";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetPayment() {
   const requestOptions = {

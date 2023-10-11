@@ -1,7 +1,7 @@
 import { Booking_MemberInterface } from "../../interfaces/IBooking_member";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetBooking_Member() {
   const requestOptions = {

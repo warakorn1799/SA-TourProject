@@ -1,7 +1,7 @@
 import { TourAttraction_packageInterface } from "../../interfaces/ITourattraction_package";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetTourist_attractions_package() {
   const requestOptions = {

@@ -1,7 +1,7 @@
 import { Tourist_attractionInterface } from "../../interfaces/ITourist_attraction";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetTourist_attractions() {
   const requestOptions = {

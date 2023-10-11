@@ -49,6 +49,10 @@ function Headers() {
             console.log('your select contact');
             navigate('/booking');
         }
+        if (e.key == "contact") {
+            console.log('your select contact');
+            navigate('/payment');
+        }
     };
 
     const [isLoginPopupOpen, setState] = useState(false);
