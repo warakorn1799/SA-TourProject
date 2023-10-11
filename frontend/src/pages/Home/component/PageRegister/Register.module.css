@@ -2,7 +2,7 @@
 .header {
     position: relative;
     height: 1200px;
-    background-image: url('https://images.unsplash.com/photo-1490077476659-095159692ab5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2051&q=80');
+    background-image: url('https://cdn.pixabay.com/photo/2020/05/15/07/04/vietnam-5172536_1280.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -23,7 +23,6 @@
     background: #ffffff11;
     padding-bottom: 30px;
     padding-top: 100px;
-    border: 1px solid #ccc;
     border-radius: 5%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     max-width: 600px;
