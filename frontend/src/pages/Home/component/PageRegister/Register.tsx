@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import styles from './Register.module.css';
 import { Form, Input, Select, message } from 'antd';
@@ -7,40 +6,23 @@ import { CreateMember } from '../../../../services/http/memberService';
 import { MemberInterface } from '../../../../interfaces/IMember'
 import { CountryInterface } from '../../../../interfaces/ICountry';
 import { GetCountry } from '../../../../services/http/countryService';
-=======
-import React, { useState } from 'react';
-import styles from './Register.module.css';
-import { Form, Input, message } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { CreateMember } from '../../../../services/http/memberService';
-import { MemberInterface } from '../../../../interfaces/IMember';
->>>>>>> ab32e57f5623784788e01c3181319e3a34e38005
 
 type FieldType = {
   firstname?: string;
   lastname?: string;
   email?: string;
-<<<<<<< HEAD
   countryID?: CountryInterface;
   password?: string;
   phone?: string
 
 };
 const { Option } = Select;
-=======
-  password?: string;
-
-};
->>>>>>> ab32e57f5623784788e01c3181319e3a34e38005
 
 function Register() {
   const navigate = useNavigate();
   const [confirmation, setConfirmation] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
-<<<<<<< HEAD
   const [country, setCountry] = useState<CountryInterface[]>([]);
-=======
->>>>>>> ab32e57f5623784788e01c3181319e3a34e38005
 
   const handleConfirmation = async (values: MemberInterface) => {
     let res = await CreateMember(values);
@@ -62,7 +44,6 @@ function Register() {
     }
   };
 
-<<<<<<< HEAD
   const getCountry = async () => {
     let res = await GetCountry();
     if (res) {
@@ -75,8 +56,6 @@ function Register() {
     console.log(country);
   }, []);
 
-=======
->>>>>>> ab32e57f5623784788e01c3181319e3a34e38005
   const onFinish = (values: any) => {
     console.log('Success:', values);
     handleConfirmation(values);
@@ -87,7 +66,6 @@ function Register() {
   };
   return (
     <div className={styles.header}>
-<<<<<<< HEAD
       <div className={styles.filters}>
         <Form className={styles.reg_popup}
           name="Register"
@@ -164,63 +142,6 @@ function Register() {
           </Form.Item>
         </Form>
       </div>
-=======
-      <Form className={styles.reg_popup}
-        name="Register"
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <div className={styles.headerstyle}>
-          <title className={styles.logIn}>Sign In</title>
-        </div>
-
-        <div className={styles.user}>
-          <Form.Item<FieldType> style={{ color: 'red' }}
-            label=""
-            name="firstname"
-
-            rules={[{ required: true, message: 'Please input your Firstname!' }]}
-
-          >
-            <Input className={styles.input} placeholder="Fistname"/>
-          </Form.Item>
-          <Form.Item<FieldType>
-            label=""
-            name="lastname"
-            rules={[{ required: true, message: 'Please input your Lastname!' }]}
-          >
-            <Input className={styles.input} placeholder="Lastname"/>
-          </Form.Item>
-          <Form.Item<FieldType>
-            label=""
-            name="email"
-            rules={[{ required: true, message: 'Please input your Email!' }]}
-          >
-            <Input className={styles.input} placeholder="Email"/>
-          </Form.Item>
-
-          <Form.Item<FieldType>
-            label=""
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password className={styles.input} placeholder="Password"/>
-          </Form.Item>
-        </div>
-
-        <h1></h1>
-        <a className={styles.gotohome} onClick={() => navigate('/Home')}>Back to Home page</a>
-
-        <Form.Item >
-          {contextHolder}
-          <button className={styles.submitstyle}>
-            Submit
-          </button>
-        </Form.Item>
-      </Form>
->>>>>>> ab32e57f5623784788e01c3181319e3a34e38005
     </div>
   );
 }
