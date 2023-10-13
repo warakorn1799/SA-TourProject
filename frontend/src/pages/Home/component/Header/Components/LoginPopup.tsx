@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Checkbox, Form, Input, Typography, message } from 'antd';
 import logo from './assets/logo1.png'
 import { UserOutlined, CloseOutlined } from '@ant-design/icons';
@@ -6,7 +6,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { GetMember, GetMemberByEmail } from '../../../../../services/http/memberService'
 import { MemberInterface } from '../../../../../interfaces/IMember';
 import styles from './LoginPopup.module.css'
-import { setlogout } from '../Headers';
 
 const { Title } = Typography;
 type FieldType = {
@@ -58,9 +57,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose }) => {
       }
     }
   };
-  if (setlogout) {
-    member = undefined;
-  }
+
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
