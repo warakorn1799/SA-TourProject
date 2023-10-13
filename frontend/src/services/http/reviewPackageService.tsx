@@ -1,7 +1,7 @@
 import { Review_PackageInterface } from "../../interfaces/IReview_package";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetReview_Package() {
   const requestOptions = {

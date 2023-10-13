@@ -1,7 +1,7 @@
 import { MemberInterface } from "../../interfaces/IMember";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetMember() {
   const requestOptions = {

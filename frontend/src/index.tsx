@@ -10,8 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter,RouterProvider,Route,Link } from "react-router-dom";
 import Paymentdetail from './pages/paymentDetail/index';
 import Paymenthistory from './pages/paymentHistory/index';
-
-
+import Payment from './App';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +24,12 @@ const router = createBrowserRouter([
   {
     path: "/payment-history",
     element: <Paymenthistory />
-  },  {
+  },
+  {
+    path: "/payment",
+    element: <Payment />
+  },    
+  {
     path: "/Home",
     element: <Home2 />
   },

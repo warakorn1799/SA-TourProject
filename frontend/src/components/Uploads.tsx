@@ -30,7 +30,7 @@ function Uploads() {
       <img style={{marginTop: -230,marginLeft: 940,width: 72, height: 72,display:'flex'}} src="Rectangle 85.png" />
       <div style={{marginTop: 10, marginLeft: 880,width: 208, height: 32, color: '#C2C2C2', fontSize: 24, fontFamily: 'Roboto', fontWeight: '400', wordWrap: 'break-word'}}>Attach Transfer slip</div>
       </div>
-      <input type="file" accept="image/*" onChange={onImageChange} style={{marginLeft:790,marginTop:10,position:'absolute'}} />
+      <input type="file" accept="image/*" onChange={onImageChange} style={{marginLeft:790,marginTop:10,position:'absolute',width:200,borderWidth:0}} />
     </div>
   );
 }

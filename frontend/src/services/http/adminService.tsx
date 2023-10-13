@@ -1,7 +1,7 @@
 import { AdminInterface } from "../../interfaces/IAdmin";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetAdmin() {
   const requestOptions = {

@@ -1,7 +1,7 @@
 import { PromotionInterface } from "../../interfaces/IPromotion";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetPromotion() {
   const requestOptions = {

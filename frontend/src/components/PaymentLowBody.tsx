@@ -3,15 +3,13 @@ import { Layout, Image, Button, Modal  } from 'antd';
 import Uploads from "./Uploads";
 import Qr from "./Qr";
 import Paypopup from "./Paypopup";
-import { useNavigate } from 'react-router-dom';
-
+import { CreatePayment } from "../services/http/paymentService";
+import { PaymentInterface } from "../interfaces/IPayment";
 const { Content } = Layout;
 
 function Appss() {
   const [isQrModalVisible, setIsQrModalVisible] = useState(false);
   const [isPayModalVisible, setIsPayModalVisible] = useState(false);
-  const navigate = useNavigate();
-
 
   const showQR = () => {
     setIsQrModalVisible(true);
@@ -21,12 +19,13 @@ function Appss() {
     setIsQrModalVisible(false);
   };
 
-  const showPay = () => {
-    setIsPayModalVisible(true);
-    setTimeout(() => {
-      PayCancel();
-      navigate('/detail');
-    }, 5000);
+  const showPay = async (values: PaymentInterface) => {
+    let res = await CreatePayment(values);
+    if (res.status) {
+      
+    } else {
+      
+    }
   };
 
   const PayCancel = () => {
@@ -49,14 +48,14 @@ function Appss() {
               <Modal maskStyle={{ backdropFilter: 'blur(5px)',backgroundColor: 'transparent' }} visible={isQrModalVisible} onCancel={QrCancel} footer={[]} style={{ top: 5}}>
               <Qr /> 
               </Modal>
-              <Button  onClick={showQR} type="link" style={{marginTop: 374, marginLeft: -462, color: '#505050',fontSize: 20,fontFamily: 'IBM Plex Sans Thai',fontWeight: '400',wordWrap: 'break-word',position: 'absolute'}}>
+              <Button  onClick={showQR} type="link" style={{marginTop: 374, marginLeft: -462, color: '#505050',fontSize: 20,fontFamily: 'IBM Plex Sans Thai',fontWeight: '400',wordWrap: 'break-word',position: 'absolute', border: 'none' }}>
               <span style={{ textDecoration: 'underline' }}>Payment with QR Code</span>
               </Button>
             </div>
             <div>
             <Uploads />
             </div>
-            <Button onClick={showPay} type="primary" shape="circle" size="large" style={{  width: 166, height: 57,marginTop: 40, marginLeft: 1000,backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)'}}>Pay now</Button>
+            <Button onClick={(event) => {event.preventDefault();showPay({  });}} type="primary" shape="circle" size="large" style={{  width: 166, height: 57,marginTop: 40, marginLeft: 1000,backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)'}}>Pay now</Button>
             <Modal maskStyle={{ backdropFilter: 'blur(5px)',backgroundColor: 'transparent' }} transitionName='' closable={false} visible={isPayModalVisible} onCancel={PayCancel} footer={[]} style={{ top: 100,textAlign:'center'}}>
               <Paypopup /> 
             </Modal>

@@ -1,7 +1,7 @@
 import { CountryInterface } from "../../interfaces/ICountry";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetCountry() {
   const requestOptions = {

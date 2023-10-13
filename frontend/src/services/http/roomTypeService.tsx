@@ -1,7 +1,7 @@
 import { RoomTypeInterface } from "../../interfaces/IRoomType";
 
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = "http://localhost:80";
 
 async function GetRoomType() {
   const requestOptions = {
