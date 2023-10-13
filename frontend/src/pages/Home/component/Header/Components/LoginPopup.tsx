@@ -6,6 +6,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { GetMember, GetMemberByEmail } from '../../../../../services/http/memberService'
 import { MemberInterface } from '../../../../../interfaces/IMember';
 import styles from './LoginPopup.module.css'
+import { setlogout } from '../Headers';
 
 const { Title } = Typography;
 type FieldType = {
@@ -23,7 +24,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const [users, setUsers] = useState<MemberInterface[]>([]);
-  
+
   const getMemberByEmail = async (values: any) => {
     const res = await GetMemberByEmail(values.email);
     if (res) {
@@ -56,8 +57,10 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose }) => {
         });
       }
     }
-   };
-
+  };
+  if (setlogout) {
+    member = undefined;
+  }
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
