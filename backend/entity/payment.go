@@ -8,8 +8,9 @@ import (
 
 type Payment struct {
 	gorm.Model
-	Receipt []byte
-	Date    time.Time
+	Receipt string `gorm:"type:longtext"`
+
+	Date time.Time
 
 	MemberID *uint
 	Member   Member `gorm:"foreignKey:MemberID"`
