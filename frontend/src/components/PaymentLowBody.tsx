@@ -11,6 +11,7 @@ import { PaymentInterface } from "../interfaces/IPayment";
 import { MemberInterface } from "../interfaces/IMember";
 import { BookingInterface } from "../interfaces/IBooking";
 import { ImageUpload } from "../interfaces/IUpload";
+
 const { Content } = Layout;
 
 function Appss() {
@@ -64,6 +65,7 @@ function Appss() {
   }, []);
   console.log("img = ",img);
   console.log("url = ",Url);
+  
   return (
     <div>
       <Layout>

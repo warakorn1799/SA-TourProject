@@ -2,6 +2,7 @@ import {useState,useEffect} from "react";
 import { Layout  } from 'antd';
 import {GetMemberById} from '../services/http/memberService';
 import {GetBookingById} from '../services/http/bookingService';
+import { member } from '../pages/Home/component/Header/Components/LoginPopup';
 import './PaymentBody.css'; 
 
 const { Content } = Layout;
@@ -21,7 +22,7 @@ function Apps(){
   const [Childen, setChilden] = useState<string | undefined>(undefined);
 
   const getMemberById = async () => {
-    let res = await GetMemberById(Number(1));
+    let res = await GetMemberById(Number(member?.ID));
   
     if (res) {
       setFirstName(res.Firstname);
