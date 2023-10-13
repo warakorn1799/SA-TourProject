@@ -7,17 +7,19 @@ import Typeroom from './component/Typeroom';
 import Note from './component/Note';
 import styles from './Booking.module.css'
 import Headers from './component/Header/Headers';
+import { useNavigate } from 'react-router-dom';
 
 const { Header, Content } = Layout;
 function Booking() {
   const [size, setSize] = useState<SizeType>('large'); // default is 'middle'
-
+  const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
   const success = () => {
     messageApi.open({
       type: 'success',
       content: 'This is a success message',
     });
+    navigate('/payment');
   };
   return (
     <Layout>
