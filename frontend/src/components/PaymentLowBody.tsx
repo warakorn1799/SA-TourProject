@@ -11,7 +11,6 @@ import { PaymentInterface } from "../interfaces/IPayment";
 import { MemberInterface } from "../interfaces/IMember";
 import { BookingInterface } from "../interfaces/IBooking";
 import { ImageUpload } from "../interfaces/IUpload";
-import { url } from 'inspector';
 const { Content } = Layout;
 
 function Appss() {
