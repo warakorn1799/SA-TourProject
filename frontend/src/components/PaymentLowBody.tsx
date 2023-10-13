@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Image, Button, Modal  } from 'antd';
 import Uploads from "./Uploads";
+import { img,Url } from './Uploads';
 import Qr from "./Qr";
 import Paypopup from "./Paypopup";
 import { CreatePayment } from "../services/http/paymentService";
+import { GetMemberById } from "../services/http/memberService";
+import { GetBookingById } from "../services/http/bookingService";
 import { PaymentInterface } from "../interfaces/IPayment";
+import { MemberInterface } from "../interfaces/IMember";
+import { BookingInterface } from "../interfaces/IBooking";
+import { ImageUpload } from "../interfaces/IUpload";
+import { url } from 'inspector';
 const { Content } = Layout;
 
 function Appss() {
   const [isQrModalVisible, setIsQrModalVisible] = useState(false);
   const [isPayModalVisible, setIsPayModalVisible] = useState(false);
+
+  const [MemberID, setMemberID] = useState<MemberInterface | undefined>(undefined);
+  const [BookingID, setBookingID] = useState<BookingInterface | undefined>(undefined);
+  const [profile, setProfile] = useState<ImageUpload>()
 
   const showQR = () => {
     setIsQrModalVisible(true);
@@ -19,12 +30,27 @@ function Appss() {
     setIsQrModalVisible(false);
   };
 
+  const getMemberById = async () => {
+    let res = await GetMemberById(Number(1));
+    if (res) {
+      setMemberID(res.MemberID);
+    }
+  };
+  
+  const getBookingById = async () => {
+    let res = await GetBookingById(Number(1));
+    if (res) {
+      setBookingID(res.BookingID);
+    }
+  };
+
   const showPay = async (values: PaymentInterface) => {
+    values.Receipt = profile?.thumbUrl;
     let res = await CreatePayment(values);
     if (res.status) {
-      
+      console.log("done");
     } else {
-      
+      console.log("5555");
     }
   };
 
@@ -32,6 +58,13 @@ function Appss() {
     setIsPayModalVisible(false);
   };
 
+  useEffect(() => {
+    getMemberById();
+    getBookingById();
+    
+  }, []);
+  console.log("img = ",img);
+  console.log("url = ",Url);
   return (
     <div>
       <Layout>
@@ -55,7 +88,7 @@ function Appss() {
             <div>
             <Uploads />
             </div>
-            <Button onClick={(event) => {event.preventDefault();showPay({  });}} type="primary" shape="circle" size="large" style={{  width: 166, height: 57,marginTop: 40, marginLeft: 1000,backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)'}}>Pay now</Button>
+            <Button onClick={(event) => {event.preventDefault();showPay({ Receipt:"null",Date: new Date(), MemberID:MemberID,BookingID:BookingID});}} type="primary" shape="circle" size="large" style={{  width: 166, height: 57,marginTop: 40, marginLeft: 1000,backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)'}}>Pay now</Button>
             <Modal maskStyle={{ backdropFilter: 'blur(5px)',backgroundColor: 'transparent' }} transitionName='' closable={false} visible={isPayModalVisible} onCancel={PayCancel} footer={[]} style={{ top: 100,textAlign:'center'}}>
               <Paypopup /> 
             </Modal>

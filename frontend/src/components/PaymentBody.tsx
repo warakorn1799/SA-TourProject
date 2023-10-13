@@ -1,7 +1,7 @@
-import { MemberInterface } from "../interfaces/IMember";
 import {useState,useEffect} from "react";
 import { Layout  } from 'antd';
 import {GetMemberById} from '../services/http/memberService';
+import {GetBookingById} from '../services/http/bookingService';
 import './PaymentBody.css'; 
 
 const { Content } = Layout;
@@ -14,7 +14,11 @@ function Apps(){
   const [Phone, setPhone] = useState<string | undefined>(undefined);
   const [Email, setEmail] = useState<string | undefined>(undefined);
 
-
+  const [Fromdate, setFromdate] = useState<string | undefined>(undefined);
+  const [Todate, setTodate] = useState<string | undefined>(undefined);
+  const [Package, setPackage] = useState<string | undefined>(undefined);
+  const [Adult, setAdult] = useState<string | undefined>(undefined);
+  const [Childen, setChilden] = useState<string | undefined>(undefined);
 
   const getMemberById = async () => {
     let res = await GetMemberById(Number(1));
@@ -28,8 +32,20 @@ function Apps(){
     }
   };
 
+  const getBookingById = async () => {
+    let res = await GetBookingById(Number(1));
+    if (res) {
+      setFromdate(res.Fromdate.substring(0, 10).replace(/-/g, " "));
+      setTodate(res.Todate.substring(0, 10).replace(/-/g, " "));
+      setPackage(res.Package.Name);
+      setAdult(res.Adult);
+      setChilden(res.Chil);
+    }
+  };
+
   useEffect(() => {
     getMemberById();
+    getBookingById();
   }, []);
 
     return(
@@ -54,12 +70,12 @@ function Apps(){
             <p className="info" style={{ marginLeft: 30, marginTop: 15}}>{Email}</p>
             </div>
             <div style={{marginLeft: '30px',width: 539, height: 278, background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', border: '0.50px #FC6130 solid'}} >
-            <p style={{marginLeft: 50, marginTop: 15,color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans Thai', fontWeight: '700', wordWrap: 'break-word', display: 'inline-block'}}>ทัวร์เชียงใหม่ แม่กำปอง ม่อนแจ่ม 3 วัน 2 คืน</p>
+            <p style={{marginLeft: 50, marginTop: 15,color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans Thai', fontWeight: '700', wordWrap: 'break-word', display: 'inline-block'}}>{Package}</p>
             <div style={{marginTop: -18}}>
             <p className="info" style={{ marginLeft: 50, marginTop: 20}}>Travel date</p>
-            <p className="info" style={{ marginLeft: 65, marginTop: 40}}>28 Sep 2023 - 30 Sep 2023</p>
+            <p className="info" style={{ marginLeft: 65, marginTop: 40}}>{Fromdate} ถึง {Todate}</p>
             <p className="info" style={{ marginLeft: 50, marginTop: 40}}>Quantity</p>
-            <p className="info" style={{ marginLeft: 94, marginTop: 20}}>1 X Adult</p>
+            <p className="info" style={{ marginLeft: 94, marginTop: 20}}>{Adult} X Adult and {Childen} X Childen</p>
             <div style={{marginLeft:16,marginTop: 13}}>
             <p className="info" style={{ marginLeft: 355, marginTop: 50}}>Total</p>
             <p style={{ marginLeft: 15, marginTop: -15, color: '#FC6130', fontSize: 36, fontFamily: 'Noto Looped Thai UI', fontWeight: '700', wordWrap: 'break-word', display: 'inline-block' }}>7,500</p>

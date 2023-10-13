@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react';
 
+  export let img:File[];
+  export let Url:string[];
 function Uploads() {
   const [images, setImages] = useState<File[]>([]);
   const [imageURLs, setImageURLs] = useState<string[]>([]);
@@ -17,8 +19,8 @@ function Uploads() {
     }
   }
 
-  console.log("Images: ", images);
-  console.log("imageURLs: ", imageURLs);
+  img = images
+  Url = imageURLs
 
   return (
     <div >

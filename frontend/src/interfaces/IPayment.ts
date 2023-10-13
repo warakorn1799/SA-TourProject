@@ -3,7 +3,7 @@ import { BookingInterface } from "./IBooking";
 
 export interface PaymentInterface {
     ID?: number; 
-    Receipt?: Blob;
+    Receipt?: string;
     Date?: Date;
     MemberID?: MemberInterface;
     BookingID?: BookingInterface;
