@@ -49,6 +49,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose }) => {
 
       } else {
         console.log('Failed');
+        member = undefined;
         messageApi.open({
           type: 'error',
           content: 'Incorrect password or email. Please try again!',
