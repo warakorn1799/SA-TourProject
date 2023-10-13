@@ -11,6 +11,8 @@ import styles from './Headers.module.css'
 import { useNavigate } from 'react-router-dom';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
 import { member } from './Components/LoginPopup';
+
+export let setlogout:boolean;
 function Headers() {
     const navigate = useNavigate();
     const [size] = useState<SizeType>('large'); // default is 'middle'
@@ -56,6 +58,7 @@ function Headers() {
     useEffect(() => {
         const userIsLoggedIn = member? true : false;
         setIslogin(userIsLoggedIn);
+        setlogout = false;
     },[member])
     
     const [islogin, setIslogin] = useState(false);
@@ -70,6 +73,7 @@ function Headers() {
 
     const logout = () => {
         setIslogin(false);
+        setlogout = true;
         navigate('/');
     }
     console.log(isLoginPopupOpen);
