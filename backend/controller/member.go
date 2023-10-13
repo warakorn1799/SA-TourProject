@@ -53,6 +53,17 @@ func GetMember(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": member})
 }
 
+// GET /member/:email
+func GetMemberEmail(c *gin.Context) {
+	var member entity.Member
+	email := c.Param("email")
+	if err := entity.DB().Preload("Country").Raw("SELECT * FROM members WHERE email = ?", email).Find(&member).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": member})
+}
+
 // GET /members
 
 func ListMembers(c *gin.Context) {

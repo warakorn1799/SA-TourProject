@@ -3,7 +3,7 @@ import { Checkbox, Form, Input, Typography, message } from 'antd';
 import logo from './assets/logo1.png'
 import { UserOutlined, CloseOutlined } from '@ant-design/icons';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { GetMember } from '../../../../../services/http/memberService'
+import { GetMember, GetMemberByEmail } from '../../../../../services/http/memberService'
 import { MemberInterface } from '../../../../../interfaces/IMember';
 import styles from './LoginPopup.module.css'
 
@@ -17,33 +17,36 @@ interface LoginPopupProps {
   onClose: () => void;
 }
 
+export let member: MemberInterface | undefined;
 const LoginPopup: React.FC<LoginPopupProps> = ({ onClose }) => {
 
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const [users, setUsers] = useState<MemberInterface[]>([]);
   
-  const getUsers = async () => {
-    const res = await GetMember();
+  const getMemberByEmail = async (values: any) => {
+    const res = await GetMemberByEmail(values.email);
     if (res) {
+      member = res;
       setUsers(res);
       return res;
     }
   };
   const onFinish = async (values: any) => {
-    let res = await GetMember();
+    let res = await getMemberByEmail(values);
     if (res) {
-      const emails = res.find((item: { Email: any; }) => item.Email === values.email);
-      const pass = res.find((item: { Password: any; }) => item.Password === values.password);
-      if (emails != undefined && pass != undefined) {
+      setUsers(res)
+      if (res.Email == values.email && res.Password == values.password) {
         console.log('Success');
+        member = res;
         messageApi.open({
           type: 'success',
           content: 'Login Success',
         });
         setTimeout(() => {
-          navigate("/home");
-        }, 2000);
+          onClose();
+        }, 1000);
+
       } else {
         console.log('Failed');
         messageApi.open({
@@ -52,11 +55,16 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose }) => {
         });
       }
     }
-  };
+   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+
+  const createAccount = () => {
+    navigate('/Register')
+    member = undefined;
+  }
 
   return (
     <div className={styles.header}>
@@ -98,7 +106,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose }) => {
           </Form.Item>
         </div>
         <h1></h1>
-        <a className={styles.createAccount} onClick={() => navigate('/Register')}>Create account</a>
+        <a className={styles.createAccount} onClick={createAccount}>Create account</a>
 
         <Form.Item >
           <button className={styles.submitstyle} type='submit'>

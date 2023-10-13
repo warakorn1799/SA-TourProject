@@ -14,9 +14,10 @@ func main() {
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 
-	// User Routes
+	// Member Routes
 	r.GET("/members", controller.ListMembers)
 	r.GET("/member/:id", controller.GetMember)
+	r.GET("/memberemail/:email", controller.GetMemberEmail)
 	r.POST("/members", controller.CreateMember)
 	r.PATCH("/members", controller.UpdateMember)
 	r.DELETE("/members/:id", controller.DeleteMember)

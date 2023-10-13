@@ -1,6 +1,6 @@
-import { Button, Menu, MenuProps } from 'antd';
+import { Button, Menu, MenuProps, Popconfirm, message } from 'antd';
 import { Header } from 'antd/es/layout/layout';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LoginPopup from './Components/LoginPopup';
 import logo from './assets/logo.png'
 import home from './assets/home.png'
@@ -10,7 +10,7 @@ import contact from './assets/contact.png'
 import styles from './Headers.module.css'
 import { useNavigate } from 'react-router-dom';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
-
+import { member } from './Components/LoginPopup';
 function Headers() {
     const navigate = useNavigate();
     const [size] = useState<SizeType>('large'); // default is 'middle'
@@ -44,6 +44,8 @@ function Headers() {
         if (e.key == "home") {
             console.log('your select home');
             navigate('/');
+            console.log("statuslogin : ", islogin)
+            console.log(member)
         }
         if (e.key == "app") {
             console.log('your select contact');
@@ -51,24 +53,59 @@ function Headers() {
         }
     };
 
+    useEffect(() => {
+        const userIsLoggedIn = member? true : false;
+        setIslogin(userIsLoggedIn);
+    },[member])
+    
+    const [islogin, setIslogin] = useState(false);
     const [isLoginPopupOpen, setState] = useState(false);
     const successes = () => {
         setState(true);
     }
     const closePopup = () => {
         setState(false);
+        setIslogin(false);
     };
+
+    const logout = () => {
+        setIslogin(false);
+        navigate('/');
+    }
     console.log(isLoginPopupOpen);
 
+    const confirm = (e?: React.MouseEvent<HTMLElement>) => {
+        console.log(e);
+        message.success('Log out success');
+        logout()
+    };
+    const cancel = (e?: React.MouseEvent<HTMLElement>) => {
+        console.log(e);
+    };
+    
     return (
         <Header className={styles.Header}>
             <img src={logo} className={styles.logo} />
             <Menu className={styles.menu} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
             {isLoginPopupOpen && <LoginPopup
                 onClose={closePopup} />}
-            <Button className={styles.buttonstyle} style={{ borderRadius: '29px', backgroundColor: '#fc6130' }} type="primary" onClick={successes} size={size}>
+
+                {islogin? <Popconfirm
+                title="Logout"
+                description="Are you sure to Logout?"
+                onConfirm={confirm}
+                onCancel={cancel}
+                okText="Yes"
+                cancelText="No"
+            >
+                <Button className={styles.buttonstyle} style={{ borderRadius: '29px', backgroundColor: '#fc6130' }} type="primary" size={size}>
+                    Logout
+                </Button>
+            </Popconfirm>
+             : <Button className={styles.buttonstyle} style={{ borderRadius: '29px', backgroundColor: '#fc6130' }} type="primary" onClick={successes} size={size}>
                 Login
-            </Button>
+            </Button> }
+            
 
         </Header>
     );
