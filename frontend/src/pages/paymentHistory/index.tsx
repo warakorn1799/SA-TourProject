@@ -1,7 +1,7 @@
 import Taskbar from '../../components/Taskbar';
 import { DownOutlined } from '@ant-design/icons';
 import type { ColumnsType } from "antd/es/table";
-import { GetPayment } from '../../services/http/paymentService';
+import { GetBooking } from '../../services/http/bookingService';
 import Table from 'antd/es/table';
 import { useState } from 'react';
 import { BookingInterface } from '../../interfaces/IBooking';
@@ -10,12 +10,12 @@ import { ConfigProvider } from 'antd';
 const columns: ColumnsType<BookingInterface> = [
   {
     title: "Package",
-    dataIndex: "Package",
+    dataIndex: "PackageID",
     key: "Package",
   },
   {
     title: "Days",
-    dataIndex: "Days",
+    dataIndex: "Todate",
     key: "Days",
   },
   {
@@ -31,11 +31,11 @@ const columns: ColumnsType<BookingInterface> = [
 ];
 
 function App() {
-  const [Payment, setPayment] = useState<BookingInterface[]>([]);
+  const [Booking, setBooking] = useState<BookingInterface[]>([]);
   const getPayment = async () => {
-    let res = await GetPayment();
+    let res = await GetBooking();
     if (res) {
-      setPayment(res);
+      setBooking(res);
     }
   };
   getPayment();
@@ -50,7 +50,7 @@ function App() {
         <div style={{ marginTop: 80, marginLeft: 80, marginBottom: 20, width: 1368, height: 795, background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 43, border: '1px #FC6130 solid' }} >
           <div style={{ padding: 50 }}>
             <ConfigProvider theme={{ token: { colorBgContainer: '#F9D9D940',},}}>
-              <Table columns={columns} dataSource={Payment} />
+              <Table columns={columns} dataSource={Booking  } />
               </ConfigProvider>
           </div>
         </div>
