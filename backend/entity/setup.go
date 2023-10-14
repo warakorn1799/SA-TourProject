@@ -31,7 +31,6 @@ func SetupDatabase() {
 		&Rate{},
 		&TourAttractionPackage{},
 		&ReviewPackage{},
-		&BookingMember{},
 	)
 	db = database
 

@@ -12,6 +12,7 @@ func CreateBooking(c *gin.Context) {
 	var booking entity.Booking
 	var packagess entity.Package
 	var room entity.RoomType
+	var member entity.Member
 
 	// bind เข้าตัวแปร booking
 	if err := c.ShouldBindJSON(&booking); err != nil {
@@ -28,6 +29,11 @@ func CreateBooking(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "RoomType not found"})
 		return
 	}
+	// Search member with id
+	if tx := entity.DB().Where("id = ?", booking.MemberID).First(&member); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
+		return
+	}
 
 	// Create Booking
 	b := entity.Booking{
@@ -37,6 +43,7 @@ func CreateBooking(c *gin.Context) {
 		Chil:     booking.Chil,
 		Price:    booking.Price,
 		Package:  packagess,
+		Member:   member,
 		RoomType: room,
 	}
 
@@ -53,6 +60,17 @@ func GetBooking(c *gin.Context) {
 	var booking entity.Booking
 	id := c.Param("id")
 	if err := entity.DB().Preload("Package").Preload("RoomType").Raw("SELECT * FROM bookings WHERE id = ?", id).Find(&booking).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": booking})
+}
+
+// GET /booking_M/:id
+func GetBookingByMemberID(c *gin.Context) {
+	var booking entity.Booking
+	id := c.Param("id")
+	if err := entity.DB().Preload("Package").Preload("RoomType").Preload("Member").Raw("SELECT * FROM bookings WHERE member_id = ?", id).Find(&booking).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

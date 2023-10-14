@@ -67,6 +67,7 @@ func main() {
 	//Booking Routes
 	r.GET("/bookings", controller.ListBooking)
 	r.GET("/booking/:id", controller.GetBooking)
+	r.GET("/booking_M/:id", controller.GetBookingByMemberID)
 	r.POST("/bookings", controller.CreateBooking)
 	r.PATCH("/bookings", controller.UpdateBooking)
 	r.DELETE("/bookings/:id", controller.DeleteBooking)
@@ -103,12 +104,6 @@ func main() {
 	r.GET("/reviewpackage/:id", controller.GetReviewPackage)
 	r.POST("/reviewpackages", controller.CreateReviewPackage)
 	r.DELETE("/reviewpackages/:id", controller.DeleteReviewPackage)
-
-	//BookingMember Routes
-	r.GET("/bookingmembers", controller.ListBookingMember)
-	r.GET("/bookingmember/:id", controller.GetBookingMember)
-	r.POST("/bookingmembers", controller.CreateBookingMember)
-	r.DELETE("/bookingmembers/:id", controller.DeleteBookingMember)
 
 	//Run the Server
 	r.Run("localhost: " + PORT)
