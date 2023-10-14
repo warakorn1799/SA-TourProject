@@ -1,0 +1,163 @@
+@font-face {
+    font-family: Roboto,IBM Plex Sans Thai;
+    src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap);
+    src: url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400&display=swap);
+  }
+
+.body1 {
+    position: absolute;
+    left: 40%;
+    top: 25%;
+    font-size: 60px; 
+    font-family: 'Roboto'; 
+    font-weight: 600; 
+    
+}
+
+.body2 {
+    font-size: 24px; 
+    font-family: 'Roboto'; 
+}
+
+.body3 {
+    size: 50px; 
+}
+
+.body4 {
+    font-size: 24px; 
+    font-family: 'Roboto'; 
+}
+
+.body5 {
+    
+    color: black;
+    width: 188px;
+    height: 57px;
+    padding: 7px 12px;
+    align-items: center;
+    top: 1800%;
+    left: 150%;
+    border-radius: 29px;
+    background: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: 'Roboto';
+    border:0cap;
+}
+
+.body6 {
+    
+    color: black;
+    width: 188px;
+    height: 57px;
+    padding: 7px 12px;
+    align-items: center;
+    top: 1800%;
+    left: 180%;
+    border-radius: 29px;
+    background: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: 'Roboto';
+    border:0cap;
+}
+
+.body7
+{
+    color: black;
+    width: 188px;
+    height: 57px;
+    padding: 7px 12px;
+    align-items: center;
+    top: 1800%;
+    left: 150%;
+    border-radius: 29px;
+    background: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: 'Roboto';
+    border:0cap;
+}
+
+.body8
+{
+    color: black;
+    width: 188px;
+    height: 57px;
+    padding: 7px 12px;
+    align-items: center;
+    top: 1800%;
+    left: 150%;
+    border-radius: 29px;
+    background: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: 'Roboto';
+    border:0cap;
+}
+
+.body9 
+{
+
+    position: absolute;
+    text-align: center;
+    border: 1px #C2C2C2 solid;
+    top: 110%;
+    left: 0%;
+    width: 800px;
+    height: 484px;
+    font-size: 15px;
+    
+}
+
+.body10 
+{
+    color: #C2C2C2;
+    font-size: 24px; 
+    font-family: Roboto; 
+    font-weight: lighter;
+}
+
+.ant-rate-text {
+    width: 0%;
+}
+
+.large-rate {
+    font-size: 70%; /* ปรับขนาดตามที่คุณต้องการ */
+  }
+
+.text {
+    position: absolute;
+    top: 10%;
+}
+
+.custom-button {
+    border-radius: 15px;
+    font-family: Roboto;
+    margin: 20px;
+  }
+  
+  .custom-button.default {
+    border: 2px solid #C2C2C2;
+    color: #C2C2C2;
+    background-color: white;
+  }
+  
+  .custom-button.primary {
+    border: 2px solid orange;
+    color: white;
+    background-color: orange;
+  }
+  
+  .custom-button:hover {
+    color: #FC6130;
+  }
+  

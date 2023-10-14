@@ -11,6 +11,9 @@ import { createBrowserRouter,RouterProvider,Route,Link } from "react-router-dom"
 import Paymentdetail from './pages/paymentDetail/index';
 import Paymenthistory from './pages/paymentHistory/index';
 import Payment from './App';
+import Review from './pages/Reviews/Review';
+import SucessReview from './pages/Reviews/SucessReview'; 
+
 
 const router = createBrowserRouter([
   {
@@ -40,9 +43,18 @@ const router = createBrowserRouter([
   {
     path: "/Register",
     element: <Register />
-  },  {
+  },  
+  {
     path: "/Detail_page1",
     element: <Detail1 />
+  },
+  {
+    path: "/Review",
+    element:<Review/>
+  },
+  {
+    path: "/SucessReview",
+    element:<SucessReview/>
   }
 ])
 

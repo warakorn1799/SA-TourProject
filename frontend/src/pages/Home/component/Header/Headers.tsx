@@ -29,7 +29,7 @@ function Headers() {
         },
         {
             label: 'Review',
-            key: 'SubMenu',
+            key: 'review',
             icon: <img src={review} />,
         },
         {
@@ -51,6 +51,10 @@ function Headers() {
         if (e.key == "app") {
             console.log('your select contact');
             navigate('/booking');
+        }
+        if (e.key == "review") {
+            console.log('your select contact');
+            navigate('/Review');
         }
     };
 
