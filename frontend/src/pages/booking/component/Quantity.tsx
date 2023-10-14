@@ -18,7 +18,7 @@ function Quantity() {
                 <InputNumber className={styles.inputnumber} min={0} max={99} defaultValue={0} onChange={onChange} />
                 <InputNumber className={styles.inputnumber2} min={0} max={99} defaultValue={0} onChange={onChange} />
             </Layout>
-        </div>
+        </div> 
     );
 }
 
