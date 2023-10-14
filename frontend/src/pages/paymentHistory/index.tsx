@@ -1,7 +1,6 @@
 import Taskbar from '../../components/Taskbar';
 import { DownOutlined } from '@ant-design/icons';
 import type { ColumnsType } from "antd/es/table";
-import { GetBooking_MemberById } from '../../services/http/bookingMemberService';
 import { GetMemberById } from '../../services/http/memberService';
 import Table from 'antd/es/table';
 import { useEffect, useState } from 'react';
@@ -35,12 +34,7 @@ function App() {
   const [Booking, setBooking] = useState<Booking_MemberInterface[]>([]);
   const [Member, setMember] = useState<Booking_MemberInterface[]>([]);
 
-  const getBooking = async () => {
-    let res = await GetBooking_MemberById(1);
-    if (res) {
-      setBooking(res);
-    }
-  };
+
 
   const getMember = async () => {
     let res = await GetMemberById(1);
@@ -50,7 +44,7 @@ function App() {
   };
 
   useEffect(() => {
-    getBooking();
+
     getMember();
   }, []);
 
