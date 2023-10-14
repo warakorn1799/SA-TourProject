@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Layout, Menu, MenuProps, Button, Steps, message } from 'antd';
+import { Layout, Menu, MenuProps, Button, Steps, message, ConfigProvider } from 'antd';
 import type { SizeType } from 'antd/es/config-provider/SizeContext';
 import Informationgrid from './component/Informationgrid';
 import Quantity from './component/Quantity';
@@ -26,6 +26,7 @@ function Booking() {
       <Headers/>
       <Content style={{ background: '#FFFFFF', paddingBottom: 50 }}>
         <Layout style={{ paddingBottom: 50, backgroundColor: 'white' }}>
+        <ConfigProvider theme={{ token: { colorPrimary: '#FC6130',},}}>
           <Steps
             size="small"
             current={1}
@@ -44,6 +45,7 @@ function Booking() {
               paddingLeft: 200, paddingRight: 200, paddingTop: 20
             }}
           />
+          </ConfigProvider>
         </Layout>
         <Layout className={styles.form}>
           <text className={styles.contact_text} style={{ fontWeight: 700, fontSize: 36 }}>Contact Information</text>

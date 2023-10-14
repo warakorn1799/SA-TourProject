@@ -1,4 +1,4 @@
-import { Button, Menu, MenuProps } from 'antd';
+import { Button, ConfigProvider, Menu, MenuProps } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import React, { useState } from 'react'
 import LoginPopup from './Components/LoginPopup';
@@ -63,8 +63,10 @@ function Headers() {
     console.log(isLoginPopupOpen);
     return (
         <Header className={styles.Header}>
-            <img src={logo} className={styles.logo} />
+            <h1 style={{marginTop:'32px', color: '#FC6130', fontSize: '23px', fontFamily: 'Roboto', fontWeight: '700',width:170 }}>Tour in Thailand</h1>
+            <ConfigProvider theme={{ token: { colorPrimary: '#FC6130',},}}>
             <Menu className={styles.menu} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+            </ConfigProvider>
             {isLoginPopupOpen && <LoginPopup
                 onClose={closePopup} />}
         </Header>

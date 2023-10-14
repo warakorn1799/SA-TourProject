@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Image, Button, Modal  } from 'antd';
+import { Layout, Image, Button, Modal,message } from 'antd';
 import Uploads from "./Uploads";
-import { img,Url } from './Uploads';
+import { img, Url, Base64 } from './Uploads';
 import Qr from "./Qr";
 import Paypopup from "./Paypopup";
 import { CreatePayment } from "../services/http/paymentService";
@@ -10,18 +10,16 @@ import { GetBookingById } from "../services/http/bookingService";
 import { PaymentInterface } from "../interfaces/IPayment";
 import { MemberInterface } from "../interfaces/IMember";
 import { BookingInterface } from "../interfaces/IBooking";
-import { ImageUpload } from "../interfaces/IUpload";
-
+import { useNavigate } from 'react-router-dom';
 const { Content } = Layout;
 
 function Appss() {
   const [isQrModalVisible, setIsQrModalVisible] = useState(false);
   const [isPayModalVisible, setIsPayModalVisible] = useState(false);
-
+  const navigate = useNavigate();
   const [MemberID, setMemberID] = useState<MemberInterface | undefined>(undefined);
   const [BookingID, setBookingID] = useState<BookingInterface | undefined>(undefined);
-  const [profile, setProfile] = useState<ImageUpload>()
-
+  const [messageApi, contextHolder] = message.useMessage(); 
   const showQR = () => {
     setIsQrModalVisible(true);
   };
@@ -33,26 +31,36 @@ function Appss() {
   const getMemberById = async () => {
     let res = await GetMemberById(Number(1));
     if (res) {
-      setMemberID(res.MemberID);
-    }
-  };
-  
-  const getBookingById = async () => {
-    let res = await GetBookingById(Number(1));
-    if (res) {
-      setBookingID(res.BookingID);
+      setMemberID(res);
     }
   };
 
+  const getBookingById = async () => {
+    let res = await GetBookingById(Number(1));
+    if (res) {
+      setBookingID(res);
+    }
+  };  
+
   const showPay = async (values: PaymentInterface) => {
-    values.Receipt = profile?.thumbUrl;
-    let res = await CreatePayment(values);
-    if (res.status) {
-      console.log("done");
+    values.Receipt = Base64[0]
+    values.BookingID = BookingID?.ID 
+    values.MemberID = MemberID?.ID 
+    console.log(values)
+    if (Base64[0] != null) {
+      let res = await CreatePayment(values);
+      setIsPayModalVisible(true);
+      setTimeout(() => {
+        PayCancel();
+      }, 5000);
     } else {
-      console.log("5555");
+      messageApi.open({
+        type: "error",
+        content: "กรุณาใส่รูปสลิปเงิน",
+      });
     }
   };
+
 
   const PayCancel = () => {
     setIsPayModalVisible(false);
@@ -61,13 +69,24 @@ function Appss() {
   useEffect(() => {
     getMemberById();
     getBookingById();
-    
+
   }, []);
-  console.log("img = ",img);
-  console.log("url = ",Url);
-  
+
+  console.log("base=",Base64);
+  console.log("img=",img);
+  console.log("url=",Url);
+
+
+  const values = {
+    Receipt: '',
+    Date: new Date(),
+    MemberID: 0,
+    BookingID: 0
+  };
+
   return (
     <div>
+      {contextHolder}
       <Layout>
         <Content style={{ backgroundColor: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ width: 1187, height: 510, background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', border: '0.50px #FC6130 solid', position: 'relative' }}>
@@ -78,20 +97,20 @@ function Appss() {
               <p style={{ marginTop: 163, marginLeft: 122, color: '#505050', fontSize: 20, fontFamily: 'IBM Plex Sans Thai', fontWeight: '400', wordWrap: 'break-word', position: 'absolute' }}>ธนาคารไทยพาณิชย์ เลขบัญชี 848-265-1718 ชื่อบัญชี นายวรากร เผ่าทหาร</p>
               <Image style={{ marginTop: 230, marginLeft: -389, width: 120, height: 100, position: 'absolute' }} width={200} src="PromptPaylogo.jpg" />
               <p style={{ marginTop: 263, marginLeft: 150, color: '#505050', fontSize: 20, fontFamily: 'IBM Plex Sans Thai', fontWeight: '400', wordWrap: 'break-word', position: 'absolute' }}>พร้อมเพย์ หมายเลข 096-814-0228 ชื่อ นายวรากร เผ่าทหาร</p>
-              <img style={{ marginTop: 360, marginLeft: -570, width: 88, height: 81, position: 'absolute' }} width={200} src="Rectangle 68.png" onClick={showQR }/>
-              <Modal maskStyle={{ backdropFilter: 'blur(5px)',backgroundColor: 'transparent' }} visible={isQrModalVisible} onCancel={QrCancel} footer={[]} style={{ top: 5}}>
-              <Qr /> 
+              <img style={{ marginTop: 360, marginLeft: -570, width: 88, height: 81, position: 'absolute' }} width={200} src="Rectangle 68.png" onClick={showQR} />
+              <Modal maskStyle={{ backdropFilter: 'blur(5px)', backgroundColor: 'transparent' }} visible={isQrModalVisible} onCancel={QrCancel} footer={[]} style={{ top: 5 }}>
+                <Qr />
               </Modal>
-              <Button  onClick={showQR} type="link" style={{marginTop: 374, marginLeft: -462, color: '#505050',fontSize: 20,fontFamily: 'IBM Plex Sans Thai',fontWeight: '400',wordWrap: 'break-word',position: 'absolute', border: 'none' }}>
-              <span style={{ textDecoration: 'underline' }}>Payment with QR Code</span>
+              <Button onClick={showQR} type="link" style={{ marginTop: 374, marginLeft: -462, color: '#505050', fontSize: 20, fontFamily: 'IBM Plex Sans Thai', fontWeight: '400', wordWrap: 'break-word', position: 'absolute', border: 'none' }}>
+                <span style={{ textDecoration: 'underline' }}>Payment with QR Code</span>
               </Button>
             </div>
             <div>
-            <Uploads />
+              <Uploads/>
             </div>
-            <Button onClick={(event) => {event.preventDefault();showPay({ Receipt:"null",Date: new Date(), MemberID:MemberID,BookingID:BookingID});}} type="primary" shape="circle" size="large" style={{  width: 166, height: 57,marginTop: 40, marginLeft: 1000,backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)'}}>Pay now</Button>
-            <Modal maskStyle={{ backdropFilter: 'blur(5px)',backgroundColor: 'transparent' }} transitionName='' closable={false} visible={isPayModalVisible} onCancel={PayCancel} footer={[]} style={{ top: 100,textAlign:'center'}}>
-              <Paypopup /> 
+            <Button onClick={() => showPay(values)} type="primary" shape="circle" size="large" style={{ width: 166, height: 57, marginTop: 40, marginLeft: 1000, backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)' }}>Pay now</Button>
+            <Modal maskStyle={{ backdropFilter: 'blur(5px)', backgroundColor: 'transparent' }} transitionName='' closable={false} visible={isPayModalVisible} onCancel={PayCancel} footer={[]} style={{ top: 100, textAlign: 'center' }}>
+              <Paypopup />
             </Modal>
           </div>
         </Content>
