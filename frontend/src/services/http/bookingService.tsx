@@ -66,7 +66,7 @@ async function GetBookingById(id: Number | undefined) {
       method: "GET"
     };
   
-    let res = await fetch(`${apiUrl}/booking_M/${id}`, requestOptions)
+    let res = await fetch(`${apiUrl}/bookingmember/${id}`, requestOptions)
       .then((response) => response.json())
       .then((res) => {
         if (res.data) {
