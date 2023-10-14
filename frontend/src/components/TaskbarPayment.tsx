@@ -1,4 +1,4 @@
-import { Avatar, Layout, Image  } from 'antd';
+import { Avatar, Layout, Image, MenuProps  } from 'antd';
 import { Menu } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { CaretDownOutlined } from '@ant-design/icons';
@@ -6,7 +6,28 @@ import { useNavigate } from 'react-router-dom';
 
 const { Header } = Layout;
 const { SubMenu } = Menu;
-
+const items: MenuProps['items'] = [
+  {
+      label: 'Home',
+      key: 'home',
+      icon: <img src='Rectangle 34' />,
+  },
+  {
+      label: 'Explore destinations',
+      key: 'app',
+      icon: <img src='Rectangle 33' />,
+  },
+  {
+      label: 'Review',
+      key: 'SubMenu',
+      icon: <img src='Rectangle 31' />,
+  },
+  {
+      label: 'Contact Us',
+      key: 'contact',
+      icon: <img src='Rectangle 32' />,
+  },
+];
 function App(){
   const navigate = useNavigate();
   const showPay = () => {

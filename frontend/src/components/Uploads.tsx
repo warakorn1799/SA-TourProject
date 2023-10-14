@@ -2,15 +2,32 @@ import React, { useState,useEffect } from 'react';
 
   export let img:File[];
   export let Url:string[];
+  export let Base64:string[];
+
 function Uploads() {
   const [images, setImages] = useState<File[]>([]);
   const [imageURLs, setImageURLs] = useState<string[]>([]);
+  const [base64Images, setBase64Images] = useState<string[]>([]);
 
   useEffect(() => {
     if (images.length < 1) return;
     const newImageUrls: string[] = [];
-    images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
+    const newBase64Images: string[] = [];
+    images.forEach((image) => {
+      const imageUrl = URL.createObjectURL(image);
+      newImageUrls.push(imageUrl);
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        if (event.target && typeof event.target.result === 'string') {
+          newBase64Images.push(event.target.result);
+        }
+      };
+      reader.readAsDataURL(image);
+    });
+
     setImageURLs(newImageUrls);
+    setBase64Images(newBase64Images);
   }, [images]);
 
   function onImageChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -21,6 +38,7 @@ function Uploads() {
 
   img = images
   Url = imageURLs
+  Base64 =  base64Images
 
   return (
     <div >

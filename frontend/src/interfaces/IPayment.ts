@@ -5,6 +5,8 @@ export interface PaymentInterface {
     ID?: number; 
     Receipt?: string;
     Date?: Date;
-    MemberID?: MemberInterface;
-    BookingID?: BookingInterface;
+    Member?: MemberInterface;
+    MemberID?: Number;
+    Booking?: BookingInterface;
+    BookingID?: Number;
 }

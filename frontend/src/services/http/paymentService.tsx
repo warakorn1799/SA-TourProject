@@ -71,6 +71,7 @@ async function GetPaymentById(id: Number | undefined) {
     let res = await fetch(`${apiUrl}/payments`, requestOptions)
       .then((response) => response.json())
       .then((res) => {
+        console.log(res)
         if (res.data) {
           return { status: true, message: res.data };
         } else {
