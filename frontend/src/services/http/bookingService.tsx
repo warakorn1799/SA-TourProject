@@ -61,6 +61,24 @@ async function GetBookingById(id: Number | undefined) {
     return res;
   }
 
+  async function GetBookingByMemberID(id: Number | undefined) {
+    const requestOptions = {
+      method: "GET"
+    };
+  
+    let res = await fetch(`${apiUrl}/booking_M/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return res.data;
+        } else {
+          return false;
+        }
+      });
+  
+    return res;
+  }
+
   async function CreateBooking(data: BookingInterface) {
     const requestOptions = {
       method: "POST",
@@ -106,5 +124,6 @@ export{
   GetBookingById,
   DeleteBookingByID,
   CreateBooking,
-  UpdateBooking
+  UpdateBooking,
+  GetBookingByMemberID
 };

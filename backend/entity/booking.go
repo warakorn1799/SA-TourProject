@@ -12,6 +12,10 @@ type Booking struct {
 	Todate   time.Time
 	Adult    int
 	Chil     int
+	Price    int
+
+	MemberID *uint
+	Member   Member `gorm:"foreignKey:MemberID"`
 
 	PackageID *uint
 	Package   Package `gorm:"foreignKey:PackageID"`

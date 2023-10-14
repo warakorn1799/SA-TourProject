@@ -1,13 +1,14 @@
 import Taskbar from '../../components/Taskbar';
 import { DownOutlined } from '@ant-design/icons';
 import type { ColumnsType } from "antd/es/table";
-import { GetBooking } from '../../services/http/bookingService';
+import { GetBooking_MemberById } from '../../services/http/bookingMemberService';
+import { GetMemberById } from '../../services/http/memberService';
 import Table from 'antd/es/table';
-import { useState } from 'react';
-import { BookingInterface } from '../../interfaces/IBooking';
+import { useEffect, useState } from 'react';
+import { Booking_MemberInterface } from '../../interfaces/IBooking_member';
 import { ConfigProvider } from 'antd';
 
-const columns: ColumnsType<BookingInterface> = [
+const columns: ColumnsType<Booking_MemberInterface> = [
   {
     title: "Package",
     dataIndex: "PackageID",
@@ -31,14 +32,28 @@ const columns: ColumnsType<BookingInterface> = [
 ];
 
 function App() {
-  const [Booking, setBooking] = useState<BookingInterface[]>([]);
-  const getPayment = async () => {
-    let res = await GetBooking();
+  const [Booking, setBooking] = useState<Booking_MemberInterface[]>([]);
+  const [Member, setMember] = useState<Booking_MemberInterface[]>([]);
+
+  const getBooking = async () => {
+    let res = await GetBooking_MemberById(1);
     if (res) {
       setBooking(res);
     }
   };
-  getPayment();
+
+  const getMember = async () => {
+    let res = await GetMemberById(1);
+    if (res) {
+      setMember(res);
+    }
+  };
+
+  useEffect(() => {
+    getBooking();
+    getMember();
+  }, []);
+
   return (
     <>
       <div>

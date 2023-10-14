@@ -6,7 +6,7 @@ type Review struct {
 	gorm.Model
 	Companion string
 	Comment   string
-	Image     []byte
+	Image     string `gorm:"type:longtext"`
 
 	MemberID *uint
 	Member   Member `gorm:"foreignKey:MemberID"`
