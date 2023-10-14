@@ -1,0 +1,247 @@
+.title {
+    position: absolute;
+    color: black;
+    border-width: thick;
+    font-size: 20px;
+    font-family: 'Roboto';
+    top: 20%;
+    left: 5%;
+    padding: 8px;
+}
+
+.logo {
+    position: absolute;
+    margin-top: 8%;
+    margin-left: 45%;
+    height: 15%;
+    width: 10%;
+}
+
+.thankyou {
+    position: absolute;
+    color: black;
+    border-width: thick;
+    font-size: 20px;
+    font-family: 'Roboto';
+    top: 48%;
+    left: 38%;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.thankyou2 {
+    position: absolute;
+    color: black;
+    font-size: 16px;
+    font-family: 'Roboto';
+    top: 52%;
+    left: 41%;
+    padding: 8px;
+}
+
+.thankyou3 {
+    position: absolute;
+    color: black;
+    font-size: 16px;
+    font-family: 'Roboto';
+    top: 56%;
+    left: 36%;
+    padding: 8px;
+}
+
+.title2 {
+    position: absolute;
+    color: black;
+    border-width: thick;
+    font-size: 25px;
+    font-family: 'Roboto';
+    top: 20%;
+    left: 8%;
+    padding: 8px;
+    margin-left: 0%;
+    margin-top: 22%;
+    font-weight: bold;
+    /* ทำให้ตัวอักษรหนา */
+    text-decoration: underline;
+    /* ทำให้เส้นใต้ของตัวอักษร */
+}
+
+.contenner {
+    position: absolute;
+    top: 71%;
+    left: 6%;
+    width: 28%;
+  }
+
+
+.point {
+    position: absolute;
+    top: 10%;
+    left: -1%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.rate {
+    position:relative;
+    top: 10%;
+    left: 8%;
+}
+
+.ant-rate-star {
+    font-size: 35px;
+  }
+
+.reviewed {
+    position: absolute;
+    top: 12%;
+    left: 63%;
+    color: #505050;
+}
+
+.Excellent {
+    position: absolute;
+    top: 33%;
+    left: -10%;
+}
+
+.Verygood {
+    position: absolute;
+    top: 46%;
+    left: -10%;
+}
+
+.Average {
+    position: absolute;
+    top: 59%;
+    left: -10%;
+}
+
+.Poor {
+    position: absolute;
+    top: 73%;
+    left: -10%;
+}
+
+.Terrible {
+    position: absolute;
+    top: 87%;
+    left: -10%;
+}
+
+.title3 {
+    position: absolute;
+    overflow: hidden;
+    top: 65%;
+    left: 40%;
+    border: none;
+    height: 35%;
+    width: 53%;
+}
+
+.name1 {
+    position: absolute;
+    margin-top: -9%;
+    margin-left: 12%;
+}
+
+.date {
+    position: absolute;
+    margin-top: -6%;
+    margin-left: 12%;
+}
+
+.with {
+    position: absolute;
+    margin-top: -6%;
+    margin-left: 25%;
+}
+
+.comments {
+    position: absolute;
+    margin-top: -3%;
+    margin-left: 12%;
+}
+
+.img1 {
+    position: absolute;
+    margin-top: 0%;
+    margin-left: 40%;
+}
+
+.img2 {
+    position: absolute;
+    margin-top: 0%;
+    margin-left: 55%;
+}
+
+.img3 {
+    position: absolute;
+    margin-top: 0%;
+    margin-left: 70%;
+}
+
+.subtitle3 {
+    position: none;
+    top: 0%;
+    left: 0%;
+    border: none;
+    height: 0%;
+    width: 0%;
+}
+
+.img4 {
+    position: absolute;
+    margin-top: -7%;
+    margin-left: 48%;
+}
+
+.img5 {
+    position: absolute;
+    margin-top: -7%;
+    margin-left: 63%;
+}
+
+.img6 {
+    position: absolute;
+    margin-top: -7%;
+    margin-left: 78%;
+}
+
+/* src/App.css */
+
+
+.container {
+    position: absolute;
+    left: 40.5%;
+    height: 35%;
+    /* ต้องมีความสูงเท่ากับ title3 */
+    width: 52.2%;
+    /* ต้องมีความกว้างเท่ากับ title3 */
+    overflow: scroll ;
+}
+
+.container::-webkit-scrollbar {
+    width: 5px; /* กว้างของแถบ scroll */
+    height: 10%;
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    background-color: orange; /* สีของแถบ scroll */
+    border-radius: 10px; /* รอบขอบแถบ scroll */
+  }
+
+.content {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 100%;
+    height: 0%; 
+    
+    
+  }
+  
+  .ant-rate-star.ant-rate-star-full, .ant-rate-star.ant-rate-star-full .anticon, .ant-rate-star.ant-rate-star-full .anticon svg {
+    color: orange; /* สีส้ม */
+  }
+  
