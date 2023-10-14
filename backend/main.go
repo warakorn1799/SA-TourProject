@@ -67,7 +67,7 @@ func main() {
 	//Booking Routes
 	r.GET("/bookings", controller.ListBooking)
 	r.GET("/booking/:id", controller.GetBooking)
-	r.GET("/booking_M/:id", controller.GetBookingByMemberID)
+	r.GET("/bookingmember/:id", controller.GetBookingByMemberID)
 	r.POST("/bookings", controller.CreateBooking)
 	r.PATCH("/bookings", controller.UpdateBooking)
 	r.DELETE("/bookings/:id", controller.DeleteBooking)

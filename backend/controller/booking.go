@@ -59,16 +59,16 @@ func CreateBooking(c *gin.Context) {
 func GetBooking(c *gin.Context) {
 	var booking entity.Booking
 	id := c.Param("id")
-	if err := entity.DB().Preload("Package").Preload("RoomType").Raw("SELECT * FROM bookings WHERE id = ?", id).Find(&booking).Error; err != nil {
+	if err := entity.DB().Preload("Package").Preload("RoomType").Preload("Member").Raw("SELECT * FROM bookings WHERE id = ?", id).Find(&booking).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"data": booking})
 }
 
-// GET /booking_M/:id
+// GET /bookingmember/:id
 func GetBookingByMemberID(c *gin.Context) {
-	var booking entity.Booking
+	var booking []entity.Booking
 	id := c.Param("id")
 	if err := entity.DB().Preload("Package").Preload("RoomType").Preload("Member").Raw("SELECT * FROM bookings WHERE member_id = ?", id).Find(&booking).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -80,7 +80,7 @@ func GetBookingByMemberID(c *gin.Context) {
 // GET /bookings
 func ListBooking(c *gin.Context) {
 	var booking []entity.Booking
-	if err := entity.DB().Preload("Package").Preload("RoomType").Raw("SELECT * FROM bookings").Find(&booking).Error; err != nil {
+	if err := entity.DB().Preload("Package").Preload("RoomType").Preload("Member").Raw("SELECT * FROM bookings").Find(&booking).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
