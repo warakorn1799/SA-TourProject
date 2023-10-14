@@ -10,7 +10,7 @@ type TourAttraction struct {
 	gorm.Model
 	Name      string
 	Location  string
-	Image     []byte
+	Image     string `gorm:"type:longtext"`
 	Map       string
 	Opentime  time.Time
 	Closetime time.Time

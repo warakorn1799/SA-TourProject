@@ -35,6 +35,7 @@ func CreateBooking(c *gin.Context) {
 		Todate:   booking.Todate,
 		Adult:    booking.Adult,
 		Chil:     booking.Chil,
+		Price:    booking.Price,
 		Package:  packagess,
 		RoomType: room,
 	}

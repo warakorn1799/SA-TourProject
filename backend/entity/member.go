@@ -8,7 +8,7 @@ type Member struct {
 	Lastname  string
 	CountryID *uint
 	Country   Country `gorm:"foreignKey:CountryID"`
-	Email     string
+	Email     string  `gorm:"uniqueIndex"`
 	Password  string
 	Phone     string
 }

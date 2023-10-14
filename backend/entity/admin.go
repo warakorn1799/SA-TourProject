@@ -8,5 +8,5 @@ type Admin struct {
 	Lastname  string
 	Password  string
 	Phone     string
-	Email     string
+	Email     string `gorm:"uniqueIndex"`
 }
