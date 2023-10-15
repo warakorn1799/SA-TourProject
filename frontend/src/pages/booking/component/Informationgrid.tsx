@@ -30,7 +30,7 @@ function Informationgrid() {
 
   useEffect(() => {
     getMemberById();
-  })
+  },[])
 
   return (
     <div>
@@ -45,7 +45,7 @@ function Informationgrid() {
             <p className={styles.output2}>{lastName}</p>
           </Col>
           <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <p className={styles.firstname}>Country of Passport</p>
+            <p className={styles.firstname}>Country</p>
             <p className={styles.output2}>{country}</p>
           </Col>
         </Row>
@@ -59,10 +59,6 @@ function Informationgrid() {
           <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
             <p className={styles.firstname}>Phone number</p>
             <p className={styles.output2}>{Phone}</p>
-          </Col>
-          <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <p className={styles.firstname}>Travel Date</p>
-            <DatePicker className={styles.input_firstname} placeholder="Please enter" />
           </Col>
         </Row>
       </div>

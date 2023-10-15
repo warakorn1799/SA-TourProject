@@ -39,6 +39,18 @@
     margin: 20px 20px;
 }
 
+.Informationgrit {
+    position: relative;
+    left: 3%;
+    width: 95%;
+    height: 180px;
+    box-shadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.20)';
+    border-width: 1px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+}
+
 .button_gotopayment {
     position: absolute;
     right: 3%;
@@ -55,21 +67,88 @@
     padding: 30px;
 }
 
+.date {
+    position: relative;
+    margin-top: 50px;
+    left: 7%;
+    width: 500px;
+    height: 100px;
+}
+
+.pricestyle {
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 75%;
+    width: 270px;
+    height: 200px;
+    box-shadow: 0px 4px 4px 0px rgb(255, 0, 0);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(255, 0, 0);
+}
+
+.notestyle {
+    position: absolute;
+    top: 76%;
+    left: 55%;
+}
 /* Quantity */
 
 .divheader {
-    position: absolute;
-    top: 40%;
+    position: relative;
+    margin-top: 2%;
     left: 7%;
-    width: 500px;
-    height: 200px;
+    width: 30%;
+    height: 100px;
 }
 
 .text {
     position: relative;
     font-size: 24px;
     font-weight: 400px;
-    color: #7A7A7A;
+    color: #000000;
+}
+
+.pricefont {
+    font-size: 24px;
+    font-weight: 400px;
+    text-shadow: 2px 2px 3px rgba(0, 162, 255, 0.5);
+    color: #0004ff;
+}
+.pricerate {
+    font-size: 24px;
+    font-weight: 400px;
+    text-shadow: 2px 2px 3px rgba(0, 162, 255, 0.5);
+    color: #00e029;
+}
+.roomtype {
+    position: absolute;
+    top: 25%;
+    left: 41.4%;
+    width: 500px;
+    height: 100px;
+}
+
+.Date {
+    position: absolute;
+    top: 4%;
+    left: 0%;
+    font-size: 24px;
+    font-weight: 400px;
+    color: #000000;
+}
+
+.datepicker {
+    position: absolute;
+    left: 10%;
+    top: 60%;
+}
+
+.datepicker2 {
+    position: absolute;
+    right: 10%;
+    top: 60%;
 }
 
 .layouts {
