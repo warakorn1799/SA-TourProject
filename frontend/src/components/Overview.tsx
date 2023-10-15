@@ -5,15 +5,15 @@ function App() {
     <div className='border'>
       <div className='head1'>
         <img src="carlogo.png" />
-        <div style={{color: '#FC6130', fontSize: 25,marginTop:33}}>Tour in Thailand</div>
+        <div style={{color: '#FC6130', fontSize: 25,marginTop:33}}>Tour in Thailand (Sample Ticket!!!)</div>
       </div>
       <div className='head2'>
         <div>ทัวร์เชียงใหม่ แม่กำปอง ม่อนแจ่ม 3 วัน 2 คืน</div>
       </div>
       <div className='Rcontainer'>
-        <div className='container'>
+        <div className='containerA'>
           <div>Travel date: 28 Sep 2023 - 30 Sep 2023 </div>
-          <div>Name:                    Woraphong Pongpruttiwat </div>
+          <div>Name:Woraphong Pongpruttiwat </div>
           <div>Quantity: 1 X Adult ฿7,500</div>
           <div>Total ฿7,500</div>
         </div>
