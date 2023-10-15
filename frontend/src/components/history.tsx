@@ -4,59 +4,77 @@ import { GetPayment } from '../services/http/paymentService';
 import './history.css';
 import Table, { ColumnsType } from 'antd/es/table';
 import { PaymentInterface } from '../interfaces/IPayment';
+import { GetBookingById } from '../services/http/bookingService';
+import { BookingInterface } from '../interfaces/IBooking';
 
-let Email;
 
-const columns: ColumnsType<PaymentInterface> = [
-    {
-        title: "Fullname",
-        dataIndex: "Fullname",
-        key: "Fullname",
-        render: (text, record) => {
-            return <div>{record.Member?.Firstname}</div>;
-        }
-    },
-    {
-        title: "Email",
-        dataIndex: "Email",
-        key: "Email",
-        render: (text, record, index) => (
-            <div>{record.Member?.Email}</div>
-        )
-    },
-    {
-        title: "Date",
-        dataIndex: "Date",
-        key: "Date",
-        render: (text, record, index) => (
-            <div>{text.substring(0,10)}</div>
-        )
-    },
-    {
-        title: "Price",
-        dataIndex: "Price",
-        key: "Price",
-        render: (text, record, index) => (
-            <div>{record.Booking?.Price}</div>
-        )
-    },
-    {
-        title: "Package",
-        dataIndex: "Package",
-        key: "Package",
-
-    },
-    {
-        title: "Transfer slip",
-        dataIndex: "Transfer slip",
-        key: "Transfer slip",
-        render: (text, record, index) => (
-            <img src={record.Receipt} width={140} />
-        )
-    },
-];
 function App() {
+    const [Booking, setBooking] = useState<BookingInterface[]>([]);
+
+    const getBookingById = async (recordId: any) => {
+        let res = await GetBookingById(Number(recordId));
+        if (res) {
+            setBooking(res.Package.Name);
+        }
+    };
     
+    useEffect(() => {
+        getPayment();
+    }, []);
+
+    const columns: ColumnsType<PaymentInterface> = [
+        {
+            title: "Fullname",
+            dataIndex: "Fullname",
+            key: "Fullname",
+            render: (text, record) => {
+                return <div>{record.Member?.Firstname}</div>;
+            }
+        },
+        {
+            title: "Email",
+            dataIndex: "Email",
+            key: "Email",
+            render: (text, record, index) => (
+                <div>{record.Member?.Email}</div>
+            )
+        },
+        {
+            title: "Date",
+            dataIndex: "Date",
+            key: "Date",
+            render: (text, record, index) => (
+                <div>{text.substring(0, 10)}</div>
+            )
+        },
+        {
+            title: "Price",
+            dataIndex: "Price",
+            key: "Price",
+            render: (text, record, index) => (
+                <div>{record.Booking?.Price}</div>
+            )
+        },
+        {
+            title: "Package",
+            dataIndex: "Package",
+            key: "Package",
+            render(text, record) {
+                getBookingById(record.BookingID)
+                return <div>{Booking.toString()}</div>;
+            }
+
+        },
+        {
+            title: "Transfer slip",
+            dataIndex: "Transfer slip",
+            key: "Transfer slip",
+            render: (text, record, index) => (
+                <img src={record.Receipt} width={140} />
+            )
+        },
+    ];
+
     const [Payment, setPayment] = useState<PaymentInterface[]>([]);
 
     const getPayment = async () => {
@@ -65,12 +83,6 @@ function App() {
             setPayment(res);
         }
     };
-
-
-    useEffect(() => {
-        getPayment();
-        console.log("P=",Payment)
-    }, []);
 
     return (
         <div style={{ width: '100%', height: '100%' }}>
