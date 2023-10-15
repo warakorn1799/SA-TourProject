@@ -30,7 +30,7 @@
     line-height: normal;
 }
 
-.container {
+.containerA{
     position: relative;
     line-height: 70px;
     top: 30%;
@@ -42,7 +42,7 @@
     font-weight: 400;
 }
 
-.container2 {
+.container2{
     position: relative;
     line-height: 70px;
     top: 30%;
