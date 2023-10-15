@@ -19,6 +19,10 @@ import { MemberInterface } from '../../interfaces/IMember';
 
 const { Option } = Select;
 const { Header, Content } = Layout;
+
+
+export let BookingIDs: Number | undefined;
+
 function Booking() {
   useEffect(() => {
     getRoomType();
@@ -65,6 +69,8 @@ function Booking() {
       setMemberID(res.ID);
     }
   };
+
+
   const handleRoomChange = (value: RoomTypeInterface) => {
     console.log(`selected ${value}`);
     setRoomID(value);
@@ -88,6 +94,7 @@ function Booking() {
   const success = async () => {
     let res = await CreateBooking(data);
     if (res.status) {
+      BookingIDs = res.message.ID;
       messageApi.open({
         type: 'success',
         content: 'Sign in successfully. Please wait 3 seconds to back home page.',
@@ -104,7 +111,6 @@ function Booking() {
       console.log(res);
     }
   };
-
   const data: BookingInterface = {
     Fromdate: Fromdate != null ? Fromdate : undefined,
     Todate: Todate != null ? Todate : undefined,
