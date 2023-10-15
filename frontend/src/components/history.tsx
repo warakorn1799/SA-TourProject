@@ -1,10 +1,11 @@
-import { Avatar, Layout, Image, ConfigProvider } from 'antd';
-import { Button, Space } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { ConfigProvider } from 'antd';
+import { useEffect, useState } from 'react';
 import { GetPayment } from '../services/http/paymentService';
 import './history.css';
 import Table, { ColumnsType } from 'antd/es/table';
 import { PaymentInterface } from '../interfaces/IPayment';
+
+let Email;
 
 const columns: ColumnsType<PaymentInterface> = [
     {
@@ -12,8 +13,7 @@ const columns: ColumnsType<PaymentInterface> = [
         dataIndex: "Fullname",
         key: "Fullname",
         render: (text, record) => {
-            console.log(record.Member?.FirstName)
-            return <div>{record.Member?.FirstName}</div>;
+            return <div>{record.Member?.Firstname}</div>;
         }
     },
     {
@@ -44,9 +44,7 @@ const columns: ColumnsType<PaymentInterface> = [
         title: "Package",
         dataIndex: "Package",
         key: "Package",
-        render: (text, record, index) => (
-            <div>{record.Booking?.Package?.Name}</div>
-        )
+
     },
     {
         title: "Transfer slip",
@@ -58,7 +56,7 @@ const columns: ColumnsType<PaymentInterface> = [
     },
 ];
 function App() {
-
+    
     const [Payment, setPayment] = useState<PaymentInterface[]>([]);
 
     const getPayment = async () => {
@@ -71,6 +69,7 @@ function App() {
 
     useEffect(() => {
         getPayment();
+        console.log("P=",Payment)
     }, []);
 
     return (
