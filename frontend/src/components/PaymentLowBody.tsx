@@ -46,13 +46,14 @@ function Appss() {
     values.Receipt = Base64[0]
     values.BookingID = BookingID?.ID 
     values.MemberID = MemberID?.ID 
-    console.log(values)
+    console.log('values = ',values)
     if (Base64[0] != null) {
       let res = await CreatePayment(values);
       setIsPayModalVisible(true);
       setTimeout(() => {
         PayCancel();
-      }, 5000);
+        navigate("/Payment-history");
+      }, 60000);
     } else {
       messageApi.open({
         type: "error",
@@ -109,7 +110,7 @@ function Appss() {
               <Uploads/>
             </div>
             <Button onClick={() => showPay(values)} type="primary" shape="circle" size="large" style={{ width: 166, height: 57, marginTop: 40, marginLeft: 1000, backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)' }}>Pay now</Button>
-            <Modal maskStyle={{ backdropFilter: 'blur(5px)', backgroundColor: 'transparent' }} transitionName='' closable={false} visible={isPayModalVisible} onCancel={PayCancel} footer={[]} style={{ top: 100, textAlign: 'center' }}>
+            <Modal maskStyle={{ backdropFilter: 'blur(5px)', backgroundColor: 'transparent' }} transitionName='' closable={false} visible={isPayModalVisible} onCancel={PayCancel} footer={[]} style={{textAlign: 'center' }}>
               <Paypopup />
             </Modal>
           </div>

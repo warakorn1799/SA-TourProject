@@ -1,14 +1,14 @@
-import {useState,useEffect} from "react";
-import { Layout  } from 'antd';
-import {GetMemberById} from '../services/http/memberService';
-import {GetBookingById} from '../services/http/bookingService';
+import { useState, useEffect } from "react";
+import { Layout } from 'antd';
+import { GetMemberById } from '../services/http/memberService';
+import { GetBookingById } from '../services/http/bookingService';
 import { member } from '../pages/Home/component/Header/Components/LoginPopup';
-import './PaymentBody.css'; 
+import './PaymentBody.css';
 
 const { Content } = Layout;
 
-function Apps(){
-  
+function Apps() {
+
   const [firstName, setFirstName] = useState<string | undefined>(undefined);
   const [lastName, setLastName] = useState<string | undefined>(undefined);
   const [country, setCountry] = useState<string | undefined>(undefined);
@@ -20,10 +20,11 @@ function Apps(){
   const [Package, setPackage] = useState<string | undefined>(undefined);
   const [Adult, setAdult] = useState<string | undefined>(undefined);
   const [Childen, setChilden] = useState<string | undefined>(undefined);
+  const [Price, setPrice] = useState<string | undefined>(undefined);
 
   const getMemberById = async () => {
     let res = await GetMemberById(Number(member?.ID));
-  
+
     if (res) {
       setFirstName(res.Firstname);
       setLastName(res.Lastname);
@@ -41,6 +42,7 @@ function Apps(){
       setPackage(res.Package.Name);
       setAdult(res.Adult);
       setChilden(res.Chil);
+      setPrice(res.Price);
     }
   };
 
@@ -49,44 +51,54 @@ function Apps(){
     getBookingById();
   }, []);
 
-    return(
-        <div>
-          <Layout>
-            <Content style={{ backgroundColor: 'white',display: 'flex'}}>
-            <div style={{marginTop:'11px',marginLeft:'300px',color: 'black', fontSize: 32, fontFamily: 'Roboto', fontWeight: '500', wordWrap: 'break-word'}}>Booking Details</div>
-            </Content>
-          </Layout>
-          <Layout style={{ backgroundColor:'#FFFFFF'}}>
-            <Content style={{ backgroundColor: 'white', height: '328px',display: 'flex',marginTop:'15px'}}>
-            <div style={{ marginTop: '10px',marginLeft: '300px', width: '392px', height: '257px', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', border: '0.50px #FC6130 solid', position: 'relative' }}>
-            <p className="info" style={{ marginLeft: 30, marginTop: 15}}>First name</p>
-            <p className="info" style={{ marginLeft: 81, marginTop: 15}}>{firstName}</p>
-            <p className="info" style={{ marginLeft: 30, marginTop: 15}}>Last name</p>
-            <p className="info" style={{ marginLeft: 85, marginTop: 15}}>{lastName}</p>
-            <p className="info" style={{ marginLeft: 30, marginTop: 15}}>Country of Passport</p>
-            <p className="info" style={{ marginLeft: 15, marginTop: 15}}>{country}</p>
-            <p className="info" style={{ marginLeft: 30, marginTop: 15}}>Phone number </p>
-            <p className="info" style={{ marginLeft: 48, marginTop: 15}}>{Phone}</p>
-            <p className="info" style={{ marginLeft: 30, marginTop: 15}}>Email</p>
-            <p className="info" style={{ marginLeft: 30, marginTop: 15}}>{Email}</p>
+  return (
+    <div>
+      <Layout>
+        <Content style={{ backgroundColor: 'white', display: 'flex' }}>
+          <div style={{ marginTop: '11px', marginLeft: '300px', color: 'black', fontSize: 32, fontFamily: 'Roboto', fontWeight: '500', wordWrap: 'break-word' }}>Booking Details</div>
+        </Content>
+      </Layout>
+      <Layout style={{ backgroundColor: '#FFFFFF' }}>
+        <Content style={{ backgroundColor: 'white', height: '328px', display: 'flex', marginTop: '15px' }}>
+          <div style={{ marginTop: '10px', marginLeft: '300px', width: '392px', height: '257px', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', border: '0.50px #FC6130 solid', position: 'relative' }}>
+            <div>
+              <p className="infos" style={{ marginLeft: 30, marginTop: 15 }}>First name</p>
+              <p className="infos" style={{ marginLeft: 81, marginTop: 15 }}>{firstName}</p>
             </div>
-            <div style={{marginLeft: '30px',width: 539, height: 278, background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', border: '0.50px #FC6130 solid'}} >
-            <p style={{marginLeft: 50, marginTop: 15,color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans Thai', fontWeight: '700', wordWrap: 'break-word', display: 'inline-block'}}>{Package}</p>
-            <div style={{marginTop: -18}}>
-            <p className="info" style={{ marginLeft: 50, marginTop: 20}}>Travel date</p>
-            <p className="info" style={{ marginLeft: 65, marginTop: 40}}>{Fromdate} ถึง {Todate}</p>
-            <p className="info" style={{ marginLeft: 50, marginTop: 40}}>Quantity</p>
-            <p className="info" style={{ marginLeft: 94, marginTop: 20}}>{Adult} X Adult and {Childen} X Childen</p>
-            <div style={{marginLeft:16,marginTop: 13}}>
-            <p className="info" style={{ marginLeft: 355, marginTop: 50}}>Total</p>
-            <p style={{ marginLeft: 15, marginTop: -15, color: '#FC6130', fontSize: 36, fontFamily: 'Noto Looped Thai UI', fontWeight: '700', wordWrap: 'break-word', display: 'inline-block' }}>7,500</p>
+            <div>
+              <p className="infos" style={{ marginLeft: 30, marginTop: 15 }}>Last name</p>
+              <p className="infos" style={{ marginLeft: 85, marginTop: 15 }}>{lastName}</p>
             </div>
+            <div>
+              <p className="infos" style={{ marginLeft: 30, marginTop: 15 }}>Country of Passport</p>
+              <p className="infos" style={{ marginLeft: 15, marginTop: 15 }}>{country}</p>
             </div>
+            <div>
+              <p className="infos" style={{ marginLeft: 30, marginTop: 15 }}>Phone number </p>
+              <p className="infos" style={{ marginLeft: 48, marginTop: 15 }}>{Phone}</p>
             </div>
-            </Content>
-          </Layout>
+            <div>
+              <p className="infos" style={{ marginLeft: 30, marginTop: 15 }}>Email</p>
+              <p className="infos" style={{ marginLeft: 30, marginTop: 15 }}>{Email}</p>
+            </div>
+          </div>
+          <div style={{ marginLeft: '30px', width: 539, height: 278, background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', border: '0.50px #FC6130 solid' }} >
+            <p style={{ marginLeft: 50, marginTop: 15, color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans Thai', fontWeight: '700', wordWrap: 'break-word', display: 'inline-block' }}>{Package}</p>
+            <div style={{ marginTop: -18 }}>
+              <p className="infos" style={{ marginLeft: 50, marginTop: 20 }}>Travel date</p>
+              <p className="infos" style={{ marginLeft: 65, marginTop: 40 }}>{Fromdate} ถึง {Todate}</p>
+              <p className="infos" style={{ marginLeft: 50, marginTop: 40 }}>Quantity</p>
+              <p className="infos" style={{ marginLeft: 94, marginTop: 20 }}>{Adult} X Adult and {Childen} X Childen</p>
+              <div style={{ marginLeft: 16, marginTop: 13 }}>
+                <p className="infos" style={{ marginLeft: 355, marginTop: 50 }}>Total</p>
+                <p style={{ marginLeft: 15, marginTop: -15, color: '#FC6130', fontSize: 36, fontFamily: 'Noto Looped Thai UI', fontWeight: '700', wordWrap: 'break-word', display: 'inline-block' }}>{Price}</p>
+              </div>
+            </div>
+          </div>
+        </Content>
+      </Layout>
 
-        </div>
-      );
+    </div>
+  );
 }
 export default Apps;
