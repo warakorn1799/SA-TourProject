@@ -31,7 +31,7 @@ const columns: ColumnsType<BookingInterface> = [
       }if(record.Todate){
         todate = record.Todate.toString().substring(8,10); // ใช้ได้เมื่อ record.Fromdate ไม่เป็น undefined
       }
-      let date;
+      
       if (todate && fromDate) {
         date = parseInt(todate) - parseInt(fromDate);
       }
