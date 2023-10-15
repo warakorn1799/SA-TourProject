@@ -17,7 +17,7 @@ const columns: ColumnsType<BookingInterface> = [
     title: "Package",
     dataIndex: "Package",
     key: "Package",
-    render: (text, record) => record.Package?.Name,
+    render: (text, record) => record.PackageID?.Name,
   },
   {
     title: "Days",
