@@ -78,8 +78,8 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose }) => {
         autoComplete="on"
       >
         <div className={styles.headerstyle}>
-          <img className="icon" src={logo} />
-          <Title className='logIn'>Login</Title>
+          <img className={styles.icon} src={logo} />
+          <Title className={styles.logIn}>Login</Title>
           <div className={styles.closebutton}><CloseOutlined className={styles.textclose} onClick={onClose} /></div>
           <p className={styles.getATourContainer}>Get a Tour in Thailand account and find your joy Wherever you travel in Thailand</p>
         </div>

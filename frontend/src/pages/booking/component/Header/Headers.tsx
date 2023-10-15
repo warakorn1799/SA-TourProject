@@ -50,17 +50,6 @@ function Headers() {
             navigate('/booking');
         }
     };
-
-    const [isLoginPopupOpen, setState] = useState(false);
-    const successes = () => {
-        setState(true);
-
-    }
-
-    const closePopup = () => {
-        setState(false);
-    };
-    console.log(isLoginPopupOpen);
     return (
         <Header className={styles.Header}>
             <img src="./carlogo.png" alt="Car Icon" style={{ width: '76.947px', height: '65.079px', margin:3}} />
@@ -68,8 +57,6 @@ function Headers() {
             <ConfigProvider theme={{ token: { colorPrimary: '#FC6130',},}}>
             <Menu className={styles.menu} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
             </ConfigProvider>
-            {isLoginPopupOpen && <LoginPopup
-                onClose={closePopup} />}
         </Header>
     );
 }
