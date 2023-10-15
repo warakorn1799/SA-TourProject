@@ -8,6 +8,7 @@ export interface BookingInterface {
     Todate?: Date;
     Adult?: number;
     Chil?: number;
+    Price?: number;
     PackageID?: Number;
     Package?: PackageInterface;
     RoomTypeID?: RoomTypeInterface;

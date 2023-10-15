@@ -11,6 +11,7 @@ import { createBrowserRouter,RouterProvider,Route,Link } from "react-router-dom"
 import Paymentdetail from './pages/paymentDetail/index';
 import Paymenthistory from './pages/paymentHistory/index';
 import Payment from './App';
+import PaymentAdmin from './pages/paymentAdmin/App'
 import Review from './pages/Reviews/Review';
 import SucessReview from './pages/Reviews/SucessReview'; 
 
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
   {
     path: "/payment",
     element: <Payment />
-  },    
+  },  
+  {
+    path: "/payment-Admin",
+    element: <PaymentAdmin />
+  },   
   {
     path: "/Home",
     element: <Home2 />

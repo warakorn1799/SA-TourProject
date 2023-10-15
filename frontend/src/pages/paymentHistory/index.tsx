@@ -23,7 +23,20 @@ const columns: ColumnsType<BookingInterface> = [
     title: "Days",
     dataIndex: "Todate",
     key: "Days",
-    render: (record) => record.Todate ? record.Todate.toISOString().substring(0, 10) : '',
+    render(text,record) {
+      let fromDate;
+      let todate;
+      if (record.Fromdate) {
+        fromDate = record.Fromdate.toString().substring(8,10); // ใช้ได้เมื่อ record.Fromdate ไม่เป็น undefined
+      }if(record.Todate){
+        todate = record.Todate.toString().substring(8,10); // ใช้ได้เมื่อ record.Fromdate ไม่เป็น undefined
+      }
+      let date;
+      if (todate && fromDate) {
+        date = parseInt(todate) - parseInt(fromDate);
+      }
+      return <span>{date+" วัน"}</span>;
+    }
   },
   {
     title: "Adult",
