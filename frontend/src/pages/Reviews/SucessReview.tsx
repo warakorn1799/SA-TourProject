@@ -15,9 +15,9 @@ function SucessReview() {
       
       <Rate disabled defaultValue={5} className="orange-rate" />
       <p></p>
-      <Progress percent={99} size="small" strokeColor="orange" />
-      <Progress percent={1} size="small" strokeColor="orange" />
-      <Progress percent={1} size="small" strokeColor="orange" />
+      <Progress percent={89} size="small" strokeColor="orange" />
+      <Progress percent={8} size="small" strokeColor="orange" />
+      <Progress percent={3} size="small" strokeColor="orange" />
       <Progress percent={0} size="small" strokeColor="orange" />
       <Progress percent={0} size="small" strokeColor="orange" />
 

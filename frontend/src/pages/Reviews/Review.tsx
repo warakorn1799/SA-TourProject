@@ -80,7 +80,7 @@ function Review() {
         Review
         <div className='fram'>
           <div style={{ marginTop: 25 }}>
-            <img src='Rectangle 81.png'></img>
+            <img src='Rectangle 73.png'></img>
           </div>
           <div className='review3'>
             {firstName}
