@@ -46,7 +46,7 @@ function Appss() {
     values.Receipt = Base64[0]
     values.BookingID = BookingID?.ID 
     values.MemberID = MemberID?.ID 
-    console.log(values)
+    console.log('values = ',values)
     if (Base64[0] != null) {
       let res = await CreatePayment(values);
       setIsPayModalVisible(true);
