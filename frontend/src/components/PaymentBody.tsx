@@ -4,7 +4,7 @@ import { GetMemberById } from '../services/http/memberService';
 import { GetBookingById } from '../services/http/bookingService';
 import { member } from '../pages/Home/component/Header/Components/LoginPopup';
 import './PaymentBody.css';
-
+import { BookingIDs } from "../pages/booking/Booking";
 const { Content } = Layout;
 
 function Apps() {
@@ -35,7 +35,7 @@ function Apps() {
   };
 
   const getBookingById = async () => {
-    let res = await GetBookingById(Number(1));
+    let res = await GetBookingById(Number(BookingIDs));
     if (res) {
       setFromdate(res.Fromdate.substring(0, 10).replace(/-/g, " "));
       setTodate(res.Todate.substring(0, 10).replace(/-/g, " "));

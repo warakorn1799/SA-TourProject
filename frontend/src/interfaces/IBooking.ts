@@ -9,6 +9,7 @@ export interface BookingInterface {
     Adult?: number;
     Chil?: number;
     Price?: number;
+    Package?: PackageInterface;
     PackageID?: PackageInterface;
     RoomTypeID?: RoomTypeInterface;
     MemberID?: MemberInterface;
