@@ -9,7 +9,6 @@ import (
 type Promotion struct {
 	gorm.Model
 	Name     string
-	Type     string
 	Fromdate time.Time
 	Todate   time.Time
 	Day      string

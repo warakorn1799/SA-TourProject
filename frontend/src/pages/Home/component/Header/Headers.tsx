@@ -2,11 +2,10 @@ import { Button, ConfigProvider, Menu, MenuProps, Popconfirm, message } from 'an
 import { Header } from 'antd/es/layout/layout';
 import React, { useEffect, useState } from 'react'
 import LoginPopup from './Components/LoginPopup';
-import logo from './assets/logo.png'
 import home from './assets/home.png'
-import loca from './assets/location.png'
-import review from './assets/review.png'
-import contact from './assets/contact.png'
+import loca from './assets/Explore destinations.png'
+import review from './assets/Review.png'
+import contact from './assets/Contact Us.png'
 import styles from './Headers.module.css'
 import { useNavigate } from 'react-router-dom';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
@@ -19,23 +18,31 @@ function Headers() {
     const items: MenuProps['items'] = [
         {
             label: 'Home',
+            style: { color: '#505050',margin:'5px 0px'},
             key: 'home',
-            icon: <img src={home} />,
+            icon: <img src={home} 
+            style={{width:'23px', marginRight:'-7px'}}/>
         },
         {
             label: 'Explore destinations',
+            style: { color: '#505050',margin:'5px 0px'},
             key: 'app',
-            icon: <img src={loca} />,
+            icon: <img src={loca}
+            style={{width:'23px', marginRight:'-7px'}}/>
         },
         {
             label: 'Review',
+            style: { color: '#505050',margin:'5px 0px'},
             key: 'review',
-            icon: <img src={review} />,
+            icon: <img src={review} 
+            style={{width:'23px', marginRight:'-7px'}}/>
         },
         {
             label: 'Contact Us',
+            style: { color: '#505050',margin:'5px 0px'},
             key: 'contact',
-            icon: <img src={contact} />,
+            icon: <img src={contact} 
+            style={{width:'30px', marginRight:'-7px', top:'5px',position:'relative'}}/>
         },
     ];
     const [current, setCurrent] = useState('home');
@@ -55,6 +62,10 @@ function Headers() {
         if (e.key == "review") {
             console.log('your select contact');
             navigate('/Review');
+        }
+        if (e.key == "contact") {
+            console.log('your select contact');
+            navigate('/Detail_package');
         }
     };
 
@@ -90,8 +101,8 @@ function Headers() {
 
     return (
         <Header className={styles.Header}>
-            <img src="./carlogo.png" alt="Car Icon" style={{ width: '76.947px', height: '65.079px', margin: 3 }} />
-            <h1 style={{ marginTop: '32px', color: '#FC6130', fontSize: '23px', fontFamily: 'Roboto', fontWeight: '700', width: 170 }}>Tour in Thailand</h1>
+            <img src="./carlogo.png" alt="Car Icon" style={{ width: '58px', height:'50px', margin: '3px 0px' }} />
+            <h1 style={{ position:'relative',marginTop:'20px', left:'-5px' , color: '#FC6130', fontSize: '23px', fontFamily: 'Roboto', fontWeight: '700', wordBreak:'keep-all' }}>Tour in Thailand</h1>
             <ConfigProvider theme={{ token: { colorPrimary: '#FC6130', }, }}>
                 <Menu className={styles.menu} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
             </ConfigProvider>
@@ -106,12 +117,12 @@ function Headers() {
                 okText="Yes"
                 cancelText="No"
             >
-                <Button className={styles.buttonstyle} style={{ borderRadius: '29px', backgroundColor: '#fc6130' }} type="primary" size={size}>
-                    Logout
+                <Button className={styles.buttonstyle} style={{ borderRadius: '30px', backgroundColor: '#fc6130' }} type="primary" size={size}>
+                <p style={{fontSize:'20px',fontFamily: 'Roboto', fontWeight:700, margin:'-5px'}}>Log out</p>
                 </Button>
             </Popconfirm>
-                : <Button className={styles.buttonstyle} style={{ borderRadius: '29px', backgroundColor: '#fc6130' }} type="primary" onClick={successes} size={size}>
-                    Login
+                : <Button className={styles.buttonstyle} style={{ borderRadius: '30px', backgroundColor: '#fc6130' }} type="primary" onClick={successes} size={size}>
+                    <p style={{fontSize:'20px',fontFamily: 'Roboto', fontWeight:700, margin:'-5px'}}>Log in</p>
                 </Button>}
 
 
