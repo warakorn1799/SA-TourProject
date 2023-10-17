@@ -2,7 +2,7 @@ import './SucessReview.css';
 import Taskbar from '../Home/component/Header/Headers';
 import React from 'react';
 import { Progress } from 'antd';
-import { icons } from 'antd/es/image/PreviewGroup';
+
 
 import { Rate } from 'antd';
 import { useEffect, useState } from "react";

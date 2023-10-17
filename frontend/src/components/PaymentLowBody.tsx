@@ -52,6 +52,7 @@ function Appss() {
       setIsPayModalVisible(true);
       setTimeout(() => {
         PayCancel();
+        navigate("/payment-history");
       }, 5000);
     } else {
       messageApi.open({

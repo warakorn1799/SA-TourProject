@@ -6,7 +6,11 @@ export interface ReviewInterface {
     ID?: number; 
     Companion?: string;
     Comment?: string;
-    Image?: Blob;
-    MemberID?: MemberInterface;
-    RateID?: RateInterface;
+    Image?: string;
+    MemberID?: Number;
+    RateID?: Number;
+    Member?: MemberInterface;
+    Rate?: RateInterface;
+   
+    
 }
