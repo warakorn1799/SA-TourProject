@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  @font-face {
+    font-family: Roboto,IBM Plex Sans Thai;
+    src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap);
+    src: url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400&display=swap);
+  }  
+
+  .Layout{
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+  }
+
+  h2 {
+    margin: 198px 155px;
+    font-size: 50px;
+    font-family: Roboto;
+    font-weight: 700;
+    color: #505050;
+    text-align:'center'
+  }
+  
+  .card {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    padding: 0%;
+    margin-top: -170px;
+  }
+
+  .card a {
+    position: relative;
+    margin: 0px 100px;
+    left: 256px;
+    font-size: 50px;
+    color: black;
+  }
+
+  .nav {
+     background-color: white;
+     width: 100%;
+     margin: 233px 100px;
+  }
+
+  .nav p {
+    position: relative;
+    margin: -233px;
+    left: 496px;
+    font-size: 20px;
+    color: #505050;
+  }
+
+
+  .card a:hover {
+    color: #FC6130;
+ }
+ /* Footer */
+  .footer {
+    padding: 50px;
+    text-align: center;
+    background: white;
+  }
+
+  .footer a {
+    position: relative;
+    top: 15px;
+    text-align: center;
+    color: #505050;
+  }
+
+  .footer a:hover{
+    color: #FC6130;
+    text-decoration: underline;
+  }
+
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 800px) {
+  .card a {   
+      position: relative;
+      width: 100%;
+      float: none;
+      display: inline-block;
+      margin: 0px 9px 0 -280px;
+      padding-left: 4px;
+      font-size: 40px
+    }
+  }

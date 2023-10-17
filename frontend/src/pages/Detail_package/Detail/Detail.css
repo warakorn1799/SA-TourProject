@@ -1,0 +1,149 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Roboto,IBM Plex Sans Thai;
+  src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap);
+  src: url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400&display=swap);
+}
+body {
+  margin: 0;
+}
+
+.Layout1{
+  width: 100%;
+  background-color: white;
+}
+
+h2 {
+  font-family: Roboto;
+  width: 100%;
+  color: black;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+h3 {
+  color: black;
+  font-size: 18px;
+  font-family: Roboto;
+  font-weight: 700;
+}
+
+h4 {
+  color: black;
+  font-size: 20px;
+  font-family: Roboto;
+  font-weight: 700;
+}
+
+p {
+  font-family: IBM Plex Sans Thai;
+  font-size: 13px;
+  font-weight: 400;
+  color: #505050;
+}
+
+.price{
+  width: 70%;
+  margin: 30px 0px;
+  background-color: none;
+}
+
+.nav{
+  width: 100%;
+  margin: -15px 8px;
+}
+
+.nav a{ 
+  white-space:pre-wrap;
+  font-family: IBM Plex Sans Thai;
+  font-size: 14px;
+  font-weight: 400;
+  color: #505050;
+}
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+ 
+  -ms-flex: 50%; /* IE10 */
+  flex: 30%;
+  background-color: none;
+  padding: 20px 29px;
+  margin-top: -70px;
+}
+
+/* Main column */
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: none; 
+  padding: 60px 0px;
+  margin-top: -70px;
+}
+
+.fakeimg {
+  background-color: none;
+  width: 100%;
+  padding: 26px;
+  border-radius: 20px;
+}
+
+.button {
+  float: right;
+  padding: 16px 8px;
+  margin: 50px 90px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  background-color: #FC6130;
+  border: none;
+  border-radius: 29px;
+}
+
+.button a {
+  text-align: center;
+  font-size: 15px;
+  font-family: Roboto;
+  font-weight: 700;
+  color: #fff;
+ 
+}
+
+.button:hover {
+  background-color: #eb4109
+}
+
+.button:active {
+  background-color: #d03805;
+  box-shadow: 0 5px #C2C2C2; 
+  transform: translateY(1px);
+}
+
+.item:nth-child(3n) {
+  clear: both;
+}
+
+.item:nth-child(3n) {
+  clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+
+}
