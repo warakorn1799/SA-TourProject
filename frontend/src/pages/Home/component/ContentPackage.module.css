@@ -2,49 +2,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .content {
-    width: 100%;
-    margin: 30px 50px;
+    margin-top: 70px;
+    position: relative;
+    margin-left: 10%;
+    max-width: 80%;
     background-color: rgb(255, 255, 255);
-    overflow: hidden;
+    align-items: center;
 }
 
 .package_item {
-    max-width: 86%;
-    height: 100%;
     background-color: rgba(252, 97, 48, 0.24);
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.341);
-
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.341);
+    border-radius: 5%;
 }
-
 .package_item:hover {
-    box-shadow: 0px 0px 25px #908484;
+    border: 2px solid orange;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0);
 
 }
 
 .package_content {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(4, 358px);
-    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
 }
 
 .package_img {
-    box-shadow: 5px 8px 8px rgba(14, 14, 14, 0.25);
+    box-shadow: 0px 4px 4px rgba(14, 14, 14, 0.25);
+    border-radius: 5%;
     max-width: 100%;
-    
 }
 
 .package_name {
     position: relative;
-    font-size: 25px;
-    left: 15px;
-    font-weight: 700;
-    font-family: IBM Plex Sans Thai;
-
+    padding: 0.5rem;
+    font-size: 20px;
+    font-family: 'Noto Sans Thai', sans-serif;
 }

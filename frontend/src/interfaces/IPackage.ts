@@ -1,14 +1,17 @@
 import { PromotionInterface } from "./IPromotion";
-import { AdminInterface } from "./IAdmin";
 
 export interface PackageInterface {
     ID?: number; 
     Name?: string;
-    Highlights?: string;
+    Type?: string;
+    Fromdate?: Date;
+    Todate?: Date;
+    Day?: string;
+    Status?: string;
+    Person?: number;
     Detail?: string;
+    Price?: number;
     Priceadult?: number;
     Pricechil?: number;
-    
     PromotionID?: PromotionInterface;
-    AdminID?: AdminInterface;
 }

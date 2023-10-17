@@ -12,7 +12,7 @@
 .logo {
     position: absolute;
     margin-top: 8%;
-    margin-left: 48%;
+    margin-left: 45%;
     height: 15%;
     width: 10%;
 }
@@ -33,7 +33,7 @@
     position: absolute;
     color: black;
     font-size: 16px;
-    font-family: IBM Plex Sans Thai;
+    font-family: 'Roboto';
     top: 52%;
     left: 41%;
     padding: 8px;
@@ -43,7 +43,7 @@
     position: absolute;
     color: black;
     font-size: 16px;
-    font-family: IBM Plex Sans Thai;
+    font-family: 'Roboto';
     top: 56%;
     left: 36%;
     padding: 8px;
@@ -55,7 +55,7 @@
     border-width: thick;
     font-size: 25px;
     font-family: 'Roboto';
-    top: 18%;
+    top: 20%;
     left: 8%;
     padding: 8px;
     margin-left: 0%;
@@ -76,7 +76,7 @@
 
 .point {
     position: absolute;
-    top: 6%;
+    top: 10%;
     left: -1%;
     font-size: 25px;
     font-weight: bold;
@@ -94,45 +94,39 @@
 
 .reviewed {
     position: absolute;
-    top: 10%;
+    top: 12%;
     left: 63%;
     color: #505050;
-    font-family: 'Roboto';
 }
 
 .Excellent {
     position: absolute;
-    top: 25%;
+    top: 33%;
     left: -10%;
-    font-family: 'Roboto';
 }
 
 .Verygood {
     position: absolute;
-    top: 40%;
+    top: 46%;
     left: -10%;
-    font-family: 'Roboto';
 }
 
 .Average {
     position: absolute;
-    top: 56%;
+    top: 59%;
     left: -10%;
-    font-family: 'Roboto';
 }
 
 .Poor {
     position: absolute;
-    top: 70%;
+    top: 73%;
     left: -10%;
-    font-family: 'Roboto';
 }
 
 .Terrible {
     position: absolute;
-    top: 86%;
+    top: 87%;
     left: -10%;
-    font-family: 'Roboto';
 }
 
 .title3 {
@@ -143,42 +137,30 @@
     border: none;
     height: 35%;
     width: 53%;
-    
 }
 
 .name1 {
     position: absolute;
-    margin-top: -15%;
+    margin-top: -9%;
     margin-left: 12%;
-    font-family: 'Roboto';
-    font-size: 40%;
-    font-weight: bold;
-    
 }
 
 .date {
     position: absolute;
-    margin-top: -12%;
+    margin-top: -6%;
     margin-left: 12%;
-    font-size: 40%;
-    font-family: IBM Plex Sans Thai;
 }
 
 .with {
     position: absolute;
-    margin-top: -12%;
+    margin-top: -6%;
     margin-left: 25%;
-    font-size: 40%;
-    font-family: 'Roboto';
 }
 
 .comments {
     position: absolute;
-    margin-top: -9%;
+    margin-top: -3%;
     margin-left: 12%;
-    font-size: 40%;
-    font-family: IBM Plex Sans Thai;
-    font-weight: bold;
 }
 
 .img1 {
@@ -232,10 +214,9 @@
 .container {
     position: absolute;
     left: 40.5%;
-    top:63%;
     height: 35%;
     /* ต้องมีความสูงเท่ากับ title3 */
-    width: 51.5%;
+    width: 52.2%;
     /* ต้องมีความกว้างเท่ากับ title3 */
     overflow: scroll ;
 }
