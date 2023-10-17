@@ -1,6 +1,6 @@
+import { MemberInterface } from "./IMember";
 import { PackageInterface } from "./IPackage";
 import { RoomTypeInterface } from "./IRoomType";
-import { MemberInterface } from "./IMember";
 
 export interface BookingInterface {
     ID?: number; 
@@ -8,8 +8,9 @@ export interface BookingInterface {
     Todate?: Date;
     Adult?: number;
     Chil?: number;
-    PackageID?: Number;
+    Price?: number;
     Package?: PackageInterface;
+    PackageID?: PackageInterface;
     RoomTypeID?: RoomTypeInterface;
     MemberID?: MemberInterface;
 }

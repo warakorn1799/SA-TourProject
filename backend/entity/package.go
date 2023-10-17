@@ -1,7 +1,6 @@
 package entity
 
 import (
-	"time"
 
 	"gorm.io/gorm"
 )
@@ -9,17 +8,19 @@ import (
 type Package struct {
 	gorm.Model
 	Name       string
-	Type       string
-	Fromdate   time.Time
-	Todate     time.Time
-	Day        string
-	Status     string
-	Person     int
+	Highlights string
 	Detail     string
-	Price      int
 	Priceadult int
 	Pricechil  int
 
 	PromotionID *uint
 	Promotion   Promotion `gorm:"foreignKey:PromotionID"`
+
+	AdminID   *uint
+	Admin     Admin `gorm:"foreignKey:AdminID"`
+
+	MemberID *uint
+	Member   Member `gorm:"foreignKey:MemberID"`
+
+	
 }

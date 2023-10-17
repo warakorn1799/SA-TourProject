@@ -2,8 +2,8 @@ import { CountryInterface } from "./ICountry";
 
 export interface MemberInterface {
     ID?: number; 
-    FirstName?: string;
-    LastName?: string;
+    Firstname?: string;
+    Lastname?: string;
     country?: CountryInterface;
     Email?: string;
     Password?: string;

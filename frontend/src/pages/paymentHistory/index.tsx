@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { BookingInterface } from '../../interfaces/IBooking';
 import { GetBookingByMemberID } from '../../services/http/bookingService';
 import { Button, ConfigProvider } from 'antd';
+import { member } from '../Home/component/Header/Components/LoginPopup';
 
 const columns: ColumnsType<BookingInterface> = [
   {
@@ -17,13 +18,29 @@ const columns: ColumnsType<BookingInterface> = [
     title: "Package",
     dataIndex: "Package",
     key: "Package",
-    render: (text, record) => record.Package?.Name,
+    render(text, record) {
+      console.log('r=',record)
+      return <span>{record.Package?.Name}</span>;
+    } 
   },
   {
     title: "Days",
     dataIndex: "Todate",
     key: "Days",
-    render: (record) => record.Todate ? record.Todate.toISOString().substring(0, 10) : '',
+    render(text,record) {
+      let fromDate;
+      let todate;
+      if (record.Fromdate) {
+        fromDate = record.Fromdate.toString().substring(8,10); // ใช้ได้เมื่อ record.Fromdate ไม่เป็น undefined
+      }if(record.Todate){
+        todate = record.Todate.toString().substring(8,10); // ใช้ได้เมื่อ record.Fromdate ไม่เป็น undefined
+      }
+      let date;
+      if (todate && fromDate) {
+        date = parseInt(todate) - parseInt(fromDate);
+      }
+      return <span>{date+" วัน"}</span>;
+    }
   },
   {
     title: "Adult",
@@ -54,7 +71,7 @@ function App() {
   const [Booking, setBooking] = useState<BookingInterface[]>([]);
 
   const getBookingByMemberID = async () => {
-    let res = await GetBookingByMemberID(Number(1));
+    let res = await GetBookingByMemberID(Number(member?.ID));
     if (res) {
       setBooking(res);
     }
@@ -75,7 +92,7 @@ function App() {
         <div style={{ marginTop: 80, marginLeft: 80, marginBottom: 20, width: 1368, height: '100%', background: 'white', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 43, border: '1px #FC6130 solid' }} >
           <div style={{ padding: 50 }}>
             <ConfigProvider theme={{ token: { colorBgContainer: '#F9D9D940',},}}>
-              <Table columns={columns} dataSource={Booking  } />
+              <Table columns={columns} dataSource={Booking } />
               </ConfigProvider>
           </div>
         </div>

@@ -11,8 +11,10 @@ import { PaymentInterface } from "../interfaces/IPayment";
 import { MemberInterface } from "../interfaces/IMember";
 import { BookingInterface } from "../interfaces/IBooking";
 import { useNavigate } from 'react-router-dom';
-const { Content } = Layout;
+import { member } from '../pages/Home/component/Header/Components/LoginPopup';
+import { BookingIDs } from '../pages/booking/Booking';
 
+const { Content } = Layout;
 function Appss() {
   const [isQrModalVisible, setIsQrModalVisible] = useState(false);
   const [isPayModalVisible, setIsPayModalVisible] = useState(false);
@@ -29,14 +31,14 @@ function Appss() {
   };
 
   const getMemberById = async () => {
-    let res = await GetMemberById(Number(1));
+    let res = await GetMemberById(Number(member?.ID));
     if (res) {
       setMemberID(res);
     }
   };
 
   const getBookingById = async () => {
-    let res = await GetBookingById(Number(1));
+    let res = await GetBookingById(Number(BookingIDs));
     if (res) {
       setBookingID(res);
     }
@@ -46,14 +48,15 @@ function Appss() {
     values.Receipt = Base64[0]
     values.BookingID = BookingID?.ID 
     values.MemberID = MemberID?.ID 
-    console.log(values)
+    console.log('values = ',values)
     if (Base64[0] != null) {
       let res = await CreatePayment(values);
       setIsPayModalVisible(true);
       setTimeout(() => {
         PayCancel();
         navigate("/payment-history");
-      }, 5000);
+      }, 10000);
+      window.open("/detail");
     } else {
       messageApi.open({
         type: "error",
@@ -76,7 +79,6 @@ function Appss() {
   console.log("base=",Base64);
   console.log("img=",img);
   console.log("url=",Url);
-
 
   const values = {
     Receipt: '',
@@ -110,7 +112,7 @@ function Appss() {
               <Uploads/>
             </div>
             <Button onClick={() => showPay(values)} type="primary" shape="circle" size="large" style={{ width: 166, height: 57, marginTop: 40, marginLeft: 1000, backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)' }}>Pay now</Button>
-            <Modal maskStyle={{ backdropFilter: 'blur(5px)', backgroundColor: 'transparent' }} transitionName='' closable={false} visible={isPayModalVisible} onCancel={PayCancel} footer={[]} style={{ top: 100, textAlign: 'center' }}>
+            <Modal maskStyle={{ backdropFilter: 'blur(5px)', backgroundColor: 'transparent' }} transitionName='' closable={false} visible={isPayModalVisible} onCancel={PayCancel} footer={[]} style={{textAlign: 'center' }}>
               <Paypopup />
             </Modal>
           </div>
@@ -123,5 +125,4 @@ function Appss() {
     </div>
   );
 }
-
 export default Appss;

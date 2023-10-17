@@ -28,13 +28,11 @@ func CreateTourAttraction(c *gin.Context) {
 	tour := entity.TourAttraction{
 		Name:      touratt.Name,
 		Location:  touratt.Location,
-		Image:     touratt.Image,
+		Image1:     touratt.Image1,
+		Image2:     touratt.Image2,
+		Image3:     touratt.Image3,
 		Map:       touratt.Map,
-		Opentime:  touratt.Opentime,
-		Closetime: touratt.Closetime,
-		Fromdate:  touratt.Fromdate,
-		Todate:    touratt.Todate,
-		Price:     touratt.Price,
+		
 		Admin:     admin,
 	}
 
