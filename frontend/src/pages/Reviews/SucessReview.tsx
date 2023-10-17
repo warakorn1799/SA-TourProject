@@ -2,7 +2,7 @@ import './SucessReview.css';
 import Taskbar from '../Home/component/Header/Headers';
 import React from 'react';
 import { Progress } from 'antd';
-import { icons } from 'antd/es/image/PreviewGroup';
+
 
 import { Rate } from 'antd';
 import { useEffect, useState } from "react";
@@ -15,9 +15,9 @@ function SucessReview() {
       
       <Rate disabled defaultValue={5} className="orange-rate" />
       <p></p>
-      <Progress percent={99} size="small" strokeColor="orange" />
-      <Progress percent={1} size="small" strokeColor="orange" />
-      <Progress percent={1} size="small" strokeColor="orange" />
+      <Progress percent={89} size="small" strokeColor="orange" />
+      <Progress percent={8} size="small" strokeColor="orange" />
+      <Progress percent={3} size="small" strokeColor="orange" />
       <Progress percent={0} size="small" strokeColor="orange" />
       <Progress percent={0} size="small" strokeColor="orange" />
 

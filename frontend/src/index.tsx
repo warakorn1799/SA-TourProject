@@ -5,7 +5,6 @@ import Home from './pages/Home/Home';
 import Home2 from './pages/Home2/Home'
 import Booking from './pages/booking/Booking';
 import Register from './pages/Home/component/PageRegister/Register';
-import Detail1 from './pages/Detail/Detail1/Detail1';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter,RouterProvider,Route,Link } from "react-router-dom";
 import Paymentdetail from './pages/paymentDetail/index';
@@ -14,7 +13,8 @@ import Payment from './App';
 import PaymentAdmin from './pages/paymentAdmin/App'
 import Review from './pages/Reviews/Review';
 import SucessReview from './pages/Reviews/SucessReview'; 
-
+import ContactUs from './pages/ContactUs/App'
+import Detail_package from './pages/Detail_package/Detail/App'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +29,7 @@ const router = createBrowserRouter([
     path: "/payment-history",
     element: <Paymenthistory />
   },
+
   {
     path: "/payment",
     element: <Payment />
@@ -50,8 +51,12 @@ const router = createBrowserRouter([
     element: <Register />
   },  
   {
-    path: "/Detail_page1",
-    element: <Detail1 />
+    path: "/Detail_package",
+    element: <Detail_package />
+  },
+  {
+    path: "/ContactUs",
+    element:<ContactUs/>
   },
   {
     path: "/Review",
@@ -62,7 +67,6 @@ const router = createBrowserRouter([
     element:<SucessReview/>
   }
 ])
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
