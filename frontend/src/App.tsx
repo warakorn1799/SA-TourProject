@@ -1,5 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Taskbar from './pages/booking/component/Header/Headers';
 import PaymentBody from './components/PaymentBody'

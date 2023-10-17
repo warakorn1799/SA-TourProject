@@ -20,7 +20,7 @@ func CreatePromotion(c *gin.Context) {
 	// Create Promotion
 	pro := entity.Promotion{
 		Name:     promotion.Name,
-		
+		Type:     promotion.Type,
 		Fromdate: promotion.Fromdate,
 		Todate:   promotion.Todate,
 		Day:      promotion.Day,
