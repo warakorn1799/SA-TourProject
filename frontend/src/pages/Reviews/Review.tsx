@@ -1,24 +1,18 @@
 import './submit.css';
+import './body.css';
 import Taskbar from '../Home/component/Header/Headers';
 import { useNavigate } from 'react-router-dom'
-import './body.css';
-import React, { useState } from 'react';
-import { Rate } from 'antd';
+import { useEffect, useState } from 'react';
+import { Rate, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Space } from 'antd';
 import { GetBookingById,GetBooking } from '../../services/http/bookingService';
-import {
-  Form,
-  Input,
-  Upload,
-} from 'antd';
+import { RateInterface } from '../../interfaces/IRate';
+import { GetRateById } from '../../services/http/rateService';
+import { ReviewInterface } from '../../interfaces/IReview';
+import { CreateReview } from '../../services/http/reviewService';
+import {Form,Input,Upload,} from 'antd';
 
-const normFile = (e: any) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
 
 const { TextArea } = Input;
 
@@ -28,10 +22,67 @@ const desc = ['Terrible', 'Poor', 'Average', 'Very good', 'Excellent'];
 
 function Review() {
 
-  const navigate = useNavigate();
-  const submit = () => {
-    navigate('/SucessReview');
+  const normFile = (e: any) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
   };
+  
+  const [messageApi,contexHolder] = message.useMessage();
+  const [rate,setRate] = useState<RateInterface[]>([]);
+
+  const onFinish = async (values: ReviewInterface) => {
+    values.RateID = rate?.ID 
+    let res = await CreateReview(values);
+    console.log('res = ',res)  
+    if (res.status) {
+      messageApi.open({
+        type: "success",
+        content: "บันทึกข้อมูลสำเร็จ",
+      });
+      setTimeout(function () {
+        navigate("/SuccessReview");
+      }, 2000);
+    } else {
+      messageApi.open({
+        type: "error",
+        content: "บันทึกข้อมูลไม่สำเร็จ",
+      });
+    }
+  };
+
+  const values = {
+    Companion: '',
+    Comment: '',
+    Image: '',
+    MemberID: 0,
+    RateID: 0
+  };
+
+  const getRateByIdt = async () => {
+    let res = await GetRateById(Number(1));
+    console.log("res = ",res);
+    if(res) {
+      setRate(res);
+    }
+  };
+
+  useEffect(() => {
+    getRateByIdt();
+  }, []);
+
+
+  const navigate = useNavigate();
+
+ 
+
+  const submit = () => {
+    setTimeout(() => {
+      navigate('/SucessReview');
+    }, 1000); // 2 วินาที
+  };
+  
 
   const [buttonTypes, setButtonTypes] = useState<{
     Couples: "primary" | "default";
@@ -63,7 +114,6 @@ function Review() {
   const getBookingById = async () => {
     let res = await GetBookingById(Number(1));
     if (res) {
-      console.log('fhgd = ',res)
       setFirstName(res.Adult)
     }
   };
@@ -93,12 +143,12 @@ function Review() {
 
 
         </div>
-        <button className='submit' onClick={submit}>
+        <button className='submit' onClick={() => onFinish(values)}>
           Submit review
         </button>
         <div style={{ width: 540, height: -20, position: 'absolute', marginLeft: 470, transform: 'rotate(90deg)', transformOrigin: '0 0', border: '1px #CCCCCC solid' }}></div>
       </div>
-
+      
       <div className='body1'>
         Tell us, how was your visit?
         <div className='body2'>

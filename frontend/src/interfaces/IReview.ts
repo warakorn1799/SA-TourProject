@@ -7,6 +7,7 @@ export interface ReviewInterface {
     Companion?: string;
     Comment?: string;
     Image?: string;
-    MemberID?: MemberInterface;
-    RateID?: RateInterface;
+    MemberID?: Number;
+    RateID?: Number;
+    Rate?: RateInterface;
 }
