@@ -1,7 +1,7 @@
 import { Button, ConfigProvider, Modal, message } from 'antd';
 import { useEffect, useState } from 'react';
 import { DeletePaymentByID, GetPayment } from '../services/http/paymentService';
-import './history.css';
+import './Body.css';
 import Table, { ColumnsType } from 'antd/es/table';
 import { PaymentInterface } from '../interfaces/IPayment';
 import { GetBookingById } from '../services/http/bookingService';
@@ -10,14 +10,15 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { GetMember } from '../services/http/memberService';
 import { MemberInterface } from '../interfaces/IMember';
 
+export let Packages: any;
 function App() {
-    const [Booking, setBooking] = useState<BookingInterface[]>([]);
+    const [Package, setPackage] = useState<BookingInterface[]>([]);
 
     const getBookingById = async (recordId: any) => {
         let res = await GetBookingById(Number(recordId));
         console.log(res)
         if (res) {
-            setBooking(res.Package.Name);
+            setPackage(res.Package.Name);
         }
     };
 
@@ -28,7 +29,6 @@ function App() {
     const columns: ColumnsType<PaymentInterface> = [
         {
             title: "Fullname",
-            dataIndex: "Fullname",
             key: "Fullname",
             render: (text, record) => {
                 return <div>{record.Member?.Firstname}</div>;
@@ -36,7 +36,6 @@ function App() {
         },
         {
             title: "Email",
-            dataIndex: "Email",
             key: "Email",
             render: (text, record, index) => (
                 <div>{record.Member?.Email}</div>
@@ -52,7 +51,6 @@ function App() {
         },
         {
             title: "Price",
-            dataIndex: "Price",
             key: "Price",
             render: (text, record, index) => (
                 <div>{record.Booking?.Price}</div>
@@ -60,17 +58,15 @@ function App() {
         },
         {
             title: "Package",
-            dataIndex: "Package",
             key: "Package",
             render(text, record) {
                 getBookingById(record.BookingID)
-                return <div>{Booking.toString()}</div>;
+                return <div>{Package.toString()}</div>;
             }
 
         },
         {
             title: "Transfer slip",
-            dataIndex: "Transfer slip",
             key: "Transfer slip",
             render: (text, record, index) => (
                 <img src={record.Receipt} width={140} />
@@ -78,7 +74,6 @@ function App() {
         },
         {
             title: "Delete",
-            dataIndex: "Delete",
             key: "Delete",
             render: (text, record, index) => (
                 <Button
@@ -93,20 +88,11 @@ function App() {
         },
     ];
 
-    const [Member, setMember] = useState<MemberInterface[]>([]);
-
     const [messageApi, contextHolder] = message.useMessage();
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [modalText, setModalText] = useState<String>();
     const [deleteId, setDeleteId] = useState<Number>();
-
-    const getMember = async () => {
-        let res = await GetMember();
-        if (res) {
-            setMember(res);
-        }
-      };
 
     const showModal = (val: PaymentInterface) => {
         setModalText(
@@ -125,7 +111,6 @@ function App() {
             type: "success",
             content: "ลบข้อมูลสำเร็จ",
           });
-          getMember();
           getPayment();
         } else {
           setOpen(false);

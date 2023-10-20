@@ -1,6 +1,6 @@
 import Taskbar from '../../pages/booking/component/Header/Headers';
 import Sidebar from '../../components/menu';
-import Bodys from '../../components/history';
+import Bodys from '../../components/Body';
 import { Layout, } from 'antd';
 
 
