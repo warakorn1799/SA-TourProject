@@ -113,7 +113,7 @@ function Headers() {
         }
         if (e.key == "Contact Us") {
             console.log('your select contact');
-            navigate('/payment-history');
+            navigate('/');
         }
     };
 
