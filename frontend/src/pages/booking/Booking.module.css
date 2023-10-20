@@ -90,8 +90,8 @@
 
 .notestyle {
     position: absolute;
-    top: 76%;
-    left: 55%;
+    top: 86%;
+    left: 50%;
 }
 /* Quantity */
 
@@ -124,7 +124,7 @@
 }
 .roomtype {
     position: absolute;
-    top: 25%;
+    top: 28.3%;
     left: 41.4%;
     width: 500px;
     height: 100px;

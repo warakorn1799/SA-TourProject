@@ -31,12 +31,12 @@ function Note() {
                     <p style={{ font: '500 20px \'Roboto\', sans-serif', color: '#505050', marginLeft: 70 }}>
                         Please contect Us</p>
                 </div>
-                <div style={{ marginTop: 10 }}>
+                <div style={{ marginTop: 10, display: "flex" }}>
                     <img src={telic} style={{ width: 40, height: 40, marginLeft: 90 }}></img>
                     <p style={{ font: '700 18px \'Roboto\', sans-serif', marginLeft: 15 }}>
                         096-814-0228</p>
                 </div>
-                <div style={{ marginTop: -40, marginLeft: 190 }}>
+                <div style={{ marginTop: -40, marginLeft: 190, display: "flex"}}>
                     <img src={emailic} style={{ width: 40, height: 40, marginLeft: 90 }}></img>
                     <p style={{ font: '700 18px \'Roboto\', sans-serif', marginLeft: 15 }}>
                         TourinThailand@gmail.com</p>
