@@ -22,7 +22,7 @@
     padding-top: 2%;
     text-align: center;
     width: 25%;
-    height: 90%;
+    height: 95%;
 }
 
 .grit_booking{
@@ -33,7 +33,7 @@
     padding-top: 2%;
     text-align: center;
     width: 25%;
-    height: 90%;
+    height: 95%;
 }
 
 .grit_package{
@@ -44,7 +44,7 @@
     padding-top: 2%;
     text-align: center;
     width: 25%;
-    height: 90%;
+    height: 95%;
 }
 
 .name {
@@ -54,6 +54,7 @@
 }
 .number {
     font-family: 'Roboto', sans-serif;
+    color: blue;
     font-size: 35px;
     font-weight: 500;
 }

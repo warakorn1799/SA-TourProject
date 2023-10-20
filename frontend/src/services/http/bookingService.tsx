@@ -24,6 +24,26 @@ async function GetBooking() {
   return res;
 }
 
+async function GetBookingNumber() {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  let res = await fetch(`${apiUrl}/bookingnumber`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
 
 async function DeleteBookingByID(id: Number | undefined) {
   const requestOptions = {
@@ -125,5 +145,6 @@ export{
   DeleteBookingByID,
   CreateBooking,
   UpdateBooking,
-  GetBookingByMemberID
+  GetBookingByMemberID,
+  GetBookingNumber
 };

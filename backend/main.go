@@ -16,6 +16,7 @@ func main() {
 
 	// Member Routes
 	r.GET("/members", controller.ListMembers)
+	r.GET("/membernumber", controller.CountMembers)
 	r.GET("/member/:id", controller.GetMember)
 	r.GET("/memberemail/:email", controller.GetMemberEmail)
 	r.POST("/members", controller.CreateMember)
@@ -61,6 +62,7 @@ func main() {
 	//Package Routes
 	r.GET("/packages", controller.ListPackage)
 	r.GET("/package/:id", controller.GetPackage)
+	r.GET("/packagenumber", controller.CountPackages)
 	r.POST("/packages", controller.CreatePackage)
 	r.PATCH("/packages", controller.UpdatePackage)
 	r.DELETE("/packages/:id", controller.DeletePackage)
@@ -69,6 +71,7 @@ func main() {
 	r.GET("/bookings", controller.ListBooking)
 	r.GET("/booking/:id", controller.GetBooking)
 	r.GET("/bookingmember/:id", controller.GetBookingByMemberID)
+	r.GET("/bookingnumber", controller.CountBookings)
 	r.POST("/bookings", controller.CreateBooking)
 	r.PATCH("/bookings", controller.UpdateBooking)
 	r.DELETE("/bookings/:id", controller.DeleteBooking)
