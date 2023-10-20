@@ -12,7 +12,8 @@ func CreateReview(c *gin.Context) {
 	var review entity.Review
 	var rate entity.Rate
 	var member entity.Member
-
+	var booking entity.Booking
+	
 	// bind เข้าตัวแปร review
 	if err := c.ShouldBindJSON(&review); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -36,6 +37,9 @@ func CreateReview(c *gin.Context) {
 		Image:     review.Image,
 		Rate:      rate,
 		Member:    member,
+		Booking:   booking,
+		
+		
 	}
 
 	// Save

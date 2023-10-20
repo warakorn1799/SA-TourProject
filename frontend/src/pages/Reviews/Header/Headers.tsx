@@ -26,7 +26,7 @@ function Headers() {
         },
         {
             label: 'Review',
-            key: 'SubMenu',
+            key: 'review',
             icon: <img src={review} />,
         },
         {
@@ -35,13 +35,17 @@ function Headers() {
             icon: <img src={contact} />,
         },
     ];
-    const [current, setCurrent] = useState('home');
+    const [current, setCurrent] = useState('review');
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
         setCurrent(e.key);
         if (e.key == "home") {
             console.log('your select home');
             navigate('/');
+        }
+        if (e.key == "review") {
+            console.log('your select review');
+            navigate('/review');
         }
     };
     return (

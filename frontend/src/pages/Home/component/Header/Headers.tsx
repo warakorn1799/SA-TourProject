@@ -63,12 +63,8 @@ function Headers() {
             console.log("statuslogin : ", islogin)
             console.log(member)
         }
-        if (e.key == "app") {
-            console.log('your select contact');
-            navigate('/booking');
-        }
-        if (e.key == "review") {
-            console.log('your select contact');
+        else if (e.key == "review") {
+            console.log('your select review');
             navigate('/Review');
         }
     };

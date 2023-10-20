@@ -1,0 +1,158 @@
+/* LoginPopup.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.login-popup {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding-bottom: 30px;
+  padding-top: 200px;
+  margin-top: 80px;
+  border: 1px solid #ccc;
+  border-radius: 5%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.icon {
+  position: fixed;
+  top: 3%;
+  left: 3%;
+  border-radius: 1%;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}
+
+.headerstyle {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  box-shadow: 2px 2px 15px 2px rgba(240, 185, 185, 0.63) inset;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  height: 100px;
+  max-width: 600px;
+  width: 100%;
+  background-color: #f1d1d1a6;
+}
+
+.logIn {
+  position: relative;
+  top: 20%;
+  font-size: 64px;
+  display: inline-block;
+  font-family: Roboto;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+  width: 182px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.getATourContainer {
+  position: absolute;
+  top: 120%;
+  left: 3%;
+  font-size: 16px;
+  font-family: Roboto;
+  font-weight: 500;
+  color: #00000076;
+  text-align: left;
+  width: 441px;
+}
+
+.input {
+  position: relative;
+  text-align: center;
+
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #c2c2c2;
+  box-sizing: border-box;
+  width: 130%;
+  height: 40px;
+}
+
+.createAccount {
+  position: relative;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: Roboto;
+  text-decoration: underline;
+  color: #827f7f;
+  text-align: left;
+}
+.createAccount:hover {
+  color: #FC6130;
+}
+.rectangleIcon {
+  background: local;
+  position: relative;
+  width: 100%;
+  height: 495px;
+  object-fit: cover;
+}
+
+.selects {
+  background-color: #F9D9D900;
+  position: fixed;
+  margin-left: 100px;
+  width: 10%;
+  height: 10px;
+}
+
+.user {
+  padding-right: 18%;
+}
+
+.closebutton {
+  position: absolute;
+  top: 9%;
+  right: 3%;
+}
+
+.textclose {
+  color: rgb(122, 121, 121);
+  font-size: medium;
+}
+
+.textclose:hover {
+  color: #FC6130;
+}
+
+.submitstyle {
+  background-color: #FC6130;
+  font-weight:300;
+  color: #000;
+  border-radius: 30px;
+}
+
+.submitstyle:hover {
+  background-color: #FC6130;
+  outline: none;
+  border: none;
+}
+.checkbox:hover{
+  border-color: #FC6130;
+  color: #FC6130;
+  border-width: 1px;
+}
