@@ -1,8 +1,6 @@
 import { Button, ConfigProvider, Menu, MenuProps } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import React, { useState } from 'react'
-import LoginPopup from './Components/LoginPopup';
-import logo from './assets/logo.png'
 import home from './assets/home.png'
 import loca from './assets/location.png'
 import review from './assets/review.png'
@@ -37,17 +35,13 @@ function Headers() {
             icon: <img src={contact} />,
         },
     ];
-    const [current, setCurrent] = useState('app');
+    const [current, setCurrent] = useState('home');
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
         setCurrent(e.key);
         if (e.key == "home") {
             console.log('your select home');
             navigate('/');
-        }
-        if (e.key == "app") {
-            console.log('your select contact');
-            navigate('/booking');
         }
     };
     return (
