@@ -5,9 +5,10 @@ import logo from './assets/logo.png'
 import './App.css';
 import { message } from 'antd'
 import { GetAdminByEmail } from '../../services/http/adminService';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
-
+  const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
   const error = () => {
     messageApi.open({
@@ -68,8 +69,9 @@ function App() {
             type: 'success',
             content: 'Login Success',
           });
-          console.log('อีเมล:', Email);
-          console.log('พาสเวิร์ด:', password);
+          setTimeout(() => {
+            navigate('/admin/dashboard');
+          }, 1000);
         }
       }
     }

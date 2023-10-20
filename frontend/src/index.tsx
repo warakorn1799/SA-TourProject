@@ -15,6 +15,7 @@ import Review from './pages/Reviews/Review';
 import SucessReview from './pages/Reviews/SucessReview'; 
 import Contact from './pages/ContactUs/Contact';
 import AdminLogin from './pages/AdminLogin/App'
+import AdminDashboard from './pages/AdminDashboard/Home'
 
 
 const router = createBrowserRouter([
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: "/Admin/Login",
     element:<AdminLogin/>
+  },
+  {
+    path: "/Admin/Dashboard",
+    element:<AdminDashboard/>
   }
   
 ])

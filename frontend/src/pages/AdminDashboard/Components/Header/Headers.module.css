@@ -1,0 +1,40 @@
+.Header {
+    position: relative;
+    background-color: #F9D9D940;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.60);
+    z-index: 1;
+}
+
+.logo {
+    position: relative;
+    display: flex;
+    width: 83%;
+}
+
+.img {
+    position: relative;
+    top: 3%;
+}
+
+.headerText {
+    position: relative;
+    width: 200px;
+    color: #FC6130;
+    font-size: 23px;
+    font-family: Roboto;
+    font-weight: 700;
+}
+
+.menuitem {
+    position: relative;
+    display: flex;
+}
+.menu {
+    position: relative;
+    left: 0;
+    margin-top: 32px;
+    background: none;
+}
