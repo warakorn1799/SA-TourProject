@@ -7,8 +7,7 @@ import { PaymentInterface } from '../interfaces/IPayment';
 import { GetBookingById } from '../services/http/bookingService';
 import { BookingInterface } from '../interfaces/IBooking';
 import { DeleteOutlined } from '@ant-design/icons';
-import { GetMember } from '../services/http/memberService';
-import { MemberInterface } from '../interfaces/IMember';
+
 
 export let Packages: any;
 function App() {
