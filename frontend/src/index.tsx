@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Home from './pages/Home/Home';
-import Home2 from './pages/Home2/Home'
 import Booking from './pages/booking/Booking';
 import Register from './pages/Home/component/PageRegister/Register';
 import Detail1 from './pages/Detail/Detail1/Detail1';
@@ -36,10 +35,6 @@ const router = createBrowserRouter([
   {
     path: "/payment-Admin",
     element: <PaymentAdmin />
-  },   
-  {
-    path: "/Home",
-    element: <Home2 />
   },
   {
     path: "/Booking",
