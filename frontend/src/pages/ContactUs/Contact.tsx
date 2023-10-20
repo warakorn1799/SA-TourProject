@@ -23,7 +23,7 @@ function Contact() {
 
       <div className='footer'>
         <div style={{ margin:'0px 220px', width: '1000px', boxShadow: '0px 2px 10px #C7C7C7', border: '1px #CCCCCC solid' }}></div>
-        <a href="/Admin" target="_blank" > Admin Log in </a>
+        <a href="/Admin/login" target="_blank" > Admin Log in </a>
       </div>
 
     </div>

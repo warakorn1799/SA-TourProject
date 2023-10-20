@@ -39,6 +39,7 @@ func main() {
 	//Admin Routes
 	r.GET("/admins", controller.ListAdmins)
 	r.GET("/admin/:id", controller.GetAdmin)
+	r.GET("/adminemail/:email", controller.GetAdminByEmail)
 	r.POST("/admins", controller.CreateAdmin)
 	r.PATCH("/admins", controller.UpdateAdmin)
 	r.DELETE("/admins/:id", controller.DeleteAdmin)

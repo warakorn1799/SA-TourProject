@@ -14,6 +14,7 @@ import PaymentAdmin from './pages/paymentAdmin/App'
 import Review from './pages/Reviews/Review';
 import SucessReview from './pages/Reviews/SucessReview'; 
 import Contact from './pages/ContactUs/Contact';
+import AdminLogin from './pages/AdminLogin/App'
 
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "/SucessReview",
     element:<SucessReview/>
+  },
+  {
+    path: "/Admin/Login",
+    element:<AdminLogin/>
   }
   
 ])
