@@ -47,6 +47,10 @@ function Headers() {
             console.log('your select review');
             navigate('/review');
         }
+        if (e.key == "contact") {
+            console.log('your select contact');
+            navigate('/Contact');
+        }
     };
     return (
         <Header className={styles.Header}>

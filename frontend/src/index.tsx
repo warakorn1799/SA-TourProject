@@ -13,6 +13,7 @@ import Payment from './App';
 import PaymentAdmin from './pages/paymentAdmin/App'
 import Review from './pages/Reviews/Review';
 import SucessReview from './pages/Reviews/SucessReview'; 
+import Contact from './pages/ContactUs/Contact';
 
 
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
     element: <Detail1 />
   },
   {
+    path: "/Contact",
+    element:<Contact/>
+  },
+  {
     path: "/Review",
     element:<Review/>
   },
@@ -56,6 +61,7 @@ const router = createBrowserRouter([
     path: "/SucessReview",
     element:<SucessReview/>
   }
+  
 ])
 
 const root = ReactDOM.createRoot(

@@ -1,11 +1,13 @@
 import './Contact.css';
 import {FacebookOutlined, MailOutlined, CommentOutlined, WhatsAppOutlined} from '@ant-design/icons';
+import Taskbar from './Header/Headers';
 
 
 function Contact() {
   return (
     <div className='Layout'>
-      <h2 > Contact Us </h2>
+      <Taskbar/>
+      <h2 className='h2' > Contact Us </h2>
       <div className='card'>
         <a href="https://www.facebook.com/S.realmay/" target="_blank" ><FacebookOutlined /></a>
         <a href="mailto:yanika3468@gmail.com"><MailOutlined /></a>

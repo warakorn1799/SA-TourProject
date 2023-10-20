@@ -9,13 +9,16 @@
   }  
 
   .Layout{
+    position: relative;
     width: 100%;
     background-color: white;
     overflow: hidden;
   }
 
-  h2 {
-    margin: 198px 155px;
+  .h2 {
+    position: absolute;
+    top: 198px;
+    left: 155px;
     font-size: 50px;
     font-family: Roboto;
     font-weight: 700;
@@ -25,10 +28,10 @@
   
   .card {
     position: relative;
-    background-color: white;
+    top: 187px;
+    background-color: rgb(255, 255, 255);
     width: 100%;
     padding: 0%;
-    margin-top: -170px;
   }
 
   .card a {
@@ -40,9 +43,9 @@
   }
 
   .nav {
-     background-color: white;
+     background-color: rgb(255, 255, 255);
      width: 100%;
-     margin: 233px 100px;
+     margin: 440px 100px;
   }
 
   .nav p {
@@ -61,7 +64,7 @@
   .footer {
     padding: 50px;
     text-align: center;
-    background: white;
+    background: rgb(255, 255, 255);
   }
 
   .footer a {
