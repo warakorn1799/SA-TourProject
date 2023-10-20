@@ -1,10 +1,5 @@
 import './submit.css';
-<<<<<<< HEAD
 import Taskbar from './Header/Headers';
-=======
-import './body.css';
-import Taskbar from '../Home/component/Header/Headers';
->>>>>>> eeec2486a751734bc7a011c31e77c3b6eb36ae56
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { Rate, message } from 'antd';
