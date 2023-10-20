@@ -15,7 +15,8 @@ import Review from './pages/Reviews/Review';
 import SucessReview from './pages/Reviews/SucessReview'; 
 import Contact from './pages/ContactUs/Contact';
 import AdminLogin from './pages/AdminLogin/App'
-import AdminDashboard from './pages/AdminDashboard/Home'
+import AdminDashboard from './pages/AdminDashboard/Home';
+import AdminManageUser from './pages/AdminManageUser/index';
 
 
 const router = createBrowserRouter([
@@ -70,8 +71,11 @@ const router = createBrowserRouter([
   {
     path: "/Admin/Dashboard",
     element:<AdminDashboard/>
+  },
+  {
+    path: "/Admin/Manageuser",
+    element:<AdminManageUser/>
   }
-  
 ])
 
 const root = ReactDOM.createRoot(
