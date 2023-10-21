@@ -22,7 +22,7 @@ function Informationgrid() {
     if (res) {
       setFirstName(res.Firstname);
       setLastName(res.Lastname);
-      setCountry(res.Country.Name);
+      setCountry(res.Country);
       setEmail(res.Email);
       setPhone(res.Phone);
     }

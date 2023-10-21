@@ -4,12 +4,10 @@ export interface Tourist_attractionInterface {
     ID?: number; 
     Name?: string;
     Location?: string;
-    Image?: string;
+    Image1?: string;
+    Image2?: string;
+    Image3?: string;
     Map?: string;
-    Opentime?: Date;
-    Closetime?: Date;
-    Fromdate?: Date;
-    Todate?: Date;
-    Price?: number;
+   
     AdminID?: AdminInterface;
 }

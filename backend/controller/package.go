@@ -11,6 +11,7 @@ import (
 func CreatePackage(c *gin.Context) {
 	var packages entity.Package
 	var promotion entity.Promotion
+	var admin entity.Admin
 
 	// bind เข้าตัวแปร package
 	if err := c.ShouldBindJSON(&packages); err != nil {
@@ -23,20 +24,20 @@ func CreatePackage(c *gin.Context) {
 		return
 	}
 
+	if tx := entity.DB().Where("id = ?", packages.AdminID).First(&admin); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Admin not found"})
+		return
+	}
+
 	// Create Package
 	pack := entity.Package{
 		Name:       packages.Name,
-		Type:       packages.Type,
-		Fromdate:   packages.Fromdate,
-		Todate:     packages.Todate,
-		Day:        packages.Day,
-		Status:     packages.Status,
-		Person:     packages.Person,
+		Highlights: packages.Highlights,
 		Detail:     packages.Detail,
-		Price:      packages.Price,
 		Priceadult: packages.Priceadult,
 		Pricechil:  packages.Pricechil,
 		Promotion:  promotion,
+		Admin:      admin,
 	}
 
 	// Save
@@ -51,7 +52,17 @@ func CreatePackage(c *gin.Context) {
 func GetPackage(c *gin.Context) {
 	var packages entity.Package
 	id := c.Param("id")
-	if err := entity.DB().Preload("Promotion").Raw("SELECT * FROM packages WHERE id = ?", id).Find(&packages).Error; err != nil {
+	if err := entity.DB().Preload("Promotion").Preload("Admin").Raw("SELECT * FROM packages WHERE id = ?", id).Find(&packages).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": packages})
+}
+
+// GET /packages
+func ListPackage(c *gin.Context) {
+	var packages []entity.Package
+	if err := entity.DB().Preload("Promotion").Preload("Admin").Raw("SELECT * FROM packages").Find(&packages).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -66,16 +77,6 @@ func CountPackages(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"data": count})
-}
-
-// GET /packages
-func ListPackage(c *gin.Context) {
-	var packages []entity.Package
-	if err := entity.DB().Preload("Promotion").Raw("SELECT * FROM packages").Find(&packages).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"data": packages})
 }
 
 // DELETE /packages/:id

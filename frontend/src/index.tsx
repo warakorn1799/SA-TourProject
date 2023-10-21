@@ -4,7 +4,7 @@ import './index.css';
 import Home from './pages/Home/Home';
 import Booking from './pages/booking/Booking';
 import Register from './pages/Home/component/PageRegister/Register';
-import Detail1 from './pages/Detail/Detail1/Detail1';
+import Detail_package from './pages/Detail_package/Detail/App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter,RouterProvider,Route,Link } from "react-router-dom";
 import Paymentdetail from './pages/paymentDetail/index';
@@ -47,10 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/Register",
     element: <Register />
-  },  
+  },
   {
-    path: "/Detail_page1",
-    element: <Detail1 />
+    path: "/Detail_package/:packageId",
+    element: <Detail_package />
   },
   {
     path: "/Contact",

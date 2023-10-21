@@ -6,9 +6,7 @@ type Member struct {
 	gorm.Model
 	Firstname string
 	Lastname  string
-
-	CountryID *uint
-	Country   Country `gorm:"foreignKey:CountryID"`
+	Country   string
 
 	Profile string `gorm:"type:longtext"`
 
