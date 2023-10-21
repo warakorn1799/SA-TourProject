@@ -93,6 +93,7 @@ func main() {
 	//Review Routes
 	r.GET("/reviews", controller.ListReview)
 	r.GET("/review/:id", controller.GetReview)
+	r.GET("/reviewpackage/:id",controller.GetAverageRateByPackageID)
 	r.POST("/reviews", controller.CreateReview)
 	r.PATCH("/reviews", controller.UpdateReview)
 	r.DELETE("/reviews/:id", controller.DeleteReview)
@@ -105,7 +106,7 @@ func main() {
 
 	//ReviewPackage Routes
 	r.GET("/reviewpackages", controller.ListReviewPackage)
-	r.GET("/reviewpackage/:id", controller.GetReviewPackage)
+	//r.GET("/reviewpackages/:id", controller.GetReviewPackage)
 	r.POST("/reviewpackages", controller.CreateReviewPackage)
 	r.DELETE("/reviewpackages/:id", controller.DeleteReviewPackage)
 

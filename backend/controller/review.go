@@ -12,6 +12,7 @@ func CreateReview(c *gin.Context) {
 	var review entity.Review
 	var rate entity.Rate
 	var member entity.Member
+	var packagess entity.Package
 
 	// bind เข้าตัวแปร review
 	if err := c.ShouldBindJSON(&review); err != nil {
@@ -29,6 +30,8 @@ func CreateReview(c *gin.Context) {
 		return
 	}
 
+	
+
 	// Create Review
 	rv := entity.Review{
 		Companion: review.Companion,
@@ -36,6 +39,8 @@ func CreateReview(c *gin.Context) {
 		Image:     review.Image,
 		Rate:      rate,
 		Member:    member,
+		Package:   packagess,
+		
 	}
 
 	// Save
@@ -99,3 +104,38 @@ func UpdateReview(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"data": review})
 }
+
+
+// GET /average-rate-by-package/:packageID
+// func GetAverageRateByPackageID(c *gin.Context) {
+// 	packageID := c.Param("packageID")
+
+// 	var averageRate struct {
+// 		AverageRate int64 `json:"averageRate"`
+// 	}
+
+// 	// Execute a SQL query to calculate the average rate for a specific package
+// 	if err := entity.DB().Preload("Rate").Raw("SELECT AVG(Level) AS averageRate FROM reviews WHERE rate_id = ?", packageID).Scan(&averageRate).Error; err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+// 		return
+// 	}
+
+// 	c.JSON(http.StatusOK, gin.H{"data": averageRate})
+// }
+func GetAverageRateByPackageID(c *gin.Context) {
+	packageID := c.Param("packageID")
+
+	var averageRate struct {
+		AverageRate float64 `json:"averageRate"`
+	}
+
+	// Execute a SQL query to calculate the average rate for a specific package
+	if err := entity.DB().Raw("SELECT COALESCE(AVG(rates.Level), 0) AS averageRate FROM reviews JOIN rates ON reviews.rate_id = rates.id WHERE reviews.rate_id = ?", packageID).Scan(&averageRate).Error; 
+	err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": averageRate})
+}
+

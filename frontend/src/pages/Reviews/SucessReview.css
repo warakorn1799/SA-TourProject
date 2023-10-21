@@ -11,10 +11,10 @@
 
 .logo {
     position: absolute;
-    margin-top: 8%;
-    margin-left: 45%;
-    height: 15%;
-    width: 10%;
+    margin-top: 15%;
+    margin-left: 43%;
+    height: 25%;
+    width: 15%;
 }
 
 .thankyou {
@@ -23,8 +23,8 @@
     border-width: thick;
     font-size: 20px;
     font-family: 'Roboto';
-    top: 48%;
-    left: 38%;
+    top: 70%;
+    left: 35%;
     padding: 8px;
     font-weight: bold;
 }
@@ -76,7 +76,7 @@
 
 .point {
     position: absolute;
-    top: 10%;
+    top: 50%;
     left: -1%;
     font-size: 25px;
     font-weight: bold;

@@ -101,10 +101,29 @@ async function GetReviewById(id: Number | undefined) {
     return res;
   }
 
+  async function GetReviewByPackage(id: Number | undefined) {
+    const requestOptions = {
+      method: "GET"
+    };
+  
+    let res = await fetch(`${apiUrl}/reviewpackage/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return res.data;
+        } else {
+          return false;
+        }
+      });
+  
+    return res;
+  }
+
 export{
   GetReview,
   GetReviewById,
   DeleteReviewByID,
   CreateReview,
-  UpdateReview
+  UpdateReview,
+  GetReviewByPackage
 };
