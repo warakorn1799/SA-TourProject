@@ -4,8 +4,8 @@ export interface MemberInterface {
     ID?: number; 
     Firstname?: string;
     Lastname?: string;
-    country?: CountryInterface;
-    countryID?: number;
+    Country?: CountryInterface;
+    CountryID?: number;
     Email?: string;
     Password?: string;
     Phone?: string;
