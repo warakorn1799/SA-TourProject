@@ -1,5 +1,6 @@
 import { BookingInterface } from "./IBooking";
 import { MemberInterface } from "./IMember";
+import { PackageInterface } from "./IPackage";
 import { RateInterface } from "./IRate";
 
 
@@ -12,7 +13,7 @@ export interface ReviewInterface {
     MemberID?: number
     Rate?: RateInterface;
     RateID?: number;
-    Booking?: BookingInterface;
-    BookingID?: number;
-
+    Package?: PackageInterface;
+    PackageID?: number;
+   
 }

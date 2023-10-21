@@ -74,11 +74,11 @@ func SetupDatabase() {
 
 	// Rate Data
 	Excellent := Rate{
-		Score: "Excellent",
+		Score: "Bad",
 	}
 	db.Model(&Rate{}).Create(&Excellent)
 	Good := Rate{
-		Score: "Good",
+		Score: "Poor",
 	}
 	db.Model(&Rate{}).Create(&Good)
 	Fair := Rate{
@@ -86,11 +86,11 @@ func SetupDatabase() {
 	}
 	db.Model(&Rate{}).Create(&Fair)
 	Poor := Rate{
-		Score: "Poor",
+		Score: "Good",
 	}
 	db.Model(&Rate{}).Create(&Poor)
 	opinion := Rate{
-		Score: "No opinion",
+		Score: "Excellent",
 	}
 	db.Model(&Rate{}).Create(&opinion)
 
@@ -107,7 +107,7 @@ func SetupDatabase() {
 		Name: "Triple",
 	}
 	db.Model(&RoomType{}).Create(&triple)
-	db.Model(&RoomType{}).Create(&double)
+	
 	family := RoomType{
 		Name: "Family",
 	}

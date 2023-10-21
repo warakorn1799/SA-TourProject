@@ -2,15 +2,13 @@ import './submit.css';
 import Taskbar from './Header/Headers';
 import { useNavigate } from 'react-router-dom'
 import './body.css';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Rate } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Space } from 'antd';
 import { GetBookingById, GetBooking } from '../../services/http/bookingService';
-import { RateInterface } from '../../interfaces/IRate';
 import { MemberInterface } from '../../interfaces/IMember';
 import { GetMemberById } from '../../services/http/memberService';
-import { GetRateById } from '../../services/http/rateService';
 import { ReviewInterface } from '../../interfaces/IReview';
 import { CreateReview } from '../../services/http/reviewService';
 import { Form, Input, Upload, } from 'antd';
@@ -19,7 +17,6 @@ import { ImageUpload } from "../../interfaces/IUpload";
 import { BookingInterface } from '../../interfaces/IBooking';
 //import { PackageIDs,BookingIDs } from '../paymentHistory';
 import { GetPackageById } from '../../services/http/packageService';
-import { PackageInterface } from '../../interfaces/IPackage';
 import { useEffect } from 'react';
 import { message } from 'antd';
 
@@ -40,7 +37,7 @@ function Review() {
   const [profile, setProfile] = useState<ImageUpload>()
   const [userRating, setUserRating] = useState(0);
   const [NamePackage, getPackageID] = useState<string>()
-  const [ImagePackage, getPackageImage] = useState<string>()
+  
 
 
   const handleRatingChange = (value: number) => {
@@ -81,12 +78,6 @@ function Review() {
     }
   };
 
-  const getPackageName = async () => {
-    let res = await GetPackageById(Number(1));
-    if (res) {
-      getPackageImage(res.Name)
-    }
-  };
 
 
 
@@ -97,7 +88,7 @@ function Review() {
     values.Companion = buttonName
     values.Comment = reviewText
     values.Image = profile?.thumbUrl;
-    values.BookingID = BookingID?.ID
+    
     let res = await CreateReview(values);
     console.log('values = ', values)
      if (res.status) {
@@ -107,7 +98,7 @@ function Review() {
        });
      setTimeout(function () {
        navigate("/SucessReview");
-       }, 2000);
+       }, 200);
      } else {
        messageApi.open({
         type: "error",
@@ -133,7 +124,6 @@ function Review() {
     getMemberById();
     // getBookingById();
     getPackageById();
-    getPackageName();
   }, []);
 
 
@@ -154,6 +144,7 @@ function Review() {
   });
 
   const handleButtonClick = (buttonName: keyof typeof buttonTypes) => {
+    setButtonName(buttonName); // Set the selected button's name
     setButtonTypes((prevButtonTypes) => {
       const updatedButtonTypes = { ...prevButtonTypes };
       for (const key in updatedButtonTypes) {
@@ -168,17 +159,7 @@ function Review() {
   };
   const [value, setValue] = useState(3);
 
-  const getBookingById = async () => {
-    let res = await GetBookingById(Number(1));
-    if (res) {
-      console.log('fhgd = ', res)
-      setFirstName(res.Adult)
-    }
-  };
-
-  getBookingById();
-  const [firstName, setFirstName] = useState<string | undefined>(undefined);
-
+ 
   return (
     <div>
       <div>
