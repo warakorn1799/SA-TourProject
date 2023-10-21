@@ -92,12 +92,8 @@ function Headers() {
             navigate('/review');
         }if (e.key == "Booking") {
             navigate('/payment-history');
-<<<<<<< HEAD
         }
         if (e.key == "contact") {
-=======
-        }if (e.key == "Contact Us") {
->>>>>>> 28fd120f929baddd2ddeb5c61abe4f244abdd88f
             navigate('/Contact');
         }
     };

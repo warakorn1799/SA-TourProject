@@ -1,5 +1,5 @@
 import './submit.css';
-import Taskbar from './Header/Headers';
+import Taskbar from '../booking/component/Header/Headers';
 import { useNavigate } from 'react-router-dom'
 import './body.css';
 import { useState } from 'react';
@@ -15,7 +15,7 @@ import { Form, Input, Upload, } from 'antd';
 import { member } from '../Home/component/Header/Components/LoginPopup';
 import { ImageUpload } from "../../interfaces/IUpload";
 import { BookingInterface } from '../../interfaces/IBooking';
-//import { PackageIDs,BookingIDs } from '../paymentHistory';
+import { PackageIDs } from '../paymentHistory';
 import { GetPackageById } from '../../services/http/packageService';
 import { useEffect } from 'react';
 import { message } from 'antd';
@@ -88,7 +88,7 @@ function Review() {
     values.Companion = buttonName
     values.Comment = reviewText
     values.Image = profile?.thumbUrl;
-    
+    values.PackageID = PackageIDs
     let res = await CreateReview(values);
     console.log('values = ', values)
      if (res.status) {
