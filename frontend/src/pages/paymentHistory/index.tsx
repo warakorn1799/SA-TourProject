@@ -10,6 +10,7 @@ import { member } from '../Home/component/Header/Components/LoginPopup';
 
 export let PackageIDs: any;
 
+let bookingPayment: any;
 const columns: ColumnsType<BookingInterface> = [
   {
     title: "Booking ID",
@@ -62,6 +63,7 @@ const columns: ColumnsType<BookingInterface> = [
   {
     title: "Review",
     render: (record) => (
+      bookingPayment = record,
       <>
         <Button onClick={() => clickReview(record.Package?.ID)} type="primary" shape="circle" size="large" style={{width:80, backgroundColor: '#fc6130', fontSize: 16, borderRadius: '29px', borderColor: '#fc6130', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.30)' }}>Review</Button>
       </>
@@ -69,16 +71,15 @@ const columns: ColumnsType<BookingInterface> = [
   }
 ];
 
-
 const clickReview = (packageId: any) => {
   console.log("Selected Package ID: ", packageId);
   window.open("/review");
   PackageIDs = packageId
 };
 
+
 function App() {
   const [Booking, setBooking] = useState<BookingInterface[]>([]);
-
   const getBookingByMemberID = async () => {
     let res = await GetBookingByMemberID(Number(member?.ID));
     if (res) {
@@ -109,5 +110,5 @@ function App() {
     </>
   );
 }
-
+export { bookingPayment };
 export default App;

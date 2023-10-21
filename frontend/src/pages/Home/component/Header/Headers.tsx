@@ -17,20 +17,6 @@ function Headers() {
     const navigate = useNavigate();
     const [size] = useState<SizeType>('large'); // default is 'middle'
 
-    const imageUrls = [
-        'cat2.jpg',
-        'avata.jpg',
-        'cat3.jpg',
-        'cat4.jpg',
-        'cat5.jpg',
-    ];
-
-    function getRandomImage() {
-        const randomIndex = Math.floor(Math.random() * imageUrls.length);
-        return imageUrls[randomIndex];
-    }
-    const randomImageUrl = getRandomImage();
-
     const items: MenuProps['items'] = [
         {
             label: 'Home',
