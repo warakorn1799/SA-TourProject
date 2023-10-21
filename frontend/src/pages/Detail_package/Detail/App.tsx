@@ -1,19 +1,17 @@
 import { Layout } from 'antd';
-import { useParams } from 'react-router-dom';
-
-import Taskbar from '../Header/Taskbar';
+//import Taskbar from '../Header/Taskbar';
+import Headers from '../../Home/component/Header/Headers';
 import Detail from './Detail';
 
 function App() {
-  const { id } = useParams();
   return (
     <Layout>
       
-      <Layout style={{ zIndex: 1 }}>
-        <Taskbar />
+      <Layout style={{zIndex:1}}>
+        <Headers />
       </Layout>
       <Layout>
-        <Detail /> {id}
+        <Detail /> 
       </Layout>
       
     </Layout>

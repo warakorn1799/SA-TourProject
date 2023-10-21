@@ -13,4 +13,11 @@ type Review struct {
 
 	RateID *uint
 	Rate   Rate `gorm:"foreignKey:RateID"`
+
+	PackageID *uint
+	Package Package `gorm:"foreignKey:PackageID"`
+
+
+
+
 }

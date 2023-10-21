@@ -13,7 +13,7 @@ type FieldType = {
   firstname?: string;
   lastname?: string;
   email?: string;
-  countryID?: CountryInterface;
+  country?: string;
   password?: string;
   phone?: string
   Profile?: string
@@ -25,7 +25,32 @@ function Register() {
   const navigate = useNavigate();
   const [confirmation, setConfirmation] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
-  const [country, setCountry] = useState<CountryInterface[]>([]);
+
+  interface Country {
+    cca3: string; // Adjust the types according to your data
+    name: {
+      common: string;
+    };
+  }
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const sortedCountries = countries.slice().sort((a, b) => a.name.common.localeCompare(b.name.common));
+  useEffect(() => {
+    // โหลดข้อมูลประเทศจาก API
+    fetch('https://restcountries.com/v3.1/all')
+      .then((response) => response.json())
+      .then((data) => {
+        setCountries(data);
+        console.log('Loaded countries:', data);
+      })
+      .catch((error) => {
+        console.error('Error loading countries:', error);
+      });
+  }, []);
+  const handleCountrySelect = (country: string) => {
+    setSelectedCountry(country);
+    console.log(selectedCountry);
+  };
 
   const handleConfirmation = async (values: MemberInterface) => {
     values.Profile = Base64[0];
@@ -45,20 +70,13 @@ function Register() {
         type: "error",
         content: "บันทึกข้อมูลไม่สำเร็จ!!",
       });
-    }
-  };
-
-  const getCountry = async () => {
-    let res = await GetCountry();
-    if (res) {
-      setCountry(res);
+      console.log(res)
     }
   };
 
   useEffect(() => {
-    getCountry();
-    console.log(country);
-  }, []);
+    console.log(selectedCountry);
+  }, [selectedCountry]);
 
   const onFinish = (values: any) => {
     console.log('Success:', values);
@@ -125,27 +143,44 @@ function Register() {
           </div>
           <Form.Item<FieldType>
             label=""
-            name="countryID"
+            name="country"
             rules={[{ required: true, message: 'Please select your country!' }]}
           >
-            <Select placeholder="Select Country" allowClear>
-              {country.map((item) => (
-                <Option value={item.ID} key={item.Name}>{item.Name}</Option>
+            <Select
+              showSearch
+              placeholder="Select Country"
+              allowClear
+              value={selectedCountry}
+              filterOption={(input, option) => {
+                if (option && option.children) {
+                  const children = option.children as unknown;
+                  if (typeof children === 'string') {
+                    return (children as string).toLowerCase().indexOf(input.toLowerCase()) >= 0;
+                  }
+                }
+                return false;
+              }}
+              onChange={(value) => handleCountrySelect(value)}>
+
+              {sortedCountries.map((country) => (
+                <Option key={country.cca3} value={country.name.common}>
+                  {country.name.common}
+                </Option>
               ))}
             </Select>
           </Form.Item>
           <div>
-            <Uploads/>
+            <Uploads />
           </div>
-          <div style={{marginTop:120}}>
-          <h1></h1>
-          <a className={styles.gotohome} onClick={() => navigate('/')}>Back to Home page</a>
-          <Form.Item >
-            {contextHolder}
-            <button className={styles.submitstyle}>
-              Submit
-            </button>
-          </Form.Item>
+          <div style={{ marginTop: 120 }}>
+            <h1></h1>
+            <a className={styles.gotohome} onClick={() => navigate('/')}>Back to Home page</a>
+            <Form.Item >
+              {contextHolder}
+              <button className={styles.submitstyle}>
+                Submit
+              </button>
+            </Form.Item>
           </div>
         </Form>
       </div>

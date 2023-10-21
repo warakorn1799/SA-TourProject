@@ -11,7 +11,7 @@ function App() {
       };
 
     return (
-        <div style={{width:300,height: 980, background: 'rgba(249, 217, 217, 0.25)', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.60)'}}>
+        <div style={{width:381,height: 980, background: 'rgba(249, 217, 217, 0.25)', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.60)'}}>
             <Button block type = 'text' onClick={() => {navigate('/admin/dashboard')}} style={{borderRadius: 0,textDecoration:'none',height:90}}>
                 <div style={{marginTop:20}}>
                 <div style={{float:'left',marginLeft:15}}>
@@ -21,7 +21,7 @@ function App() {
                 </div>
             </Button>
 
-            <Button block type = 'text' href='https://www.youtube.com/watch?v=wYyGNtePSDI&ab_channel=%E0%B8%AA%E0%B8%AA%E0%B8%AA.' style={{borderRadius: 0,textDecoration:'none',height:90}}>
+            <Button block type = 'text'  style={{borderRadius: 0,textDecoration:'none',height:90}}>
                 <div style={{marginTop:20}}>
                 <div style={{float:'left',marginLeft:15}}>
                     <img style={{width: 42, height: 42.67}} src="Rectangle 109.png"/>
@@ -30,7 +30,7 @@ function App() {
                 </div>
             </Button>
 
-            <Button block type = 'text' href='https://www.youtube.com/watch?v=2jk4pJQ3_R4&ab_channel=fecotspku' style={{borderRadius: 0,textDecoration:'none',height:90}}>
+            <Button block type = 'text' onClick={() => {navigate('/admin/manageuser')}} style={{borderRadius: 0,textDecoration:'none',height:90}}>
                 <div style={{marginTop:20}}>
                 <div style={{float:'left',marginLeft:15}}>
                     <img style={{width: 42, height: 42.67}} src="Rectangle 110.png"/>

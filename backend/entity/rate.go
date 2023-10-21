@@ -5,4 +5,5 @@ import "gorm.io/gorm"
 type Rate struct {
 	gorm.Model
 	Score string
+	
 }
