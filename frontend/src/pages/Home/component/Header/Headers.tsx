@@ -91,18 +91,13 @@ function Headers() {
         console.log('click ', e);
         setCurrent(e.key);
         if (e.key == "Home") {
-            console.log('your select home');
             navigate('/');
         }if (e.key == "Review") {
-            console.log('your select contact');
             navigate('/review');
         }if (e.key == "Booking") {
-            console.log('your select contact');
             navigate('/payment-history');
-        }
-        if (e.key == "Contact Us") {
-            console.log('your select contact');
-            navigate('/payment-history');
+        }if (e.key == "Contact Us") {
+            navigate('/Contact');
         }
     };
     

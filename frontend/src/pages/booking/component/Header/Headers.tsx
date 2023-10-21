@@ -39,7 +39,7 @@ function Headers() {
             icon: <img src={contact} />,
         },
     ];
-    const [current, setCurrent] = useState('app');
+    const [current, setCurrent] = useState('booking');
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
         setCurrent(e.key);
