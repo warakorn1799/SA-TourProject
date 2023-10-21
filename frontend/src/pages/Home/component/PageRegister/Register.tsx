@@ -13,7 +13,7 @@ type FieldType = {
   firstname?: string;
   lastname?: string;
   email?: string;
-  countryID?: CountryInterface;
+  country?: string;
   password?: string;
   phone?: string
   Profile?: string
@@ -70,6 +70,7 @@ function Register() {
         type: "error",
         content: "บันทึกข้อมูลไม่สำเร็จ!!",
       });
+      console.log(res)
     }
   };
 
@@ -142,7 +143,7 @@ function Register() {
           </div>
           <Form.Item<FieldType>
             label=""
-            name="countryID"
+            name="country"
             rules={[{ required: true, message: 'Please select your country!' }]}
           >
             <Select
