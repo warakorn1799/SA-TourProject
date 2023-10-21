@@ -46,15 +46,11 @@ function Headers() {
         if (e.key == "home") {
             console.log('your select home');
             navigate('/');
-            console.log("statuslogin : ", islogin)
-            console.log(member)
         }
         if (e.key == "review") {
-            console.log('your select contact');
             navigate('/Review');
         }
         if (e.key == "contact") {
-            console.log('your select contact');
             navigate('/Contact');
         }
     };
@@ -91,18 +87,14 @@ function Headers() {
         console.log('click ', e);
         setCurrent(e.key);
         if (e.key == "Home") {
-            console.log('your select home');
             navigate('/');
         }if (e.key == "Review") {
-            console.log('your select contact');
             navigate('/review');
         }if (e.key == "Booking") {
-            console.log('your select contact');
             navigate('/payment-history');
         }
-        if (e.key == "Contact Us") {
-            console.log('your select contact');
-            navigate('/payment-history');
+        if (e.key == "contact") {
+            navigate('/Contact');
         }
     };
     
