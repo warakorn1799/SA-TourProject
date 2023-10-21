@@ -10,6 +10,8 @@ type Member struct {
 	CountryID *uint
 	Country   Country `gorm:"foreignKey:CountryID"`
 
+	Profile string `gorm:"type:longtext"`
+
 	Email    string `gorm:"uniqueIndex"`
 	Password string
 	Phone    string
