@@ -1,6 +1,4 @@
 import { PromotionInterface } from "./IPromotion";
-import { RateInterface } from "./IRate";
-
 
 export interface PackageInterface {
     ID?: number; 

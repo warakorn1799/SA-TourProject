@@ -58,6 +58,16 @@ func GetPackage(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": packages})
 }
 
+// GET /packagenumber
+func CountPackages(c *gin.Context) {
+	var count int64
+	if err := entity.DB().Model(&entity.Package{}).Count(&count).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": count})
+}
+
 // GET /packages
 func ListPackage(c *gin.Context) {
 	var packages []entity.Package

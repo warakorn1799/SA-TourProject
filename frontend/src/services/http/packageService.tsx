@@ -61,6 +61,27 @@ async function GetPackageById(id: Number | undefined) {
     return res;
   }
 
+  async function GetPackageNumber() {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+  
+    let res = await fetch(`${apiUrl}/packagenumber`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return res.data;
+        } else {
+          return false;
+        }
+      });
+  
+    return res;
+  }
+
   async function CreatePackage(data: PackageInterface) {
     const requestOptions = {
       method: "POST",
@@ -106,5 +127,6 @@ export{
   GetPackageById,
   DeletePackageByID,
   CreatePackage,
-  UpdatePackage
+  UpdatePackage,
+  GetPackageNumber
 };

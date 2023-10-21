@@ -1,0 +1,11 @@
+.border {
+    position: relative;
+}
+
+.Header {
+    position: relative;
+}
+
+.Taskbar {
+    display: flex;
+}

@@ -1,11 +1,12 @@
 import './submit.css';
-import './body.css';
-import Taskbar from '../Home/component/Header/Headers';
+import Taskbar from './Header/Headers';
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react';
-import { Rate, message } from 'antd';
-import { PlusOutlined,UploadOutlined } from '@ant-design/icons';
+import './body.css';
+import React, { useState } from 'react';
+import { Rate } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import { Button, Space } from 'antd';
+<<<<<<< HEAD
 import { GetBookingById, GetBooking } from '../../services/http/bookingService';
 import { RateInterface } from '../../interfaces/IRate';
 import { MemberInterface } from '../../interfaces/IMember';
@@ -20,6 +21,21 @@ import { BookingInterface } from '../../interfaces/IBooking';
 //import { PackageIDs,BookingIDs } from '../paymentHistory';
 import { GetPackageById } from '../../services/http/packageService';
 import { PackageInterface } from '../../interfaces/IPackage';
+=======
+import { GetBookingById,GetBooking } from '../../services/http/bookingService';
+import {
+  Form,
+  Input,
+  Upload,
+} from 'antd';
+
+const normFile = (e: any) => {
+  if (Array.isArray(e)) {
+    return e;
+  }
+  return e?.fileList;
+};
+>>>>>>> 060e84d10bc3d8d9ee0aeadfacef9cb40e0d5148
 
  
 const { TextArea } = Input;
@@ -29,7 +45,9 @@ const desc = ['Terrible', 'Poor', 'Average', 'Very good', 'Excellent'];
 
 
 function Review() {
+
   const navigate = useNavigate();
+<<<<<<< HEAD
   const [messageApi, contexHolder] = message.useMessage();
   const [MemberID, getMemberID] = useState<MemberInterface | undefined>(undefined);
   const [BookingID, getBookingID ] = useState<BookingInterface | undefined>(undefined);
@@ -139,6 +157,11 @@ function Review() {
 
   
 
+=======
+  const submit = () => {
+    navigate('/SucessReview');
+  };
+>>>>>>> 060e84d10bc3d8d9ee0aeadfacef9cb40e0d5148
 
   const [buttonTypes, setButtonTypes] = useState<{
     Couples: "primary" | "default";
@@ -152,14 +175,10 @@ function Review() {
     Solo: 'default',
   });
 
-
-
   const handleButtonClick = (buttonName: keyof typeof buttonTypes) => {
     setButtonTypes((prevButtonTypes) => {
       const updatedButtonTypes = { ...prevButtonTypes };
       for (const key in updatedButtonTypes) {
-
-        setButtonName(buttonName);
         if (key === buttonName) {
           updatedButtonTypes[key as keyof typeof buttonTypes] = 'primary';
         } else {
@@ -169,14 +188,23 @@ function Review() {
       return updatedButtonTypes;
     });
   };
+  const [value, setValue] = useState(3);
 
+  const getBookingById = async () => {
+    let res = await GetBookingById(Number(1));
+    if (res) {
+      console.log('fhgd = ',res)
+      setFirstName(res.Adult)
+    }
+  };
 
-
+  getBookingById();
+  const [firstName, setFirstName] = useState<string | undefined>(undefined);
 
   return (
     <div>
       <div>
-        <Taskbar />
+        <Taskbar/>
       </div>
       <div className="review">
         Review
@@ -193,7 +221,7 @@ function Review() {
 
 
         </div>
-        <button className='submit' onClick={() => onFinish(values) } >
+        <button className='submit' onClick={submit}>
           Submit review
         </button>
         <div style={{ width: 540, height: -20, position: 'absolute', marginLeft: 470, transform: 'rotate(90deg)', transformOrigin: '0 0', border: '1px #CCCCCC solid' }}></div>
@@ -206,13 +234,11 @@ function Review() {
         </div>
         <div>
           <span className='body3'>
-            <Rate
-              className="large-rate"
-              tooltips={desc}
-              onChange={handleRatingChange}
-              value={userRating} />
-            {userRating ? <span className="ant-rate-text">{desc[userRating - 1]}</span> : ''}
-            <div className="body4">Who did you go with?</div>
+            <Rate className="large-rate" tooltips={desc} onChange={setValue} value={value} />
+            {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
+            <div className='body4'>
+              Who did you go with?
+            </div>
             <Space wrap>
               <Button type={buttonTypes.Couples} className={`custom-button ${buttonTypes.Couples}`} onClick={() => handleButtonClick('Couples')}>
                 Couples
@@ -237,15 +263,12 @@ function Review() {
           </span>
         </div>
         <div className=''>
-
           <Form.Item label="" >
-            <TextArea placeholder="Write your review. The views were amazing. We took so many photos!..." rows={4}
-              value={reviewText} // กำหนดค่าใน TextArea จาก state
-              onChange={(e) => setReviewText(e.target.value)} />
+            <TextArea placeholder="Write your review. The views were amazing. We took so many photos!..." rows={4} />
           </Form.Item>
 
-          <Form.Item label="Upload Image" valuePropName="fileList" name='Image' getValueFromEvent={normFile}>
-            <Upload  maxCount={3} multiple={false}  listType="picture-card">
+          <Form.Item label="Upload Image" valuePropName="fileList" getValueFromEvent={normFile}>
+            <Upload action="/upload.do" listType="picture-card">
               <div>
                 <PlusOutlined />
                 <div style={{ marginTop: 8 }}>Upload</div>
@@ -260,4 +283,3 @@ function Review() {
   );
 }
 export default Review;
-

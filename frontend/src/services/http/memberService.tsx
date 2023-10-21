@@ -61,6 +61,27 @@ async function GetMemberById(id: Number | undefined) {
     return res;
   }
 
+  async function GetMemberNumber() {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+  
+    let res = await fetch(`${apiUrl}/membernumber`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          return res.data;
+        } else {
+          return false;
+        }
+      });
+  
+    return res;
+  }
+
   async function GetMemberByEmail(email: string| undefined) {
     const requestOptions = {
       method: "GET"
@@ -126,5 +147,6 @@ export{
   DeleteMemberByID,
   GetMemberByEmail,
   CreateMember,
-  UpdateMember
+  UpdateMember,
+  GetMemberNumber
 };
