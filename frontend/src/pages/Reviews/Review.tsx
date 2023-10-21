@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 import { Rate } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Space } from 'antd';
-<<<<<<< HEAD
 import { GetBookingById, GetBooking } from '../../services/http/bookingService';
 import { RateInterface } from '../../interfaces/IRate';
 import { MemberInterface } from '../../interfaces/IMember';
@@ -21,23 +20,9 @@ import { BookingInterface } from '../../interfaces/IBooking';
 //import { PackageIDs,BookingIDs } from '../paymentHistory';
 import { GetPackageById } from '../../services/http/packageService';
 import { PackageInterface } from '../../interfaces/IPackage';
-=======
-import { GetBookingById,GetBooking } from '../../services/http/bookingService';
-import {
-  Form,
-  Input,
-  Upload,
-} from 'antd';
+import { useEffect } from 'react';
+import { message } from 'antd';
 
-const normFile = (e: any) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
->>>>>>> 060e84d10bc3d8d9ee0aeadfacef9cb40e0d5148
-
- 
 const { TextArea } = Input;
 
 const desc = ['Terrible', 'Poor', 'Average', 'Very good', 'Excellent'];
@@ -47,23 +32,21 @@ const desc = ['Terrible', 'Poor', 'Average', 'Very good', 'Excellent'];
 function Review() {
 
   const navigate = useNavigate();
-<<<<<<< HEAD
   const [messageApi, contexHolder] = message.useMessage();
   const [MemberID, getMemberID] = useState<MemberInterface | undefined>(undefined);
-  const [BookingID, getBookingID ] = useState<BookingInterface | undefined>(undefined);
-  const [RateID, setRateID] = useState<RateInterface | undefined>(undefined);
+  const [BookingID, getBookingID] = useState<BookingInterface | undefined>(undefined);
   const [buttonName, setButtonName] = useState<string>()
   const [reviewText, setReviewText] = useState('');
   const [profile, setProfile] = useState<ImageUpload>()
   const [userRating, setUserRating] = useState(0);
-  const [NamePackage, getPackageID ] = useState<string>()
-  const [ImagePackage, getPackageImage ] = useState<string>()
+  const [NamePackage, getPackageID] = useState<string>()
+  const [ImagePackage, getPackageImage] = useState<string>()
 
 
   const handleRatingChange = (value: number) => {
     setUserRating(value); // อัปเดต state เมื่อคะแนนเปลี่ยน
   };
-  
+
 
 
   const normFile = (e: any) => {
@@ -74,39 +57,39 @@ function Review() {
     return e?.fileList;
   };
   // ...
-  
+
   console.log('profile:', profile);
   console.log('image = ', profile?.thumbUrl);
-  
+
   const getMemberById = async () => {
     let res = await GetMemberById(Number(member?.ID));
     if (res) {
       getMemberID(res);
     }
   };
- // const getBookingById = async () => {
- //   let res = await GetBookingById(Number(BookingIDs?.ID));
- //   if (res) {
- //     getBookingID(res)
- //   }
- // };
-  
+  // const getBookingById = async () => {
+  //   let res = await GetBookingById(Number(BookingIDs?.ID));
+  //   if (res) {
+  //     getBookingID(res)
+  //   }
+  // };
+
   const getPackageById = async () => {
     let res = await GetPackageById(Number(1));
     if (res) {
       getPackageID(res.Name)
     }
   };
-  
+
   const getPackageName = async () => {
     let res = await GetPackageById(Number(1));
     if (res) {
       getPackageImage(res.Name)
     }
   };
-  
 
- 
+
+
 
   const onFinish = async (values: ReviewInterface) => {
     values.MemberID = MemberID?.ID
@@ -117,25 +100,25 @@ function Review() {
     values.BookingID = BookingID?.ID
     let res = await CreateReview(values);
     console.log('values = ', values)
-    if (res.status) {
+     if (res.status) {
       messageApi.open({
         type: "success",
-        content: "บันทึกข้อมูลสำเร็จ",
-      });
-      setTimeout(function () {
-        navigate("/SucessReview");
-      }, 2000);
-    } else {
-      messageApi.open({
+     content: "บันทึกข้อมูลสำเร็จ",
+       });
+     setTimeout(function () {
+       navigate("/SucessReview");
+       }, 2000);
+     } else {
+       messageApi.open({
         type: "error",
         content: "บันทึกข้อมูลไม่สำเร็จ",
-      });
-    }
+        });
+      }
   };
 
-  
 
- 
+
+
   const values = {
     Companion: 'Couples',
     Comment: 'cfghdt',
@@ -143,25 +126,20 @@ function Review() {
     MemberID: 0,
     RateID: 4
   };
-  
+
 
 
   useEffect(() => {
     getMemberById();
-   // getBookingById();
+    // getBookingById();
     getPackageById();
     getPackageName();
   }, []);
 
-  
 
-  
 
-=======
-  const submit = () => {
-    navigate('/SucessReview');
-  };
->>>>>>> 060e84d10bc3d8d9ee0aeadfacef9cb40e0d5148
+
+
 
   const [buttonTypes, setButtonTypes] = useState<{
     Couples: "primary" | "default";
@@ -193,7 +171,7 @@ function Review() {
   const getBookingById = async () => {
     let res = await GetBookingById(Number(1));
     if (res) {
-      console.log('fhgd = ',res)
+      console.log('fhgd = ', res)
       setFirstName(res.Adult)
     }
   };
@@ -204,7 +182,7 @@ function Review() {
   return (
     <div>
       <div>
-        <Taskbar/>
+        <Taskbar />
       </div>
       <div className="review">
         Review
@@ -213,17 +191,18 @@ function Review() {
             <img src='logoreview.png' className='logoreview'></img>
           </div>
           <div className='review3'>
-          {NamePackage}
+            {NamePackage}
           </div>
           <div className='review4'>
-          
+
           </div>
 
 
         </div>
-        <button className='submit' onClick={submit}>
+        <button className='submit' onClick={() => onFinish(values)}>
           Submit review
         </button>
+
         <div style={{ width: 540, height: -20, position: 'absolute', marginLeft: 470, transform: 'rotate(90deg)', transformOrigin: '0 0', border: '1px #CCCCCC solid' }}></div>
       </div>
 
@@ -234,7 +213,12 @@ function Review() {
         </div>
         <div>
           <span className='body3'>
-            <Rate className="large-rate" tooltips={desc} onChange={setValue} value={value} />
+          <Rate
+            className="large-rate"
+            tooltips={desc}
+            onChange={handleRatingChange} // เมื่อมีการเปลี่ยนคะแนน
+            value={userRating} // กำหนดค่าคะแนนจาก state
+          />
             {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
             <div className='body4'>
               Who did you go with?
@@ -264,10 +248,15 @@ function Review() {
         </div>
         <div className=''>
           <Form.Item label="" >
-            <TextArea placeholder="Write your review. The views were amazing. We took so many photos!..." rows={4} />
+          <TextArea
+            placeholder="Write your review. The views were amazing. We took so many photos!..."
+            rows={4}
+            value={reviewText} // กำหนดค่าใน TextArea จาก state
+            onChange={(e) => setReviewText(e.target.value)} // อัปเดต state เมื่อมีการเปลี่ยนแปลง
+          />
           </Form.Item>
 
-          <Form.Item label="Upload Image" valuePropName="fileList" getValueFromEvent={normFile}>
+          <Form.Item label="Upload Image" valuePropName="fileList" name='Image' getValueFromEvent={normFile}>
             <Upload action="/upload.do" listType="picture-card">
               <div>
                 <PlusOutlined />
