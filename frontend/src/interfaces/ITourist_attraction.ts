@@ -4,7 +4,7 @@ export interface Tourist_attractionInterface {
     ID?: number; 
     Name?: string;
     Location?: string;
-    Image?: Blob;
+    Image?: string;
     Map?: string;
     Opentime?: Date;
     Closetime?: Date;

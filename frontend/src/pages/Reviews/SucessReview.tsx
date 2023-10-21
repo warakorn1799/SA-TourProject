@@ -3,11 +3,17 @@ import Taskbar from '../Home/component/Header/Headers';
 import React from 'react';
 import { Progress } from 'antd';
 import { icons } from 'antd/es/image/PreviewGroup';
-
+import { RateInterface } from '../../interfaces/IRate';
+import { GetRateById } from '../../services/http/rateService';
+import { PackageInterface } from '../../interfaces/IPackage';
+import { PackageIDs } from '../paymentHistory';
+import { GetBookingById } from '../../services/http/bookingService';
 import { Rate } from 'antd';
 import { useEffect, useState } from "react";
 
+
 function SucessReview() {
+
 
   const App: React.FC = () => (
     <>

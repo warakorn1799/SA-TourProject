@@ -16,7 +16,12 @@ import { CreateReview } from '../../services/http/reviewService';
 import { Form, Input, Upload, } from 'antd';
 import { member } from '../Home/component/Header/Components/LoginPopup';
 import { ImageUpload } from "../../interfaces/IUpload";
+import { BookingInterface } from '../../interfaces/IBooking';
+//import { PackageIDs,BookingIDs } from '../paymentHistory';
+import { GetPackageById } from '../../services/http/packageService';
+import { PackageInterface } from '../../interfaces/IPackage';
 
+ 
 const { TextArea } = Input;
 
 const desc = ['Terrible', 'Poor', 'Average', 'Very good', 'Excellent'];
@@ -26,12 +31,15 @@ const desc = ['Terrible', 'Poor', 'Average', 'Very good', 'Excellent'];
 function Review() {
   const navigate = useNavigate();
   const [messageApi, contexHolder] = message.useMessage();
-  const [MemberID, setMemberID] = useState<MemberInterface | undefined>(undefined);
+  const [MemberID, getMemberID] = useState<MemberInterface | undefined>(undefined);
+  const [BookingID, getBookingID ] = useState<BookingInterface | undefined>(undefined);
   const [RateID, setRateID] = useState<RateInterface | undefined>(undefined);
   const [buttonName, setButtonName] = useState<string>()
   const [reviewText, setReviewText] = useState('');
   const [profile, setProfile] = useState<ImageUpload>()
   const [userRating, setUserRating] = useState(0);
+  const [NamePackage, getPackageID ] = useState<string>()
+  const [ImagePackage, getPackageImage ] = useState<string>()
 
 
   const handleRatingChange = (value: number) => {
@@ -55,9 +63,30 @@ function Review() {
   const getMemberById = async () => {
     let res = await GetMemberById(Number(member?.ID));
     if (res) {
-      setMemberID(res);
+      getMemberID(res);
     }
   };
+ // const getBookingById = async () => {
+ //   let res = await GetBookingById(Number(BookingIDs?.ID));
+ //   if (res) {
+ //     getBookingID(res)
+ //   }
+ // };
+  
+  const getPackageById = async () => {
+    let res = await GetPackageById(Number(1));
+    if (res) {
+      getPackageID(res.Name)
+    }
+  };
+  
+  const getPackageName = async () => {
+    let res = await GetPackageById(Number(1));
+    if (res) {
+      getPackageImage(res.Name)
+    }
+  };
+  
 
  
 
@@ -67,7 +96,7 @@ function Review() {
     values.Companion = buttonName
     values.Comment = reviewText
     values.Image = profile?.thumbUrl;
-
+    values.BookingID = BookingID?.ID
     let res = await CreateReview(values);
     console.log('values = ', values)
     if (res.status) {
@@ -86,7 +115,7 @@ function Review() {
     }
   };
 
-  console.log('image = ',profile?.thumbUrl)
+  
 
  
   const values = {
@@ -101,17 +130,14 @@ function Review() {
 
   useEffect(() => {
     getMemberById();
+   // getBookingById();
+    getPackageById();
+    getPackageName();
   }, []);
 
-  const getBookingById = async () => {
-    let res = await GetBookingById(Number(1));
-    if (res) {
-      setFirstName(res.Adult)
-    }
-  };
-  getBookingById();
+  
 
-  const [firstName, setFirstName] = useState<string | undefined>(undefined);
+  
 
 
   const [buttonTypes, setButtonTypes] = useState<{
@@ -156,15 +182,13 @@ function Review() {
         Review
         <div className='fram'>
           <div style={{ marginTop: 25 }}>
-            <img src='Rectangle 81.png'></img>
+            <img src='logoreview.png' className='logoreview'></img>
           </div>
           <div className='review3'>
-            {firstName}
+          {NamePackage}
           </div>
           <div className='review4'>
-            <img src='location.png'></img>
-
-            Chiang Mai, Thailand
+          
           </div>
 
 
