@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Register.module.css';
-import { Form, Input, Select, message } from 'antd';
+import { Avatar, Form, Input, Select, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { CreateMember } from '../../../../services/http/memberService';
 import { MemberInterface } from '../../../../interfaces/IMember'
 import { CountryInterface } from '../../../../interfaces/ICountry';
 import { GetCountry } from '../../../../services/http/countryService';
+import Uploads from './components/Uploads';
+import { Base64 } from './components/Uploads';
 
 type FieldType = {
   firstname?: string;
@@ -14,6 +16,7 @@ type FieldType = {
   countryID?: CountryInterface;
   password?: string;
   phone?: string
+  Profile?: string
 
 };
 const { Option } = Select;
@@ -25,6 +28,7 @@ function Register() {
   const [country, setCountry] = useState<CountryInterface[]>([]);
 
   const handleConfirmation = async (values: MemberInterface) => {
+    values.Profile = Base64[0];
     let res = await CreateMember(values);
     if (res.status) {
       messageApi.open({
@@ -130,20 +134,22 @@ function Register() {
               ))}
             </Select>
           </Form.Item>
-
+          <div>
+            <Uploads/>
+          </div>
+          <div style={{marginTop:120}}>
           <h1></h1>
           <a className={styles.gotohome} onClick={() => navigate('/')}>Back to Home page</a>
-
           <Form.Item >
             {contextHolder}
             <button className={styles.submitstyle}>
               Submit
             </button>
           </Form.Item>
+          </div>
         </Form>
       </div>
     </div>
   );
 }
-
 export default Register;

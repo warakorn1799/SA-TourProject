@@ -32,6 +32,7 @@ func CreateMember(c *gin.Context) {
 		Country:   country,
 		Password:  member.Password,
 		Phone:     member.Phone,
+		Profile:   member.Profile,
 	}
 
 	//Save

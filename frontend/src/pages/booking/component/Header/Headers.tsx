@@ -27,8 +27,8 @@ function Headers() {
             icon: <img src={loca} />,
         },
         {
-            label: 'Review',
-            key: 'SubMenu',
+            label: 'My booking',
+            key: 'booking',
             icon: <img src={review} />,
         },
         {

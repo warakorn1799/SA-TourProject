@@ -8,4 +8,5 @@ export interface MemberInterface {
     Email?: string;
     Password?: string;
     Phone?: string;
+    Profile?: string;
 }

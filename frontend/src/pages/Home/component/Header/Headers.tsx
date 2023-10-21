@@ -1,8 +1,8 @@
-import { Button, ConfigProvider, Menu, MenuProps, Popconfirm, message } from 'antd';
+import { Button, ConfigProvider, Menu, MenuProps, Popconfirm, message, Avatar } from 'antd';
+import { UserOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { Header } from 'antd/es/layout/layout';
 import React, { useEffect, useState } from 'react'
 import LoginPopup from './Components/LoginPopup';
-import logo from './assets/logo.png'
 import home from './assets/home.png'
 import loca from './assets/location.png'
 import review from './assets/review.png'
@@ -11,10 +11,25 @@ import styles from './Headers.module.css'
 import { useNavigate } from 'react-router-dom';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
 import { member } from './Components/LoginPopup';
+import SubMenu from 'antd/es/menu/SubMenu';
 
 function Headers() {
     const navigate = useNavigate();
     const [size] = useState<SizeType>('large'); // default is 'middle'
+
+    const imageUrls = [
+        'cat2.jpg',
+        'avata.jpg',
+        'cat3.jpg',
+        'cat4.jpg',
+        'cat5.jpg',
+    ];
+
+    function getRandomImage() {
+        const randomIndex = Math.floor(Math.random() * imageUrls.length);
+        return imageUrls[randomIndex];
+    }
+    const randomImageUrl = getRandomImage();
 
     const items: MenuProps['items'] = [
         {
@@ -87,6 +102,34 @@ function Headers() {
     const cancel = (e?: React.MouseEvent<HTMLElement>) => {
         console.log(e);
     };
+    const onClickMenu: MenuProps['onClick'] = (e) => {
+        console.log('click ', e);
+        setCurrent(e.key);
+        if (e.key == "Home") {
+            console.log('your select home');
+            navigate('/');
+        }if (e.key == "Review") {
+            console.log('your select contact');
+            navigate('/review');
+        }if (e.key == "Booking") {
+            console.log('your select contact');
+            navigate('/payment-history');
+        }
+        if (e.key == "Contact Us") {
+            console.log('your select contact');
+            navigate('/payment-history');
+        }
+    };
+    
+    const showAvartar = () => {
+        if(member?.Profile == ''){
+            console.log(12)
+            return <Avatar icon={<UserOutlined />} alt='phoflie' size={45} />
+        }else{
+            console.log(12222)
+            return <Avatar src={member?.Profile} alt='phoflie' size={45} icon={<UserOutlined />} />
+        }
+    }
 
     return (
         <Header className={styles.Header}>
@@ -98,20 +141,36 @@ function Headers() {
             {isLoginPopupOpen && <LoginPopup
                 onClose={closePopup} />}
 
-            {islogin ? <Popconfirm
-                title="Logout"
-                description="Are you sure to Logout?"
-                onConfirm={confirm}
-                onCancel={cancel}
-                okText="Yes"
-                cancelText="No"
-            >
-                <Button className={styles.buttonstyle} style={{ borderRadius: '29px', backgroundColor: '#fc6130' }} type="primary" size={size}>
-                    Logout
-                </Button>
-            </Popconfirm>
+            {islogin ? <div style={{ position: 'absolute', marginLeft: 1300, marginTop: 10 }}>
+                <div className={styles.avatar} style={{ position: 'absolute' }}>
+                {showAvartar()}
+                </div>
+
+                <div style={{ marginLeft: 40, marginTop: -10, position: 'absolute' }}>
+                    <Menu style={{ marginTop: '32px', marginLeft: '2px', background: 'none' }} mode="horizontal" defaultSelectedKeys={['']} onClick={onClickMenu}>
+                        <SubMenu key="SubMenu" icon={<CaretDownOutlined />}>
+                                <Menu.Item key="Home">Home</Menu.Item>
+                                <Menu.Item key="Review">Review</Menu.Item>
+                                <Menu.Item key="Booking">My Booking</Menu.Item>
+                                <Menu.Item key="Contact Us">Contact Us</Menu.Item>
+                                <Popconfirm
+                                 title="Logout"
+                                 description="Are you sure to Logout?"
+                                 onConfirm={confirm}
+                                 onCancel={cancel}
+                                 okText="Yes"
+                                 cancelText="No" > 
+                                 <button className={styles.buttonmanu} style={{backgroundColor: '#FC6130',marginLeft:20,marginBottom:20}}>
+                                    <p style={{color:'white', fontSize: '18px',fontFamily:'Roboto', fontWeight: 550}}> Log out</p>
+                                 </button>
+                            </Popconfirm>
+                        </SubMenu>
+                    </Menu>
+                </div>
+            </div>
+
                 : <Button className={styles.buttonstyle} style={{ borderRadius: '29px', backgroundColor: '#fc6130' }} type="primary" onClick={successes} size={size}>
-                    Login
+                    <p style={{ margin: '-5px', fontFamily: 'Roboto', fontSize: '20px', fontWeight: 700, color: 'white' }}>Log in</p>
                 </Button>}
 
 
