@@ -43,6 +43,24 @@ async function DeleteAdminByID(id: Number | undefined) {
   return res;
 }
 
+async function GetAdminByEmail(email: String | undefined) {
+  const requestOptions = {
+    method: "GET"
+  };
+
+  let res = await fetch(`${apiUrl}/adminemail/${email}`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
+
 async function GetAdminById(id: Number | undefined) {
     const requestOptions = {
       method: "GET"
@@ -106,5 +124,6 @@ export{
   GetAdminById,
   DeleteAdminByID,
   CreateAdmin,
-  UpdateAdmin
+  UpdateAdmin,
+  GetAdminByEmail
 };

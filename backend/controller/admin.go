@@ -45,6 +45,16 @@ func GetAdmin(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": admin})
 }
 
+func GetAdminByEmail(c *gin.Context) {
+	var admin entity.Admin
+	id := c.Param("email")
+	if err := entity.DB().Raw("SELECT * FROM admins WHERE email = ?", id).Find(&admin).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": admin})
+}
+
 // GET /admins
 
 func ListAdmins(c *gin.Context) {

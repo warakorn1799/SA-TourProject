@@ -25,7 +25,9 @@
 }
 
 .review3{
-    margin-top: 10px;
+    position: absolute;
+    margin-top: 75%;
+    margin-left: 20%;
     font-weight: 700;
     font-family: IBM Plex Sans Thai;
 }
@@ -53,4 +55,12 @@
     line-height: normal;
     font-family: 'Roboto';
     border: none;
+}
+
+.logoreview {
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    left: 12%;
+    top: 0%;
 }

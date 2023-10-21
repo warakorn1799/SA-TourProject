@@ -5,6 +5,7 @@ export interface MemberInterface {
     Firstname?: string;
     Lastname?: string;
     country?: CountryInterface;
+    countryID?: number;
     Email?: string;
     Password?: string;
     Phone?: string;

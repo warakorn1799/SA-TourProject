@@ -63,16 +63,15 @@ function Headers() {
             console.log("statuslogin : ", islogin)
             console.log(member)
         }
-        if (e.key == "app") {
-            console.log('your select contact');
-            navigate('/booking');
-        }
         if (e.key == "review") {
             console.log('your select contact');
             navigate('/Review');
         }
+        if (e.key == "contact") {
+            console.log('your select contact');
+            navigate('/Contact');
+        }
     };
-
     useEffect(() => {
         const userIsLoggedIn = member ? true : false;
         setIslogin(userIsLoggedIn);

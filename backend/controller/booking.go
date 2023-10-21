@@ -87,6 +87,16 @@ func ListBooking(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": booking})
 }
 
+// GET /bookingnumber
+func CountBookings(c *gin.Context) {
+	var count int64
+	if err := entity.DB().Model(&entity.Booking{}).Count(&count).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": count})
+}
+
 // DELETE /bookings/:id
 func DeleteBooking(c *gin.Context) {
 	id := c.Param("id")

@@ -76,6 +76,16 @@ func ListMembers(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": members})
 }
 
+// GET /membernumber
+func CountMembers(c *gin.Context) {
+	var count int64
+	if err := entity.DB().Model(&entity.Member{}).Count(&count).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": count})
+}
+
 // DELETE /members/:id
 func DeleteMember(c *gin.Context) {
 	id := c.Param("id")
