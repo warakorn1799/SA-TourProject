@@ -45,7 +45,7 @@ function ManageUser() {
             title: "Country",
             key: "Country",
             render: (text, record, index) => (
-                <div>{record.country?.Name}</div>
+                <div>{record.Country?.Name}</div>
             )
         },
         {
